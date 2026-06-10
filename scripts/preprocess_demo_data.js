@@ -5,6 +5,8 @@ const rootDir = path.resolve(__dirname, "..");
 const rawPath = path.join(rootDir, "data", "raw", "demo_observations.json");
 const registryPath = path.join(rootDir, "data", "raw", "source_registry.json");
 const historyModelPath = path.join(rootDir, "models", "history_prior_model.json");
+const ansanLocationsPath = path.join(rootDir, "data", "raw", "ansan_candidate_locations.json");
+const ansanWeatherPath = path.join(rootDir, "data", "raw", "ansan_open_meteo_weather_latest.json");
 const outputPath = path.join(rootDir, "data", "processed", "risk_timeseries.json");
 const browserBundlePath = path.join(rootDir, "data", "processed", "risk_timeseries.js");
 
@@ -128,14 +130,60 @@ function historyPriorForLocation(location, historyModel) {
   };
 }
 
-function buildOutput(raw, registry, historyModel) {
+function mergeLocation(location, ansanLocations) {
+  const regionalLocation = ansanLocations?.records?.find((record) => record.id === location.id);
+  if (!regionalLocation) return location;
+
+  return {
+    ...location,
+    lat: regionalLocation.lat,
+    lng: regionalLocation.lng,
+    type: regionalLocation.type || location.type,
+    dominantAccidentTypes: regionalLocation.dominantAccidentTypes || location.dominantAccidentTypes,
+    geocode: {
+      source: regionalLocation.source,
+      status: regionalLocation.geocodeStatus,
+      matchedQuery: regionalLocation.matchedQuery || null,
+      displayName: regionalLocation.displayName || null,
+      osmType: regionalLocation.osmType || null,
+      osmId: regionalLocation.osmId || null
+    }
+  };
+}
+
+function weatherFor(ansanWeather, locationId, index) {
+  const record = ansanWeather?.records?.find((item) => item.locationId === locationId);
+  if (!record || !Array.isArray(record.hourly) || !record.hourly.length) return null;
+  return record.hourly[index % record.hourly.length];
+}
+
+function applyRegionalWeather(row, weatherPoint) {
+  if (!weatherPoint) return row;
+  return {
+    ...row,
+    datetime: `${weatherPoint.time}:00+09:00`,
+    windMps: Number((weatherPoint.windSpeed10mKmh / 3.6).toFixed(2)),
+    rainMm: weatherPoint.precipitationMm,
+    temperature2m: weatherPoint.temperature2m,
+    windGustMps: Number((weatherPoint.windGusts10mKmh / 3.6).toFixed(2)),
+    visibilityM: weatherPoint.visibilityM
+  };
+}
+
+function buildOutput(raw, registry, historyModel, ansanLocations, ansanWeather) {
+  const firstWeatherTime = ansanWeather?.records?.flatMap((record) => record.hourly || [])?.[0]?.time;
+  const scenarioDate = firstWeatherTime ? firstWeatherTime.slice(0, 10) : raw.scenarioDate;
+
   const observationsByLocation = raw.locations.map((location) => {
-    const historyPrior = historyPriorForLocation(location, historyModel);
+    const mergedLocation = mergeLocation(location, ansanLocations);
+    const historyPrior = historyPriorForLocation(mergedLocation, historyModel);
     const series = raw.observations
-      .filter((row) => row.locationId === location.id)
-      .map((row) => {
+      .filter((row) => row.locationId === mergedLocation.id)
+      .map((row, index) => {
+        const weatherPoint = weatherFor(ansanWeather, mergedLocation.id, index);
+        const regionalRow = applyRegionalWeather(row, weatherPoint);
         const rowWithModelHistory = {
-          ...row,
+          ...regionalRow,
           accidentHistoryScore: historyPrior ? historyPrior.priorScore : row.accidentHistoryScore
         };
         const factorScores = scoreFactors(rowWithModelHistory);
@@ -143,19 +191,22 @@ function buildOutput(raw, registry, historyModel) {
         const reasons = topReasons(factorScores);
 
         return {
-          datetime: row.datetime,
-          time: row.datetime.slice(11, 16),
+          datetime: rowWithModelHistory.datetime,
+          time: rowWithModelHistory.datetime.slice(11, 16),
           rawSignals: {
-            tideCm: row.tideCm,
-            minutesToHighTide: row.minutesToHighTide,
-            tideDeltaCmPerHour: row.tideDeltaCmPerHour,
-            windMps: row.windMps,
-            rainMm: row.rainMm,
-            visitorIndex: row.visitorIndex,
-            visitorChangePct: row.visitorChangePct,
-            anonymousCrowdCount: row.anonymousCrowdCount,
-            avgStayMinutes: row.avgStayMinutes,
-            returnDelayGroups: row.returnDelayGroups,
+            tideCm: rowWithModelHistory.tideCm,
+            minutesToHighTide: rowWithModelHistory.minutesToHighTide,
+            tideDeltaCmPerHour: rowWithModelHistory.tideDeltaCmPerHour,
+            windMps: rowWithModelHistory.windMps,
+            windGustMps: rowWithModelHistory.windGustMps ?? null,
+            rainMm: rowWithModelHistory.rainMm,
+            temperature2m: rowWithModelHistory.temperature2m ?? null,
+            visibilityM: rowWithModelHistory.visibilityM ?? null,
+            visitorIndex: rowWithModelHistory.visitorIndex,
+            visitorChangePct: rowWithModelHistory.visitorChangePct,
+            anonymousCrowdCount: rowWithModelHistory.anonymousCrowdCount,
+            avgStayMinutes: rowWithModelHistory.avgStayMinutes,
+            returnDelayGroups: rowWithModelHistory.returnDelayGroups,
             historyPriorScore: historyPrior ? historyPrior.priorScore : row.accidentHistoryScore
           },
           factorScores,
@@ -165,7 +216,7 @@ function buildOutput(raw, registry, historyModel) {
           recommendationIds: recommendationIds(reasons),
           dataQuality: {
             tide: "sample_from_public_api_schema",
-            weather: "sample_from_public_api_schema",
+            weather: weatherPoint ? "live_open_meteo_ansan_forecast" : "sample_from_public_api_schema",
             visitor: "sample_from_public_dataset_schema",
             history: "sample_from_public_file_schema",
             field: "future_pilot_sample"
@@ -174,17 +225,23 @@ function buildOutput(raw, registry, historyModel) {
       });
 
     return {
-      ...location,
+      ...mergedLocation,
       historyPrior,
       series,
-      effectBaseline: raw.effectBaseline[location.id]
+      effectBaseline: raw.effectBaseline[mergedLocation.id]
     };
   });
 
   return {
     generatedAt: new Date().toISOString(),
-    scenarioDate: raw.scenarioDate,
+    scenarioDate,
     notice: raw.notice,
+    regionalCollection: {
+      ansanLocationsCollectedAt: ansanLocations?.collectedAt || null,
+      ansanWeatherCollectedAt: ansanWeather?.collectedAt || null,
+      weatherSource: ansanWeather?.source || null,
+      locationSource: ansanLocations?.source || null
+    },
     preprocessing: {
       timeUnit: "1 hour",
       spatialUnit: "candidate POI",
@@ -301,7 +358,9 @@ function buildOutput(raw, registry, historyModel) {
 const raw = readJson(rawPath);
 const registry = readJson(registryPath);
 const historyModel = readOptionalJson(historyModelPath);
-const output = buildOutput(raw, registry, historyModel);
+const ansanLocations = readOptionalJson(ansanLocationsPath);
+const ansanWeather = readOptionalJson(ansanWeatherPath);
+const output = buildOutput(raw, registry, historyModel, ansanLocations, ansanWeather);
 
 if (!checkOnly) {
   fs.mkdirSync(path.dirname(outputPath), { recursive: true });

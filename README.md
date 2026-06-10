@@ -115,6 +115,8 @@ npm run check
 | 파일 | 설명 |
 |---|---|
 | `data/raw/kcg_coastal_accident_stats_2020_2024.json` | 해양경찰청 공식 페이지에서 수집한 최근 5년 연안사고 유형별 통계 |
+| `data/raw/ansan_candidate_locations.json` | 안산 연안 후보지 좌표 수집 결과 |
+| `data/raw/ansan_open_meteo_weather_latest.json` | 안산 후보지별 최신 기상 예보 수집 결과 |
 | `models/history_prior_model.json` | 사고유형별 사고이력 prior 모델 |
 | `models/history_prior_report.md` | 모델 학습 리포트 |
 | `docs/real_data_pipeline.md` | 실제 데이터 수집·모델 학습 진행 상태와 다음 수집 대상 |

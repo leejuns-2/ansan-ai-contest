@@ -21,6 +21,8 @@
 |---|---|
 | `raw/source_registry.json` | 데이터 출처, 제공기관, 확인 상태, 활용 필드 |
 | `raw/demo_observations.json` | 공개 데이터 구조를 모사한 원시 관측 샘플 |
+| `raw/ansan_candidate_locations.json` | 안산 연안 후보지 좌표 수집 결과 |
+| `raw/ansan_open_meteo_weather_latest.json` | 안산 후보지별 최신 기상 예보 수집 결과 |
 | `raw/kcg_coastal_accident_stats_2020_2024.json` | 해양경찰청 공식 페이지에서 수집한 최근 5년 연안사고 유형별 통계 |
 | `processed/risk_timeseries.json` | 전처리 후 대시보드가 읽는 위험도 시계열 |
 | `processed/risk_timeseries.js` | `file://` 실행을 위한 브라우저 데이터 번들 |
@@ -47,6 +49,8 @@ risk_score =
 | 갯벌·해안 접근부 | 고립, 익수 |
 | 항구·방파제 | 추락, 익수 |
 | 시화호·방조제 인근 | 추락, 고립 |
+
+`기상` 피처는 `raw/ansan_open_meteo_weather_latest.json`이 존재하면 안산 후보지별 최신 예보의 풍속·강수량으로 대체한다. 단, 공모전 최종본에서는 기상청 공공데이터 API로 교체하는 것이 더 적합하다.
 
 위험등급:
 

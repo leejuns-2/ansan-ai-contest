@@ -7,6 +7,8 @@
 | 구분 | 상태 | 산출물 |
 |---|---|---|
 | 해양경찰청 연안사고통계 수집 | 완료 | `data/raw/kcg_coastal_accident_stats_2020_2024.json` |
+| 안산 연안 후보지 좌표 수집 | 완료 | `data/raw/ansan_candidate_locations.json` |
+| 안산 후보지별 최신 기상 예보 수집 | 완료 | `data/raw/ansan_open_meteo_weather_latest.json` |
 | 사고유형별 사고이력 prior 모델 학습 | 완료 | `models/history_prior_model.json` |
 | 모델 리포트 생성 | 완료 | `models/history_prior_report.md` |
 | 대시보드 전처리 데이터 반영 | 완료 | `data/processed/risk_timeseries.json`, `risk_timeseries.js` |
@@ -15,6 +17,10 @@
 
 - 해양경찰청 연안사고통계  
   https://imsm.kcg.go.kr/CSMS/main/csiAcdnt/CsiAcdntSttusRB.do
+- OpenStreetMap Nominatim  
+  https://nominatim.openstreetmap.org/
+- Open-Meteo Forecast API  
+  https://open-meteo.com/
 
 수집 테이블:
 
@@ -35,6 +41,7 @@ npm run pipeline:real-start
 
 ```text
 collect:kcg
+→ collect:ansan
 → train:model
 → preprocess
 ```
@@ -43,6 +50,7 @@ collect:kcg
 
 ```powershell
 npm run collect:kcg
+npm run collect:ansan
 npm run train:model
 npm run preprocess
 ```
@@ -84,9 +92,18 @@ prior_score = clamp(
 | 한계 | 이유 | 다음 조치 |
 |---|---|---|
 | 안산 특정 사고 데이터가 아님 | 현재 수집한 KCG 통계는 전국 유형별 집계 | 해양경찰청 연안사고 이력 API/CSV에서 안산·관할 해역 필터 확인 |
-| 장소 좌표 기반 모델이 아님 | 수집한 통계에 좌표가 없음 | 연안안전 예측분석모델 격자 데이터 확보 |
-| 조위·기상은 샘플 구조 유지 | 공공데이터포털 API 인증키 필요 | `.env`에 인증키를 넣고 API 수집기 확장 |
+| 장소 좌표의 공식성 부족 | OSM 지오코딩과 fallback 후보 좌표 사용 | 안산시/국토공간정보 등 공식 좌표로 검증 |
+| 조위는 샘플 구조 유지 | 공공데이터포털 또는 KHOA 인증키 필요 | `.env`에 인증키를 넣고 API 수집기 확장 |
+| 기상은 Open-Meteo 기반 | 인증키 없이 가능한 PoC 데이터이나 공식 공공데이터는 아님 | 기상청 단기예보 API로 교체 |
 | 유동인구는 샘플 구조 유지 | 경기데이터드림 원시 데이터 접근 방식 확인 필요 | 다운로드/API 가능 여부 확인 |
+
+## 현재 안산 지역 수집 결과
+
+| 후보 구역 | 수집 상태 | 비고 |
+|---|---|---|
+| 방아머리 후보 구역 | OSM 좌표 매칭, Open-Meteo 기상 수집 | `방아머리해변 안산` 검색어로 매칭 |
+| 탄도항 후보 구역 | OSM 좌표 매칭, Open-Meteo 기상 수집 | `탄도항 안산` 검색어로 매칭 |
+| 시화방조제 후보 구역 | fallback 좌표, Open-Meteo 기상 수집 | OSM 매칭 실패. 공식 좌표 검증 필요 |
 
 ## 다음 실제 데이터 수집 대상
 
@@ -120,4 +137,3 @@ prior_score = clamp(
 ## 운영 판단
 
 현재 단계는 `실제 데이터 기반 모델링 착수`로 볼 수 있다. 다만 최종 운영 수준 모델은 아니다. 다음 단계에서 안산 특정 사고이력, 조위, 기상, 유동인구를 모두 수집해 장소-시간 단위 학습 데이터셋을 만들어야 한다.
-

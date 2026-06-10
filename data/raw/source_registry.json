@@ -2,6 +2,26 @@
   "updatedAt": "2026-06-10",
   "records": [
     {
+      "id": "ansan_candidate_locations_osm",
+      "name": "안산 연안 후보지 좌표",
+      "agency": "OpenStreetMap Nominatim",
+      "url": "https://nominatim.openstreetmap.org/",
+      "status": "live_collected",
+      "expectedFields": ["장소명", "위도", "경도", "OSM ID", "지오코딩 상태"],
+      "use": "방아머리·탄도항·시화방조제 후보 구역의 위치 메타데이터 보강",
+      "risk": "OSM 매칭 실패 시 수동 후보 좌표를 사용하므로 최종 제출 전 공식 좌표 검증 필요"
+    },
+    {
+      "id": "ansan_open_meteo_weather",
+      "name": "안산 연안 후보지 기상 예보",
+      "agency": "Open-Meteo",
+      "url": "https://open-meteo.com/",
+      "status": "live_collected",
+      "expectedFields": ["시간", "기온", "강수량", "풍속", "돌풍", "시정"],
+      "use": "기상청 API 인증키 연동 전 안산 후보지별 최신 기상 피처 보강",
+      "risk": "공모전 제출용 공식 기상 데이터는 기상청 공공데이터 API로 교체 권장"
+    },
+    {
       "id": "kcg_public_accident_stats",
       "name": "해양경찰청 연안사고통계",
       "agency": "해양경찰청",
