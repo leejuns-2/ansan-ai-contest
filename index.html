@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>안산 세이프코스트 AI 운영 대시보드</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand-block">
+        <span class="system-label">Ansan SafeCoast AI</span>
+        <h1>연안 고위험상황 선제예방 운영 대시보드</h1>
+      </div>
+      <nav class="doc-nav" aria-label="문서 링크">
+        <a href="docs/submission_draft_v1.md">제출서</a>
+        <a href="docs/data_inventory.md">데이터 인벤토리</a>
+        <a href="docs/pipeline_design.md">파이프라인</a>
+        <a href="data/README.md">데이터 처리</a>
+      </nav>
+    </header>
+
+    <main class="app-shell">
+      <section class="ops-ribbon" aria-label="운영 요약">
+        <article>
+          <span>운영 기준일</span>
+          <strong id="scenarioDate">-</strong>
+        </article>
+        <article>
+          <span>최고 위험 구역</span>
+          <strong id="highestRisk">-</strong>
+        </article>
+        <article>
+          <span>미결 권고 조치</span>
+          <strong id="openActions">-</strong>
+        </article>
+        <article>
+          <span>데이터 상태</span>
+          <strong id="dataStatus">샘플 PoC</strong>
+        </article>
+      </section>
+
+      <section class="command-panel">
+        <div class="control-field">
+          <label for="timeSelect">예측 시간</label>
+          <select id="timeSelect"></select>
+        </div>
+        <div class="control-field">
+          <label for="roleSelect">운영 관점</label>
+          <select id="roleSelect">
+            <option value="smart">스마트도시과</option>
+            <option value="safety">재난안전</option>
+            <option value="tourism">관광·현장관리</option>
+          </select>
+        </div>
+        <fieldset class="layer-switches">
+          <legend>위험도 반영 레이어</legend>
+          <label><input type="checkbox" data-factor="tide" checked /> 조위</label>
+          <label><input type="checkbox" data-factor="weather" checked /> 기상</label>
+          <label><input type="checkbox" data-factor="visitor" checked /> 유동인구</label>
+          <label><input type="checkbox" data-factor="history" checked /> 사고이력</label>
+          <label><input type="checkbox" data-factor="spatial" checked /> 공간</label>
+          <label><input type="checkbox" data-factor="field" checked /> 현장신호</label>
+        </fieldset>
+      </section>
+
+      <section class="workspace-grid">
+        <aside class="location-panel panel">
+          <div class="panel-title">
+            <h2>우선순위 구역</h2>
+            <span id="timeBadge" class="chip">-</span>
+          </div>
+          <div id="locationList" class="location-list"></div>
+        </aside>
+
+        <section class="map-panel panel">
+          <div class="panel-title">
+            <h2>안산 연안 위험지도</h2>
+            <span class="chip neutral">POI 기반 MVP</span>
+          </div>
+          <div class="coast-map" id="coastMap" aria-label="위험지도">
+            <div class="map-water" aria-hidden="true"></div>
+            <div class="map-land" aria-hidden="true"></div>
+            <div class="route-line one" aria-hidden="true"></div>
+            <div class="route-line two" aria-hidden="true"></div>
+            <button class="marker" type="button" data-location="A01" style="--x: 24%; --y: 62%">A01</button>
+            <button class="marker" type="button" data-location="A02" style="--x: 58%; --y: 48%">A02</button>
+            <button class="marker" type="button" data-location="A03" style="--x: 77%; --y: 29%">A03</button>
+            <div class="legend">
+              <span><i class="dot low"></i>낮음</span>
+              <span><i class="dot watch"></i>주의</span>
+              <span><i class="dot high"></i>높음</span>
+              <span><i class="dot urgent"></i>긴급</span>
+            </div>
+          </div>
+          <div id="riskTable" class="risk-table"></div>
+        </section>
+
+        <aside class="risk-panel panel">
+          <div class="panel-title">
+            <div>
+              <h2 id="selectedName">-</h2>
+              <p id="selectedMeta">-</p>
+            </div>
+            <span id="selectedLevel" class="level-chip">-</span>
+          </div>
+          <div class="score-row">
+            <div>
+              <span id="riskScore" class="risk-score">0</span>
+              <span class="risk-unit">점</span>
+            </div>
+            <div id="riskDelta" class="delta-badge">-</div>
+          </div>
+          <div class="risk-bar"><div id="riskBar"></div></div>
+          <h3>위험 원인</h3>
+          <ol id="reasonList" class="reason-list"></ol>
+          <h3>요인별 기여</h3>
+          <div id="factorBars" class="factor-bars"></div>
+          <h3>원시 신호</h3>
+          <div id="rawSignals" class="raw-grid"></div>
+        </aside>
+      </section>
+
+      <section class="operations-grid">
+        <section class="panel">
+          <div class="panel-title">
+            <h2>예방 개입 권고</h2>
+            <span id="actionOwner" class="chip">-</span>
+          </div>
+          <div id="recommendationList" class="recommendation-list"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title">
+            <h2>관계기관 공유 리포트</h2>
+            <button id="copyReport" class="small-button" type="button">복사</button>
+          </div>
+          <pre id="shareReport" class="report-box"></pre>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title">
+            <h2>운영 플레이북</h2>
+            <span id="playbookStatus" class="chip neutral">검토 중</span>
+          </div>
+          <div id="playbook" class="playbook"></div>
+          <h3>효과 지표</h3>
+          <div id="effectMetrics" class="effect-metrics"></div>
+        </section>
+      </section>
+
+      <section class="data-grid">
+        <section class="panel">
+          <div class="panel-title">
+            <h2>데이터 계보</h2>
+            <span class="chip neutral">source registry</span>
+          </div>
+          <div id="sourceLineage" class="source-lineage"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title">
+            <h2>전처리·모델 산식</h2>
+            <span class="chip neutral">explainable v0</span>
+          </div>
+          <div id="preprocessing" class="preprocess-box"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title">
+            <h2>감사 로그</h2>
+            <span id="auditCount" class="chip">-</span>
+          </div>
+          <div id="auditTrail" class="audit-list"></div>
+        </section>
+      </section>
+
+      <section class="guardrail-panel panel">
+        <div>
+          <h2>개인정보 보호 설계</h2>
+          <p>얼굴인식, 차량번호 인식, 개인별 이동경로 저장, 개인별 위험점수는 사용하지 않는다. 현장 신호는 구역 단위 인원 수, 이동 방향, 체류시간, 복귀 지연 군집 수 같은 비식별 집계만 사용한다.</p>
+        </div>
+        <div>
+          <h2>권한 경계</h2>
+          <p>출입통제장소 지정·해제, 강제 통제, 구조 지휘는 관계기관 권한이다. 본 시스템은 위험 예측, 시민 안내, 시설 개선, 현장 안내 강화, 관계기관 공유를 지원한다.</p>
+        </div>
+      </section>
+    </main>
+
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+{
+  "scenarioDate": "2026-07-04",
+  "createdAt": "2026-06-10",
+  "notice": "공개 데이터 구조를 모사한 MVP 샘플이다. 실제 관측·사고 통계로 단정하지 않는다.",
+  "locations": [
+    {
+      "id": "A01",
+      "name": "방아머리 후보 구역",
+      "type": "갯벌·해안 접근부",
+      "lat": 37.288,
+      "lng": 126.574,
+      "manager": "안산시 현장 관리 부서",
+      "authority": "안산시 안내 + 관계기관 공유",
+      "channels": ["전광판", "관광안내 채널", "현장 안내방송"],
+      "verificationStatus": "실제 위험 근거 검증 필요"
+    },
+    {
+      "id": "A02",
+      "name": "탄도항 후보 구역",
+      "type": "항구·방파제",
+      "lat": 37.192,
+      "lng": 126.647,
+      "manager": "안산시 관광·안전 협업 부서",
+      "authority": "안산시 안내 + 관계기관 공유",
+      "channels": ["관광안내 채널", "현장 안내방송", "관계기관 공유"],
+      "verificationStatus": "관리 주체와 실제 사고 사례 검증 필요"
+    },
+    {
+      "id": "A03",
+      "name": "시화방조제 후보 구역",
+      "type": "시화호·방조제 인근",
+      "lat": 37.314,
+      "lng": 126.608,
+      "manager": "관계기관 관리 주체 확인 필요",
+      "authority": "관계기관 관리 주체 확인 필요",
+      "channels": ["관계기관 공유", "관광안내 채널"],
+      "verificationStatus": "관할·시설 데이터 검증 필요"
+    }
+  ],
+  "observations": [
+    { "datetime": "2026-07-04T15:00:00+09:00", "locationId": "A01", "tideCm": 642, "minutesToHighTide": 167, "tideDeltaCmPerHour": 38, "windMps": 5.4, "rainMm": 0, "visitorIndex": 132, "visitorChangePct": 28, "accidentHistoryScore": 66, "spatialExposureScore": 78, "anonymousCrowdCount": 31, "avgStayMinutes": 24, "returnDelayGroups": 1 },
+    { "datetime": "2026-07-04T16:00:00+09:00", "locationId": "A01", "tideCm": 681, "minutesToHighTide": 107, "tideDeltaCmPerHour": 42, "windMps": 6.1, "rainMm": 0, "visitorIndex": 151, "visitorChangePct": 36, "accidentHistoryScore": 66, "spatialExposureScore": 78, "anonymousCrowdCount": 42, "avgStayMinutes": 31, "returnDelayGroups": 2 },
+    { "datetime": "2026-07-04T17:00:00+09:00", "locationId": "A01", "tideCm": 719, "minutesToHighTide": 47, "tideDeltaCmPerHour": 44, "windMps": 7.8, "rainMm": 0, "visitorIndex": 165, "visitorChangePct": 44, "accidentHistoryScore": 66, "spatialExposureScore": 78, "anonymousCrowdCount": 58, "avgStayMinutes": 38, "returnDelayGroups": 3 },
+    { "datetime": "2026-07-04T18:00:00+09:00", "locationId": "A01", "tideCm": 735, "minutesToHighTide": 13, "tideDeltaCmPerHour": 16, "windMps": 8.3, "rainMm": 0, "visitorIndex": 158, "visitorChangePct": 27, "accidentHistoryScore": 66, "spatialExposureScore": 78, "anonymousCrowdCount": 53, "avgStayMinutes": 35, "returnDelayGroups": 2 },
+    { "datetime": "2026-07-04T19:00:00+09:00", "locationId": "A01", "tideCm": 710, "minutesToHighTide": -47, "tideDeltaCmPerHour": -25, "windMps": 7.1, "rainMm": 0, "visitorIndex": 143, "visitorChangePct": -9, "accidentHistoryScore": 66, "spatialExposureScore": 78, "anonymousCrowdCount": 39, "avgStayMinutes": 29, "returnDelayGroups": 1 },
+    { "datetime": "2026-07-04T20:00:00+09:00", "locationId": "A01", "tideCm": 672, "minutesToHighTide": -107, "tideDeltaCmPerHour": -38, "windMps": 6.4, "rainMm": 0, "visitorIndex": 116, "visitorChangePct": -19, "accidentHistoryScore": 66, "spatialExposureScore": 78, "anonymousCrowdCount": 25, "avgStayMinutes": 22, "returnDelayGroups": 0 },
+
+    { "datetime": "2026-07-04T15:00:00+09:00", "locationId": "A02", "tideCm": 601, "minutesToHighTide": 172, "tideDeltaCmPerHour": 28, "windMps": 7.1, "rainMm": 0, "visitorIndex": 118, "visitorChangePct": 18, "accidentHistoryScore": 58, "spatialExposureScore": 72, "anonymousCrowdCount": 27, "avgStayMinutes": 23, "returnDelayGroups": 0 },
+    { "datetime": "2026-07-04T16:00:00+09:00", "locationId": "A02", "tideCm": 632, "minutesToHighTide": 112, "tideDeltaCmPerHour": 31, "windMps": 8.2, "rainMm": 0, "visitorIndex": 132, "visitorChangePct": 24, "accidentHistoryScore": 58, "spatialExposureScore": 72, "anonymousCrowdCount": 32, "avgStayMinutes": 26, "returnDelayGroups": 1 },
+    { "datetime": "2026-07-04T17:00:00+09:00", "locationId": "A02", "tideCm": 660, "minutesToHighTide": 52, "tideDeltaCmPerHour": 28, "windMps": 9.4, "rainMm": 0, "visitorIndex": 142, "visitorChangePct": 31, "accidentHistoryScore": 58, "spatialExposureScore": 72, "anonymousCrowdCount": 38, "avgStayMinutes": 30, "returnDelayGroups": 1 },
+    { "datetime": "2026-07-04T18:00:00+09:00", "locationId": "A02", "tideCm": 671, "minutesToHighTide": 17, "tideDeltaCmPerHour": 11, "windMps": 10.1, "rainMm": 0, "visitorIndex": 136, "visitorChangePct": -4, "accidentHistoryScore": 58, "spatialExposureScore": 72, "anonymousCrowdCount": 34, "avgStayMinutes": 27, "returnDelayGroups": 1 },
+    { "datetime": "2026-07-04T19:00:00+09:00", "locationId": "A02", "tideCm": 648, "minutesToHighTide": -43, "tideDeltaCmPerHour": -23, "windMps": 8.8, "rainMm": 0, "visitorIndex": 124, "visitorChangePct": -9, "accidentHistoryScore": 58, "spatialExposureScore": 72, "anonymousCrowdCount": 28, "avgStayMinutes": 21, "returnDelayGroups": 0 },
+    { "datetime": "2026-07-04T20:00:00+09:00", "locationId": "A02", "tideCm": 613, "minutesToHighTide": -103, "tideDeltaCmPerHour": -35, "windMps": 7.3, "rainMm": 0, "visitorIndex": 102, "visitorChangePct": -18, "accidentHistoryScore": 58, "spatialExposureScore": 72, "anonymousCrowdCount": 19, "avgStayMinutes": 18, "returnDelayGroups": 0 },
+
+    { "datetime": "2026-07-04T15:00:00+09:00", "locationId": "A03", "tideCm": 590, "minutesToHighTide": 184, "tideDeltaCmPerHour": 24, "windMps": 6.5, "rainMm": 0, "visitorIndex": 108, "visitorChangePct": 14, "accidentHistoryScore": 50, "spatialExposureScore": 68, "anonymousCrowdCount": 19, "avgStayMinutes": 20, "returnDelayGroups": 0 },
+    { "datetime": "2026-07-04T16:00:00+09:00", "locationId": "A03", "tideCm": 617, "minutesToHighTide": 124, "tideDeltaCmPerHour": 27, "windMps": 7.2, "rainMm": 0, "visitorIndex": 121, "visitorChangePct": 19, "accidentHistoryScore": 50, "spatialExposureScore": 68, "anonymousCrowdCount": 23, "avgStayMinutes": 23, "returnDelayGroups": 0 },
+    { "datetime": "2026-07-04T17:00:00+09:00", "locationId": "A03", "tideCm": 642, "minutesToHighTide": 64, "tideDeltaCmPerHour": 25, "windMps": 8.6, "rainMm": 0, "visitorIndex": 127, "visitorChangePct": 22, "accidentHistoryScore": 50, "spatialExposureScore": 68, "anonymousCrowdCount": 26, "avgStayMinutes": 25, "returnDelayGroups": 1 },
+    { "datetime": "2026-07-04T18:00:00+09:00", "locationId": "A03", "tideCm": 653, "minutesToHighTide": 24, "tideDeltaCmPerHour": 11, "windMps": 9.2, "rainMm": 0, "visitorIndex": 119, "visitorChangePct": -6, "accidentHistoryScore": 50, "spatialExposureScore": 68, "anonymousCrowdCount": 24, "avgStayMinutes": 24, "returnDelayGroups": 1 },
+    { "datetime": "2026-07-04T19:00:00+09:00", "locationId": "A03", "tideCm": 630, "minutesToHighTide": -36, "tideDeltaCmPerHour": -23, "windMps": 8.4, "rainMm": 0, "visitorIndex": 106, "visitorChangePct": -11, "accidentHistoryScore": 50, "spatialExposureScore": 68, "anonymousCrowdCount": 20, "avgStayMinutes": 19, "returnDelayGroups": 0 },
+    { "datetime": "2026-07-04T20:00:00+09:00", "locationId": "A03", "tideCm": 594, "minutesToHighTide": -96, "tideDeltaCmPerHour": -36, "windMps": 7.0, "rainMm": 0, "visitorIndex": 92, "visitorChangePct": -13, "accidentHistoryScore": 50, "spatialExposureScore": 68, "anonymousCrowdCount": 13, "avgStayMinutes": 16, "returnDelayGroups": 0 }
+  ],
+  "effectBaseline": {
+    "A01": { "stayReductionPct": 18, "accessReductionPct": 12, "agencyShares": 3, "nextImprovement": "안내판 위치 조정, 야간 조명 보강" },
+    "A02": { "stayReductionPct": 11, "accessReductionPct": 8, "agencyShares": 2, "nextImprovement": "방파제 접근 주의 문구 보강" },
+    "A03": { "stayReductionPct": 7, "accessReductionPct": 5, "agencyShares": 1, "nextImprovement": "관할 관리주체와 안내 채널 확인" }
+  }
+}

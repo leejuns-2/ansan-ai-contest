@@ -1,0 +1,50 @@
+{
+  "times": ["15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00"],
+  "locations": [
+    {
+      "id": "A01",
+      "name": "방아머리 후보 구역",
+      "type": "갯벌·해안 접근부",
+      "authority": "안산시 안내 + 관계기관 공유",
+      "hourly": [
+        { "time": "15:00", "tide": 70, "weather": 44, "visitor": 74, "history": 66, "spatial": 78 },
+        { "time": "16:00", "tide": 78, "weather": 52, "visitor": 86, "history": 66, "spatial": 78 },
+        { "time": "17:00", "tide": 92, "weather": 64, "visitor": 92, "history": 66, "spatial": 78 },
+        { "time": "18:00", "tide": 96, "weather": 68, "visitor": 88, "history": 66, "spatial": 78 },
+        { "time": "19:00", "tide": 84, "weather": 62, "visitor": 79, "history": 66, "spatial": 78 },
+        { "time": "20:00", "tide": 62, "weather": 58, "visitor": 58, "history": 66, "spatial": 78 },
+        { "time": "21:00", "tide": 48, "weather": 54, "visitor": 42, "history": 66, "spatial": 78 }
+      ]
+    },
+    {
+      "id": "A02",
+      "name": "탄도항 후보 구역",
+      "type": "항구·방파제",
+      "authority": "안산시 안내 + 관계기관 공유",
+      "hourly": [
+        { "time": "15:00", "tide": 48, "weather": 58, "visitor": 64, "history": 58, "spatial": 72 },
+        { "time": "16:00", "tide": 56, "weather": 66, "visitor": 72, "history": 58, "spatial": 72 },
+        { "time": "17:00", "tide": 68, "weather": 76, "visitor": 78, "history": 58, "spatial": 72 },
+        { "time": "18:00", "tide": 72, "weather": 82, "visitor": 74, "history": 58, "spatial": 72 },
+        { "time": "19:00", "tide": 66, "weather": 74, "visitor": 68, "history": 58, "spatial": 72 },
+        { "time": "20:00", "tide": 54, "weather": 64, "visitor": 52, "history": 58, "spatial": 72 },
+        { "time": "21:00", "tide": 42, "weather": 58, "visitor": 38, "history": 58, "spatial": 72 }
+      ]
+    },
+    {
+      "id": "A03",
+      "name": "시화방조제 후보 구역",
+      "type": "시화호·방조제 인근",
+      "authority": "관계기관 관리 주체 확인 필요",
+      "hourly": [
+        { "time": "15:00", "tide": 42, "weather": 54, "visitor": 58, "history": 50, "spatial": 68 },
+        { "time": "16:00", "tide": 48, "weather": 60, "visitor": 66, "history": 50, "spatial": 68 },
+        { "time": "17:00", "tide": 58, "weather": 68, "visitor": 70, "history": 50, "spatial": 68 },
+        { "time": "18:00", "tide": 64, "weather": 74, "visitor": 66, "history": 50, "spatial": 68 },
+        { "time": "19:00", "tide": 61, "weather": 70, "visitor": 58, "history": 50, "spatial": 68 },
+        { "time": "20:00", "tide": 52, "weather": 62, "visitor": 44, "history": 50, "spatial": 68 },
+        { "time": "21:00", "tide": 38, "weather": 56, "visitor": 30, "history": 50, "spatial": 68 }
+      ]
+    }
+  ]
+}

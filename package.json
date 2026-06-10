@@ -1,0 +1,18 @@
+{
+  "name": "ansan-safe-coast-ai",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Static MVP dashboard for Ansan public data and AI safety prevention contest.",
+  "scripts": {
+    "preprocess": "node scripts/preprocess_demo_data.js",
+    "check": "node --check assets/js/app.js && node scripts/preprocess_demo_data.js --check"
+  },
+  "keywords": [
+    "ansan",
+    "public-data",
+    "ai",
+    "safety",
+    "dashboard"
+  ],
+  "license": "UNLICENSED"
+}

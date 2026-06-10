@@ -1,0 +1,75 @@
+{
+  "updatedAt": "2026-06-10",
+  "records": [
+    {
+      "id": "coast_accident_history",
+      "name": "해양경찰청 연안사고 이력",
+      "agency": "해양경찰청",
+      "url": "https://www.data.go.kr/data/15088402/fileData.do",
+      "status": "public_verified",
+      "expectedFields": ["지방청", "해경서", "발생일자", "발생요일", "사고유형_세분류", "장소유형", "발생지역", "사고원인1차", "위험구역지정"],
+      "use": "사고 유형, 장소 유형, 시간대, 원인 패턴을 사고이력 점수로 변환",
+      "risk": "안산·대부도 단위 필터 가능 여부는 추가 검증 필요"
+    },
+    {
+      "id": "coast_risk_grid",
+      "name": "해양경찰청 연안안전 예측분석모델",
+      "agency": "해양경찰청",
+      "url": "https://www.data.go.kr/data/15118590/fileData.do",
+      "status": "public_verified",
+      "expectedFields": ["격자좌표", "위험지수", "위험등급", "좌표계"],
+      "use": "공간위험 초기값과 후보 위험구간 비교",
+      "risk": "EPSG:5179 좌표 처리와 안산 연안 격자 추출 필요"
+    },
+    {
+      "id": "tide_prediction",
+      "name": "조위관측소 실측·예측 조위 조회",
+      "agency": "해양수산부 국립해양조사원",
+      "url": "https://www.data.go.kr/data/15142507/openapi.do",
+      "status": "public_api_verified",
+      "expectedFields": ["관측소 코드", "관측소명", "관측일시", "위도", "경도", "실측 조위", "예측 조위"],
+      "use": "만조까지 남은 시간, 조위 상승 속도, 조위 위험 점수 산출",
+      "risk": "안산 연안 대표 관측소 선정 필요"
+    },
+    {
+      "id": "weather_forecast",
+      "name": "기상청 단기예보 조회서비스",
+      "agency": "기상청",
+      "url": "https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15084084",
+      "status": "public_api_verified",
+      "expectedFields": ["격자X", "격자Y", "발표시각", "예보시각", "풍속", "강수", "기온", "하늘상태"],
+      "use": "풍속, 강수, 기상악화 위험 산출",
+      "risk": "대부도·안산 연안 격자 좌표 변환 필요"
+    },
+    {
+      "id": "floating_population",
+      "name": "유동인구 시군구 단위 집계",
+      "agency": "경기데이터드림",
+      "url": "https://data.gg.go.kr/portal/data/service/selectServicePage.do?infId=6SQDOFXWTXA9V98HRO8E34907014&infSeq=1",
+      "status": "public_verified",
+      "expectedFields": ["시군구", "시간대", "성별", "연령대", "생활인구"],
+      "use": "방문객 집중 시간대와 평소 대비 혼잡도 산출",
+      "risk": "시군구 단위는 세부 연안 지점 분석에 해상도 한계"
+    },
+    {
+      "id": "ansan_facility",
+      "name": "안산시 공간시설·주차장·안전시설 데이터",
+      "agency": "안산시·안산도시공사",
+      "url": "https://www.ansan.go.kr/www/common/cntnts/selectContents.do?cntnts_id=C0001221",
+      "status": "partially_public_needs_inventory",
+      "expectedFields": ["시설명", "위치", "시설유형", "운영부서", "관리주체"],
+      "use": "안내시설·전광판·주차장·관광거점 기반 예방 조치 추천",
+      "risk": "전광판과 안전시설은 내부 데이터 확인 필요"
+    },
+    {
+      "id": "anonymous_field_signal",
+      "name": "시범구간 비식별 현장 신호",
+      "agency": "안산시 또는 관계기관 내부 인프라 후보",
+      "url": null,
+      "status": "future_pilot_required",
+      "expectedFields": ["구역ID", "집계시각", "추정인원", "이동방향", "평균체류시간", "복귀지연군집수"],
+      "use": "익명 상황인식과 개입 효과 검증",
+      "risk": "개인정보 영향 검토, 원본 영상 미저장 설계 필요"
+    }
+  ]
+}
