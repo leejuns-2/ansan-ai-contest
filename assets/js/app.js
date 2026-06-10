@@ -482,9 +482,16 @@ function bindEvents() {
 }
 
 async function loadData() {
+  if (window.__RISK_DATA__) {
+    state.data = window.__RISK_DATA__;
+    state.time = getTimes()[2] || getTimes()[0];
+    state.audit = [];
+    return;
+  }
+
   const response = await fetch("data/processed/risk_timeseries.json");
   if (!response.ok) {
-    throw new Error("Processed risk data not found. Run npm run preprocess.");
+    throw new Error("Processed risk data not found. Run npm run preprocess or open through a local server.");
   }
   state.data = await response.json();
   state.time = getTimes()[2] || getTimes()[0];

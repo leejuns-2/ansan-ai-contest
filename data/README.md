@@ -22,6 +22,7 @@
 | `raw/source_registry.json` | 데이터 출처, 제공기관, 확인 상태, 활용 필드 |
 | `raw/demo_observations.json` | 공개 데이터 구조를 모사한 원시 관측 샘플 |
 | `processed/risk_timeseries.json` | 전처리 후 대시보드가 읽는 위험도 시계열 |
+| `processed/risk_timeseries.js` | `file://` 실행을 위한 브라우저 데이터 번들 |
 | `../scripts/preprocess_demo_data.js` | 원시 샘플을 위험도 시계열로 변환하는 전처리 스크립트 |
 
 ## 전처리 산식 요약
@@ -59,4 +60,3 @@ risk_score =
 ## 주의
 
 `demo_observations.json`의 값은 제출서 설명과 화면 시연을 위한 샘플이다. 실제 사고 통계 또는 실제 현장 측정값으로 단정하면 안 된다.
-

@@ -105,6 +105,14 @@ npm run check
 
 정적 파일이므로 GitHub Pages에서 바로 동작합니다.
 
+가장 쉬운 방법:
+
+```powershell
+Start-Process .\index.html
+```
+
+`data/processed/risk_timeseries.js`가 포함되어 있어 더블클릭 또는 `file://` 방식으로도 동작합니다.
+
 로컬 서버 예시:
 
 ```powershell
@@ -147,4 +155,3 @@ python -m http.server 8000
 4. 경기데이터드림 유동인구 해상도 확인
 5. 안산시 전광판·안내시설·관광안내 채널 연계 가능성 확인
 6. 발표용 화면 캡처와 PPT 제작
-

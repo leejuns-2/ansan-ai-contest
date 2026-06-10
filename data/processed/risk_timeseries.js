@@ -1,4 +1,4 @@
-{
+window.__RISK_DATA__ = {
   "generatedAt": "2026-06-10T12:39:46.691Z",
   "scenarioDate": "2026-07-04",
   "notice": "공개 데이터 구조를 모사한 MVP 샘플이다. 실제 관측·사고 통계로 단정하지 않는다.",
@@ -1400,4 +1400,4 @@
       "status": "shared"
     }
   ]
-}
+};

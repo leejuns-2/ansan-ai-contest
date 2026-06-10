@@ -5,6 +5,7 @@ const rootDir = path.resolve(__dirname, "..");
 const rawPath = path.join(rootDir, "data", "raw", "demo_observations.json");
 const registryPath = path.join(rootDir, "data", "raw", "source_registry.json");
 const outputPath = path.join(rootDir, "data", "processed", "risk_timeseries.json");
+const browserBundlePath = path.join(rootDir, "data", "processed", "risk_timeseries.js");
 
 const checkOnly = process.argv.includes("--check");
 
@@ -255,6 +256,11 @@ const output = buildOutput(raw, registry);
 if (!checkOnly) {
   fs.mkdirSync(path.dirname(outputPath), { recursive: true });
   fs.writeFileSync(outputPath, `${JSON.stringify(output, null, 2)}\n`, "utf8");
+  fs.writeFileSync(
+    browserBundlePath,
+    `window.__RISK_DATA__ = ${JSON.stringify(output, null, 2)};\n`,
+    "utf8"
+  );
 }
 
 if (!output.locations.length || !output.locations[0].series.length) {
