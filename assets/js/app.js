@@ -228,6 +228,7 @@ function renderRiskDetail() {
     ["조위 변화", `${raw.tideDeltaCmPerHour}cm/h`],
     ["풍속", `${raw.windMps}m/s`],
     ["유동지수", `${raw.visitorIndex}%`],
+    ["이력 prior", `${raw.historyPriorScore}점`],
     ["체류", `${raw.avgStayMinutes}분`],
     ["추정 인원", `${raw.anonymousCrowdCount}명`],
     ["복귀 지연", `${raw.returnDelayGroups}군집`]
@@ -367,6 +368,7 @@ function renderDataLineage() {
 
 function renderPreprocessing() {
   const prep = state.data.preprocessing;
+  const model = state.data.models?.historyPrior;
   const weights = Object.entries(prep.weights)
     .map(([key, value]) => `
       <div class="weight-row">
@@ -382,6 +384,7 @@ function renderPreprocessing() {
     </div>
     <div class="weight-grid">${weights}</div>
     <p>시간 단위: ${prep.timeUnit} · 공간 단위: ${prep.spatialUnit} · 모델: ${prep.modelType}</p>
+    ${model ? `<p>사고이력 prior: ${model.modelName} · 원천: ${model.source.name} · ${model.limitation}</p>` : ""}
   `;
 }
 

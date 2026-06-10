@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-10T12:39:46.691Z",
+  "generatedAt": "2026-06-10T12:47:53.285Z",
   "scenarioDate": "2026-07-04",
   "notice": "공개 데이터 구조를 모사한 MVP 샘플이다. 실제 관측·사고 통계로 단정하지 않는다.",
   "preprocessing": {
@@ -34,6 +34,21 @@
     ]
   },
   "sourceLineage": [
+    {
+      "id": "kcg_public_accident_stats",
+      "name": "해양경찰청 연안사고통계",
+      "agency": "해양경찰청",
+      "url": "https://imsm.kcg.go.kr/CSMS/main/csiAcdnt/CsiAcdntSttusRB.do",
+      "status": "live_collected",
+      "expectedFields": [
+        "사고유형",
+        "연도",
+        "발생건수",
+        "사망자수"
+      ],
+      "use": "사고유형별 발생·사망 통계 기반 사고이력 prior 모델 학습",
+      "risk": "전국 집계 통계라 안산 특정 장소 모델로 직접 해석하면 안 됨"
+    },
     {
       "id": "coast_accident_history",
       "name": "해양경찰청 연안사고 이력",
@@ -156,6 +171,118 @@
       "risk": "개인정보 영향 검토, 원본 영상 미저장 설계 필요"
     }
   ],
+  "models": {
+    "historyPrior": {
+      "modelName": "history_prior_model_v0",
+      "trainedAt": "2026-06-10T12:46:51.387Z",
+      "modelType": "interpretable statistical prior",
+      "source": {
+        "name": "해양경찰청 연안사고통계",
+        "agency": "해양경찰청",
+        "url": "https://imsm.kcg.go.kr/CSMS/main/csiAcdnt/CsiAcdntSttusRB.do",
+        "table": "최근 5년('20 ~ '24년) 연안사고 유형별 현황"
+      },
+      "formula": "prior_score = clamp(50 + incident_mean_z*18 + fatality_rate_z*16 + trend_slope_z*8, 0, 100)",
+      "limitation": "전국 집계 통계 기반이므로 안산 특정 장소 위험도 모델이 아니다. 안산·대부도 필터 데이터 확보 전까지 사고유형 prior로만 사용한다.",
+      "priors": [
+        {
+          "accidentType": "추락",
+          "incidentMean": 214.8,
+          "deathMean": 39.2,
+          "fatalityRate": 0.1824953445065177,
+          "trendSlope": -2.7,
+          "trendMae": 7.640000000000003,
+          "latestIncidentCount": 212,
+          "latestDeathCount": 45,
+          "years": [
+            2020,
+            2021,
+            2022,
+            2023,
+            2024
+          ],
+          "priorScore": 73,
+          "riskBand": "주의"
+        },
+        {
+          "accidentType": "익수",
+          "incidentMean": 150,
+          "deathMean": 61.4,
+          "fatalityRate": 0.4093333333333333,
+          "trendSlope": -8.1,
+          "trendMae": 12.4,
+          "latestIncidentCount": 128,
+          "latestDeathCount": 67,
+          "years": [
+            2020,
+            2021,
+            2022,
+            2023,
+            2024
+          ],
+          "priorScore": 72,
+          "riskBand": "주의"
+        },
+        {
+          "accidentType": "고립",
+          "incidentMean": 200.8,
+          "deathMean": 7.4,
+          "fatalityRate": 0.036852589641434265,
+          "trendSlope": -1.7,
+          "trendMae": 7.759999999999996,
+          "latestIncidentCount": 195,
+          "latestDeathCount": 5,
+          "years": [
+            2020,
+            2021,
+            2022,
+            2023,
+            2024
+          ],
+          "priorScore": 57,
+          "riskBand": "주의"
+        },
+        {
+          "accidentType": "표류",
+          "incidentMean": 34,
+          "deathMean": 0,
+          "fatalityRate": 0,
+          "trendSlope": 4.6,
+          "trendMae": 6.000000000000001,
+          "latestIncidentCount": 37,
+          "latestDeathCount": 0,
+          "years": [
+            2020,
+            2021,
+            2022,
+            2023,
+            2024
+          ],
+          "priorScore": 28,
+          "riskBand": "보통"
+        },
+        {
+          "accidentType": "기타",
+          "incidentMean": 28,
+          "deathMean": 0.8,
+          "fatalityRate": 0.02857142857142857,
+          "trendSlope": -0.5,
+          "trendMae": 14,
+          "latestIncidentCount": 21,
+          "latestDeathCount": 1,
+          "years": [
+            2020,
+            2021,
+            2022,
+            2023,
+            2024
+          ],
+          "priorScore": 20,
+          "riskBand": "보통"
+        }
+      ]
+    }
+  },
   "recommendationCatalog": [
     {
       "id": "return-guidance",
@@ -226,7 +353,35 @@
         "관광안내 채널",
         "현장 안내방송"
       ],
+      "dominantAccidentTypes": [
+        "고립",
+        "익수"
+      ],
       "verificationStatus": "실제 위험 근거 검증 필요",
+      "historyPrior": {
+        "sourceModel": "history_prior_model_v0",
+        "accidentTypes": [
+          "고립",
+          "익수"
+        ],
+        "priorScore": 65,
+        "components": [
+          {
+            "accidentType": "고립",
+            "priorScore": 57,
+            "incidentMean": 200.8,
+            "fatalityRatePct": 3.7,
+            "riskBand": "주의"
+          },
+          {
+            "accidentType": "익수",
+            "priorScore": 72,
+            "incidentMean": 150,
+            "fatalityRatePct": 40.9,
+            "riskBand": "주의"
+          }
+        ]
+      },
       "series": [
         {
           "datetime": "2026-07-04T15:00:00+09:00",
@@ -241,13 +396,14 @@
             "visitorChangePct": 28,
             "anonymousCrowdCount": 31,
             "avgStayMinutes": 24,
-            "returnDelayGroups": 1
+            "returnDelayGroups": 1,
+            "historyPriorScore": 65
           },
           "factorScores": {
             "tide": 37,
             "weather": 28,
             "visitor": 57,
-            "history": 66,
+            "history": 65,
             "spatial": 78,
             "field": 35
           },
@@ -262,7 +418,7 @@
             {
               "key": "history",
               "label": "과거 유사 사고 이력",
-              "score": 66
+              "score": 65
             },
             {
               "key": "visitor",
@@ -302,13 +458,14 @@
             "visitorChangePct": 36,
             "anonymousCrowdCount": 42,
             "avgStayMinutes": 31,
-            "returnDelayGroups": 2
+            "returnDelayGroups": 2,
+            "historyPriorScore": 65
           },
           "factorScores": {
             "tide": 60,
             "weather": 34,
             "visitor": 74,
-            "history": 66,
+            "history": 65,
             "spatial": 78,
             "field": 56
           },
@@ -328,7 +485,7 @@
             {
               "key": "history",
               "label": "과거 유사 사고 이력",
-              "score": 66
+              "score": 65
             },
             {
               "key": "tide",
@@ -363,13 +520,14 @@
             "visitorChangePct": 44,
             "anonymousCrowdCount": 58,
             "avgStayMinutes": 38,
-            "returnDelayGroups": 3
+            "returnDelayGroups": 3,
+            "historyPriorScore": 65
           },
           "factorScores": {
             "tide": 81,
             "weather": 48,
             "visitor": 87,
-            "history": 66,
+            "history": 65,
             "spatial": 78,
             "field": 81
           },
@@ -424,13 +582,14 @@
             "visitorChangePct": 27,
             "anonymousCrowdCount": 53,
             "avgStayMinutes": 35,
-            "returnDelayGroups": 2
+            "returnDelayGroups": 2,
+            "historyPriorScore": 65
           },
           "factorScores": {
             "tide": 81,
             "weather": 52,
             "visitor": 75,
-            "history": 66,
+            "history": 65,
             "spatial": 78,
             "field": 67
           },
@@ -485,13 +644,14 @@
             "visitorChangePct": -9,
             "anonymousCrowdCount": 39,
             "avgStayMinutes": 29,
-            "returnDelayGroups": 1
+            "returnDelayGroups": 1,
+            "historyPriorScore": 65
           },
           "factorScores": {
             "tide": 52,
             "weather": 42,
             "visitor": 50,
-            "history": 66,
+            "history": 65,
             "spatial": 78,
             "field": 45
           },
@@ -506,7 +666,7 @@
             {
               "key": "history",
               "label": "과거 유사 사고 이력",
-              "score": 66
+              "score": 65
             },
             {
               "key": "tide",
@@ -546,13 +706,14 @@
             "visitorChangePct": -19,
             "anonymousCrowdCount": 25,
             "avgStayMinutes": 22,
-            "returnDelayGroups": 0
+            "returnDelayGroups": 0,
+            "historyPriorScore": 65
           },
           "factorScores": {
             "tide": 26,
             "weather": 36,
             "visitor": 26,
-            "history": 66,
+            "history": 65,
             "spatial": 78,
             "field": 21
           },
@@ -567,7 +728,7 @@
             {
               "key": "history",
               "label": "과거 유사 사고 이력",
-              "score": 66
+              "score": 65
             },
             {
               "key": "weather",
@@ -615,7 +776,35 @@
         "현장 안내방송",
         "관계기관 공유"
       ],
+      "dominantAccidentTypes": [
+        "추락",
+        "익수"
+      ],
       "verificationStatus": "관리 주체와 실제 사고 사례 검증 필요",
+      "historyPrior": {
+        "sourceModel": "history_prior_model_v0",
+        "accidentTypes": [
+          "추락",
+          "익수"
+        ],
+        "priorScore": 73,
+        "components": [
+          {
+            "accidentType": "추락",
+            "priorScore": 73,
+            "incidentMean": 214.8,
+            "fatalityRatePct": 18.2,
+            "riskBand": "주의"
+          },
+          {
+            "accidentType": "익수",
+            "priorScore": 72,
+            "incidentMean": 150,
+            "fatalityRatePct": 40.9,
+            "riskBand": "주의"
+          }
+        ]
+      },
       "series": [
         {
           "datetime": "2026-07-04T15:00:00+09:00",
@@ -630,28 +819,29 @@
             "visitorChangePct": 18,
             "anonymousCrowdCount": 27,
             "avgStayMinutes": 23,
-            "returnDelayGroups": 0
+            "returnDelayGroups": 0,
+            "historyPriorScore": 73
           },
           "factorScores": {
             "tide": 31,
             "weather": 42,
             "visitor": 43,
-            "history": 58,
+            "history": 73,
             "spatial": 72,
             "field": 24
           },
-          "riskScore": 43,
+          "riskScore": 45,
           "riskLevel": "낮음",
           "reasons": [
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 73
+            },
             {
               "key": "spatial",
               "label": "갯벌·방파제 등 공간 노출",
               "score": 72
-            },
-            {
-              "key": "history",
-              "label": "과거 유사 사고 이력",
-              "score": 58
             },
             {
               "key": "visitor",
@@ -665,8 +855,8 @@
             }
           ],
           "recommendationIds": [
-            "facility-review",
             "agency-share",
+            "facility-review",
             "visitor-prealert",
             "wind-warning"
           ],
@@ -691,28 +881,29 @@
             "visitorChangePct": 24,
             "anonymousCrowdCount": 32,
             "avgStayMinutes": 26,
-            "returnDelayGroups": 1
+            "returnDelayGroups": 1,
+            "historyPriorScore": 73
           },
           "factorScores": {
             "tide": 53,
             "weather": 51,
             "visitor": 55,
-            "history": 58,
+            "history": 73,
             "spatial": 72,
             "field": 37
           },
-          "riskScore": 54,
+          "riskScore": 56,
           "riskLevel": "주의",
           "reasons": [
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 73
+            },
             {
               "key": "spatial",
               "label": "갯벌·방파제 등 공간 노출",
               "score": 72
-            },
-            {
-              "key": "history",
-              "label": "과거 유사 사고 이력",
-              "score": 58
             },
             {
               "key": "visitor",
@@ -726,8 +917,8 @@
             }
           ],
           "recommendationIds": [
-            "facility-review",
             "agency-share",
+            "facility-review",
             "visitor-prealert",
             "return-guidance"
           ],
@@ -752,22 +943,28 @@
             "visitorChangePct": 31,
             "anonymousCrowdCount": 38,
             "avgStayMinutes": 30,
-            "returnDelayGroups": 1
+            "returnDelayGroups": 1,
+            "historyPriorScore": 73
           },
           "factorScores": {
             "tide": 73,
             "weather": 61,
             "visitor": 65,
-            "history": 58,
+            "history": 73,
             "spatial": 72,
             "field": 45
           },
-          "riskScore": 64,
+          "riskScore": 66,
           "riskLevel": "주의",
           "reasons": [
             {
               "key": "tide",
               "label": "만조 임박·조위 변화",
+              "score": 73
+            },
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
               "score": 73
             },
             {
@@ -779,18 +976,13 @@
               "key": "visitor",
               "label": "방문객 집중·증가율",
               "score": 65
-            },
-            {
-              "key": "weather",
-              "label": "풍속·강수 등 기상 위험",
-              "score": 61
             }
           ],
           "recommendationIds": [
             "return-guidance",
+            "agency-share",
             "facility-review",
-            "visitor-prealert",
-            "wind-warning"
+            "visitor-prealert"
           ],
           "dataQuality": {
             "tide": "sample_from_public_api_schema",
@@ -813,23 +1005,29 @@
             "visitorChangePct": -4,
             "anonymousCrowdCount": 34,
             "avgStayMinutes": 27,
-            "returnDelayGroups": 1
+            "returnDelayGroups": 1,
+            "historyPriorScore": 73
           },
           "factorScores": {
             "tide": 78,
             "weather": 66,
             "visitor": 47,
-            "history": 58,
+            "history": 73,
             "spatial": 72,
             "field": 40
           },
-          "riskScore": 62,
+          "riskScore": 64,
           "riskLevel": "주의",
           "reasons": [
             {
               "key": "tide",
               "label": "만조 임박·조위 변화",
               "score": 78
+            },
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 73
             },
             {
               "key": "spatial",
@@ -840,18 +1038,13 @@
               "key": "weather",
               "label": "풍속·강수 등 기상 위험",
               "score": 66
-            },
-            {
-              "key": "history",
-              "label": "과거 유사 사고 이력",
-              "score": 58
             }
           ],
           "recommendationIds": [
             "return-guidance",
+            "agency-share",
             "facility-review",
-            "wind-warning",
-            "agency-share"
+            "wind-warning"
           ],
           "dataQuality": {
             "tide": "sample_from_public_api_schema",
@@ -874,28 +1067,29 @@
             "visitorChangePct": -9,
             "anonymousCrowdCount": 28,
             "avgStayMinutes": 21,
-            "returnDelayGroups": 0
+            "returnDelayGroups": 0,
+            "historyPriorScore": 73
           },
           "factorScores": {
             "tide": 54,
             "weather": 56,
             "visitor": 36,
-            "history": 58,
+            "history": 73,
             "spatial": 72,
             "field": 22
           },
-          "riskScore": 50,
+          "riskScore": 52,
           "riskLevel": "주의",
           "reasons": [
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 73
+            },
             {
               "key": "spatial",
               "label": "갯벌·방파제 등 공간 노출",
               "score": 72
-            },
-            {
-              "key": "history",
-              "label": "과거 유사 사고 이력",
-              "score": 58
             },
             {
               "key": "weather",
@@ -909,8 +1103,8 @@
             }
           ],
           "recommendationIds": [
-            "facility-review",
             "agency-share",
+            "facility-review",
             "wind-warning",
             "return-guidance"
           ],
@@ -935,28 +1129,29 @@
             "visitorChangePct": -18,
             "anonymousCrowdCount": 19,
             "avgStayMinutes": 18,
-            "returnDelayGroups": 0
+            "returnDelayGroups": 0,
+            "historyPriorScore": 73
           },
           "factorScores": {
             "tide": 29,
             "weather": 43,
             "visitor": 17,
-            "history": 58,
+            "history": 73,
             "spatial": 72,
             "field": 14
           },
-          "riskScore": 37,
+          "riskScore": 39,
           "riskLevel": "낮음",
           "reasons": [
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 73
+            },
             {
               "key": "spatial",
               "label": "갯벌·방파제 등 공간 노출",
               "score": 72
-            },
-            {
-              "key": "history",
-              "label": "과거 유사 사고 이력",
-              "score": 58
             },
             {
               "key": "weather",
@@ -970,8 +1165,8 @@
             }
           ],
           "recommendationIds": [
-            "facility-review",
             "agency-share",
+            "facility-review",
             "wind-warning",
             "return-guidance"
           ],
@@ -1003,7 +1198,35 @@
         "관계기관 공유",
         "관광안내 채널"
       ],
+      "dominantAccidentTypes": [
+        "추락",
+        "고립"
+      ],
       "verificationStatus": "관할·시설 데이터 검증 필요",
+      "historyPrior": {
+        "sourceModel": "history_prior_model_v0",
+        "accidentTypes": [
+          "추락",
+          "고립"
+        ],
+        "priorScore": 65,
+        "components": [
+          {
+            "accidentType": "추락",
+            "priorScore": 73,
+            "incidentMean": 214.8,
+            "fatalityRatePct": 18.2,
+            "riskBand": "주의"
+          },
+          {
+            "accidentType": "고립",
+            "priorScore": 57,
+            "incidentMean": 200.8,
+            "fatalityRatePct": 3.7,
+            "riskBand": "주의"
+          }
+        ]
+      },
       "series": [
         {
           "datetime": "2026-07-04T15:00:00+09:00",
@@ -1018,17 +1241,18 @@
             "visitorChangePct": 14,
             "anonymousCrowdCount": 19,
             "avgStayMinutes": 20,
-            "returnDelayGroups": 0
+            "returnDelayGroups": 0,
+            "historyPriorScore": 65
           },
           "factorScores": {
             "tide": 27,
             "weather": 37,
             "visitor": 34,
-            "history": 50,
+            "history": 65,
             "spatial": 68,
             "field": 16
           },
-          "riskScore": 37,
+          "riskScore": 39,
           "riskLevel": "낮음",
           "reasons": [
             {
@@ -1039,7 +1263,7 @@
             {
               "key": "history",
               "label": "과거 유사 사고 이력",
-              "score": 50
+              "score": 65
             },
             {
               "key": "weather",
@@ -1079,17 +1303,18 @@
             "visitorChangePct": 19,
             "anonymousCrowdCount": 23,
             "avgStayMinutes": 23,
-            "returnDelayGroups": 0
+            "returnDelayGroups": 0,
+            "historyPriorScore": 65
           },
           "factorScores": {
             "tide": 48,
             "weather": 43,
             "visitor": 45,
-            "history": 50,
+            "history": 65,
             "spatial": 68,
             "field": 21
           },
-          "riskScore": 46,
+          "riskScore": 48,
           "riskLevel": "낮음",
           "reasons": [
             {
@@ -1100,7 +1325,7 @@
             {
               "key": "history",
               "label": "과거 유사 사고 이력",
-              "score": 50
+              "score": 65
             },
             {
               "key": "tide",
@@ -1140,17 +1365,18 @@
             "visitorChangePct": 22,
             "anonymousCrowdCount": 26,
             "avgStayMinutes": 25,
-            "returnDelayGroups": 1
+            "returnDelayGroups": 1,
+            "historyPriorScore": 65
           },
           "factorScores": {
             "tide": 67,
             "weather": 54,
             "visitor": 51,
-            "history": 50,
+            "history": 65,
             "spatial": 68,
             "field": 33
           },
-          "riskScore": 55,
+          "riskScore": 57,
           "riskLevel": "주의",
           "reasons": [
             {
@@ -1164,21 +1390,21 @@
               "score": 67
             },
             {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 65
+            },
+            {
               "key": "weather",
               "label": "풍속·강수 등 기상 위험",
               "score": 54
-            },
-            {
-              "key": "visitor",
-              "label": "방문객 집중·증가율",
-              "score": 51
             }
           ],
           "recommendationIds": [
             "facility-review",
             "return-guidance",
-            "wind-warning",
-            "visitor-prealert"
+            "agency-share",
+            "wind-warning"
           ],
           "dataQuality": {
             "tide": "sample_from_public_api_schema",
@@ -1201,17 +1427,18 @@
             "visitorChangePct": -6,
             "anonymousCrowdCount": 24,
             "avgStayMinutes": 24,
-            "returnDelayGroups": 1
+            "returnDelayGroups": 1,
+            "historyPriorScore": 65
           },
           "factorScores": {
             "tide": 75,
             "weather": 59,
             "visitor": 34,
-            "history": 50,
+            "history": 65,
             "spatial": 68,
             "field": 30
           },
-          "riskScore": 55,
+          "riskScore": 57,
           "riskLevel": "주의",
           "reasons": [
             {
@@ -1225,21 +1452,21 @@
               "score": 68
             },
             {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 65
+            },
+            {
               "key": "weather",
               "label": "풍속·강수 등 기상 위험",
               "score": 59
-            },
-            {
-              "key": "history",
-              "label": "과거 유사 사고 이력",
-              "score": 50
             }
           ],
           "recommendationIds": [
             "return-guidance",
             "facility-review",
-            "wind-warning",
-            "agency-share"
+            "agency-share",
+            "wind-warning"
           ],
           "dataQuality": {
             "tide": "sample_from_public_api_schema",
@@ -1262,23 +1489,29 @@
             "visitorChangePct": -11,
             "anonymousCrowdCount": 20,
             "avgStayMinutes": 19,
-            "returnDelayGroups": 0
+            "returnDelayGroups": 0,
+            "historyPriorScore": 65
           },
           "factorScores": {
             "tide": 57,
             "weather": 52,
             "visitor": 22,
-            "history": 50,
+            "history": 65,
             "spatial": 68,
             "field": 15
           },
-          "riskScore": 45,
+          "riskScore": 47,
           "riskLevel": "낮음",
           "reasons": [
             {
               "key": "spatial",
               "label": "갯벌·방파제 등 공간 노출",
               "score": 68
+            },
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 65
             },
             {
               "key": "tide",
@@ -1289,18 +1522,13 @@
               "key": "weather",
               "label": "풍속·강수 등 기상 위험",
               "score": 52
-            },
-            {
-              "key": "history",
-              "label": "과거 유사 사고 이력",
-              "score": 50
             }
           ],
           "recommendationIds": [
             "facility-review",
+            "agency-share",
             "return-guidance",
-            "wind-warning",
-            "agency-share"
+            "wind-warning"
           ],
           "dataQuality": {
             "tide": "sample_from_public_api_schema",
@@ -1323,17 +1551,18 @@
             "visitorChangePct": -13,
             "anonymousCrowdCount": 13,
             "avgStayMinutes": 16,
-            "returnDelayGroups": 0
+            "returnDelayGroups": 0,
+            "historyPriorScore": 65
           },
           "factorScores": {
             "tide": 31,
             "weather": 41,
             "visitor": 11,
-            "history": 50,
+            "history": 65,
             "spatial": 68,
             "field": 8
           },
-          "riskScore": 33,
+          "riskScore": 35,
           "riskLevel": "낮음",
           "reasons": [
             {
@@ -1344,7 +1573,7 @@
             {
               "key": "history",
               "label": "과거 유사 사고 이력",
-              "score": 50
+              "score": 65
             },
             {
               "key": "weather",

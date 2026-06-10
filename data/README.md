@@ -21,6 +21,7 @@
 |---|---|
 | `raw/source_registry.json` | 데이터 출처, 제공기관, 확인 상태, 활용 필드 |
 | `raw/demo_observations.json` | 공개 데이터 구조를 모사한 원시 관측 샘플 |
+| `raw/kcg_coastal_accident_stats_2020_2024.json` | 해양경찰청 공식 페이지에서 수집한 최근 5년 연안사고 유형별 통계 |
 | `processed/risk_timeseries.json` | 전처리 후 대시보드가 읽는 위험도 시계열 |
 | `processed/risk_timeseries.js` | `file://` 실행을 위한 브라우저 데이터 번들 |
 | `../scripts/preprocess_demo_data.js` | 원시 샘플을 위험도 시계열로 변환하는 전처리 스크립트 |
@@ -38,6 +39,14 @@ risk_score =
 + 공간노출 * 0.12
 + 익명현장신호 * 0.13
 ```
+
+`사고이력` 피처는 `models/history_prior_model.json`이 존재하면 해양경찰청 연안사고통계 기반 prior로 대체한다. 현재 매핑은 다음과 같다.
+
+| 장소 유형 | 사고유형 prior |
+|---|---|
+| 갯벌·해안 접근부 | 고립, 익수 |
+| 항구·방파제 | 추락, 익수 |
+| 시화호·방조제 인근 | 추락, 고립 |
 
 위험등급:
 

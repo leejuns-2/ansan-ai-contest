@@ -2,6 +2,16 @@
   "updatedAt": "2026-06-10",
   "records": [
     {
+      "id": "kcg_public_accident_stats",
+      "name": "해양경찰청 연안사고통계",
+      "agency": "해양경찰청",
+      "url": "https://imsm.kcg.go.kr/CSMS/main/csiAcdnt/CsiAcdntSttusRB.do",
+      "status": "live_collected",
+      "expectedFields": ["사고유형", "연도", "발생건수", "사망자수"],
+      "use": "사고유형별 발생·사망 통계 기반 사고이력 prior 모델 학습",
+      "risk": "전국 집계 통계라 안산 특정 장소 모델로 직접 해석하면 안 됨"
+    },
+    {
       "id": "coast_accident_history",
       "name": "해양경찰청 연안사고 이력",
       "agency": "해양경찰청",

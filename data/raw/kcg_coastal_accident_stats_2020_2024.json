@@ -1,0 +1,169 @@
+{
+  "collectedAt": "2026-06-10T12:46:51.346Z",
+  "source": {
+    "name": "해양경찰청 연안사고통계",
+    "agency": "해양경찰청",
+    "url": "https://imsm.kcg.go.kr/CSMS/main/csiAcdnt/CsiAcdntSttusRB.do",
+    "table": "최근 5년('20 ~ '24년) 연안사고 유형별 현황"
+  },
+  "collectionMode": "live_fetch",
+  "licenseNote": "공식 공개 페이지의 집계 통계를 MVP 학습용 원천 데이터로 사용. 출처 표시 필요.",
+  "schema": {
+    "accidentType": "사고 유형",
+    "year": "연도",
+    "incidentCount": "발생 건수",
+    "deathCount": "사망자 수"
+  },
+  "records": [
+    {
+      "accidentType": "익수",
+      "year": 2020,
+      "incidentCount": 151,
+      "deathCount": 61
+    },
+    {
+      "accidentType": "익수",
+      "year": 2021,
+      "incidentCount": 183,
+      "deathCount": 67
+    },
+    {
+      "accidentType": "익수",
+      "year": 2022,
+      "incidentCount": 140,
+      "deathCount": 52
+    },
+    {
+      "accidentType": "익수",
+      "year": 2023,
+      "incidentCount": 148,
+      "deathCount": 60
+    },
+    {
+      "accidentType": "익수",
+      "year": 2024,
+      "incidentCount": 128,
+      "deathCount": 67
+    },
+    {
+      "accidentType": "추락",
+      "year": 2020,
+      "incidentCount": 214,
+      "deathCount": 27
+    },
+    {
+      "accidentType": "추락",
+      "year": 2021,
+      "incidentCount": 234,
+      "deathCount": 34
+    },
+    {
+      "accidentType": "추락",
+      "year": 2022,
+      "incidentCount": 203,
+      "deathCount": 40
+    },
+    {
+      "accidentType": "추락",
+      "year": 2023,
+      "incidentCount": 211,
+      "deathCount": 50
+    },
+    {
+      "accidentType": "추락",
+      "year": 2024,
+      "incidentCount": 212,
+      "deathCount": 45
+    },
+    {
+      "accidentType": "고립",
+      "year": 2020,
+      "incidentCount": 201,
+      "deathCount": 9
+    },
+    {
+      "accidentType": "고립",
+      "year": 2021,
+      "incidentCount": 213,
+      "deathCount": 6
+    },
+    {
+      "accidentType": "고립",
+      "year": 2022,
+      "incidentCount": 187,
+      "deathCount": 7
+    },
+    {
+      "accidentType": "고립",
+      "year": 2023,
+      "incidentCount": 208,
+      "deathCount": 10
+    },
+    {
+      "accidentType": "고립",
+      "year": 2024,
+      "incidentCount": 195,
+      "deathCount": 5
+    },
+    {
+      "accidentType": "표류",
+      "year": 2020,
+      "incidentCount": 16,
+      "deathCount": 0
+    },
+    {
+      "accidentType": "표류",
+      "year": 2021,
+      "incidentCount": 38,
+      "deathCount": 0
+    },
+    {
+      "accidentType": "표류",
+      "year": 2022,
+      "incidentCount": 37,
+      "deathCount": 0
+    },
+    {
+      "accidentType": "표류",
+      "year": 2023,
+      "incidentCount": 42,
+      "deathCount": 0
+    },
+    {
+      "accidentType": "표류",
+      "year": 2024,
+      "incidentCount": 37,
+      "deathCount": 0
+    },
+    {
+      "accidentType": "기타",
+      "year": 2020,
+      "incidentCount": 20,
+      "deathCount": 0
+    },
+    {
+      "accidentType": "기타",
+      "year": 2021,
+      "incidentCount": 49,
+      "deathCount": 2
+    },
+    {
+      "accidentType": "기타",
+      "year": 2022,
+      "incidentCount": 8,
+      "deathCount": 1
+    },
+    {
+      "accidentType": "기타",
+      "year": 2023,
+      "incidentCount": 42,
+      "deathCount": 0
+    },
+    {
+      "accidentType": "기타",
+      "year": 2024,
+      "incidentCount": 21,
+      "deathCount": 1
+    }
+  ]
+}

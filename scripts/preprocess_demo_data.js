@@ -4,6 +4,7 @@ const path = require("path");
 const rootDir = path.resolve(__dirname, "..");
 const rawPath = path.join(rootDir, "data", "raw", "demo_observations.json");
 const registryPath = path.join(rootDir, "data", "raw", "source_registry.json");
+const historyModelPath = path.join(rootDir, "models", "history_prior_model.json");
 const outputPath = path.join(rootDir, "data", "processed", "risk_timeseries.json");
 const browserBundlePath = path.join(rootDir, "data", "processed", "risk_timeseries.js");
 
@@ -11,6 +12,11 @@ const checkOnly = process.argv.includes("--check");
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, "utf8"));
+}
+
+function readOptionalJson(filePath) {
+  if (!fs.existsSync(filePath)) return null;
+  return readJson(filePath);
 }
 
 function clamp(value, min = 0, max = 100) {
@@ -99,12 +105,40 @@ function recommendationIds(reasons) {
   return Array.from(new Set(reasons.map((reason) => map[reason.key]))).filter(Boolean);
 }
 
-function buildOutput(raw, registry) {
+function historyPriorForLocation(location, historyModel) {
+  if (!historyModel || !Array.isArray(location.dominantAccidentTypes)) return null;
+  const priorsByType = new Map(historyModel.priors.map((row) => [row.accidentType, row]));
+  const matched = location.dominantAccidentTypes
+    .map((type) => priorsByType.get(type))
+    .filter(Boolean);
+
+  if (!matched.length) return null;
+  const priorScore = Math.round(matched.reduce((sum, row) => sum + row.priorScore, 0) / matched.length);
+  return {
+    sourceModel: historyModel.modelName,
+    accidentTypes: matched.map((row) => row.accidentType),
+    priorScore,
+    components: matched.map((row) => ({
+      accidentType: row.accidentType,
+      priorScore: row.priorScore,
+      incidentMean: Number(row.incidentMean.toFixed(1)),
+      fatalityRatePct: Number((row.fatalityRate * 100).toFixed(1)),
+      riskBand: row.riskBand
+    }))
+  };
+}
+
+function buildOutput(raw, registry, historyModel) {
   const observationsByLocation = raw.locations.map((location) => {
+    const historyPrior = historyPriorForLocation(location, historyModel);
     const series = raw.observations
       .filter((row) => row.locationId === location.id)
       .map((row) => {
-        const factorScores = scoreFactors(row);
+        const rowWithModelHistory = {
+          ...row,
+          accidentHistoryScore: historyPrior ? historyPrior.priorScore : row.accidentHistoryScore
+        };
+        const factorScores = scoreFactors(rowWithModelHistory);
         const riskScore = weightedRisk(factorScores);
         const reasons = topReasons(factorScores);
 
@@ -121,7 +155,8 @@ function buildOutput(raw, registry) {
             visitorChangePct: row.visitorChangePct,
             anonymousCrowdCount: row.anonymousCrowdCount,
             avgStayMinutes: row.avgStayMinutes,
-            returnDelayGroups: row.returnDelayGroups
+            returnDelayGroups: row.returnDelayGroups,
+            historyPriorScore: historyPrior ? historyPrior.priorScore : row.accidentHistoryScore
           },
           factorScores,
           riskScore,
@@ -140,6 +175,7 @@ function buildOutput(raw, registry) {
 
     return {
       ...location,
+      historyPrior,
       series,
       effectBaseline: raw.effectBaseline[location.id]
     };
@@ -169,6 +205,19 @@ function buildOutput(raw, registry) {
       ]
     },
     sourceLineage: registry.records,
+    models: {
+      historyPrior: historyModel
+        ? {
+            modelName: historyModel.modelName,
+            trainedAt: historyModel.trainedAt,
+            modelType: historyModel.modelType,
+            source: historyModel.source,
+            formula: historyModel.formula,
+            limitation: historyModel.limitation,
+            priors: historyModel.priors
+          }
+        : null
+    },
     recommendationCatalog: [
       {
         id: "return-guidance",
@@ -251,7 +300,8 @@ function buildOutput(raw, registry) {
 
 const raw = readJson(rawPath);
 const registry = readJson(registryPath);
-const output = buildOutput(raw, registry);
+const historyModel = readOptionalJson(historyModelPath);
+const output = buildOutput(raw, registry, historyModel);
 
 if (!checkOnly) {
   fs.mkdirSync(path.dirname(outputPath), { recursive: true });

@@ -1,0 +1,117 @@
+{
+  "trainedAt": "2026-06-10T12:46:51.387Z",
+  "modelName": "history_prior_model_v0",
+  "modelType": "interpretable statistical prior",
+  "source": {
+    "name": "해양경찰청 연안사고통계",
+    "agency": "해양경찰청",
+    "url": "https://imsm.kcg.go.kr/CSMS/main/csiAcdnt/CsiAcdntSttusRB.do",
+    "table": "최근 5년('20 ~ '24년) 연안사고 유형별 현황"
+  },
+  "objective": "최근 5년 연안사고 유형별 발생·사망 통계를 이용해 사고유형별 사고이력 prior 점수를 산출한다.",
+  "limitation": "전국 집계 통계 기반이므로 안산 특정 장소 위험도 모델이 아니다. 안산·대부도 필터 데이터 확보 전까지 사고유형 prior로만 사용한다.",
+  "formula": "prior_score = clamp(50 + incident_mean_z*18 + fatality_rate_z*16 + trend_slope_z*8, 0, 100)",
+  "weights": {
+    "incidentMeanZ": 18,
+    "fatalityRateZ": 16,
+    "trendSlopeZ": 8,
+    "base": 50
+  },
+  "priors": [
+    {
+      "accidentType": "추락",
+      "incidentMean": 214.8,
+      "deathMean": 39.2,
+      "fatalityRate": 0.1824953445065177,
+      "trendSlope": -2.7,
+      "trendMae": 7.640000000000003,
+      "latestIncidentCount": 212,
+      "latestDeathCount": 45,
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "priorScore": 73,
+      "riskBand": "주의"
+    },
+    {
+      "accidentType": "익수",
+      "incidentMean": 150,
+      "deathMean": 61.4,
+      "fatalityRate": 0.4093333333333333,
+      "trendSlope": -8.1,
+      "trendMae": 12.4,
+      "latestIncidentCount": 128,
+      "latestDeathCount": 67,
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "priorScore": 72,
+      "riskBand": "주의"
+    },
+    {
+      "accidentType": "고립",
+      "incidentMean": 200.8,
+      "deathMean": 7.4,
+      "fatalityRate": 0.036852589641434265,
+      "trendSlope": -1.7,
+      "trendMae": 7.759999999999996,
+      "latestIncidentCount": 195,
+      "latestDeathCount": 5,
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "priorScore": 57,
+      "riskBand": "주의"
+    },
+    {
+      "accidentType": "표류",
+      "incidentMean": 34,
+      "deathMean": 0,
+      "fatalityRate": 0,
+      "trendSlope": 4.6,
+      "trendMae": 6.000000000000001,
+      "latestIncidentCount": 37,
+      "latestDeathCount": 0,
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "priorScore": 28,
+      "riskBand": "보통"
+    },
+    {
+      "accidentType": "기타",
+      "incidentMean": 28,
+      "deathMean": 0.8,
+      "fatalityRate": 0.02857142857142857,
+      "trendSlope": -0.5,
+      "trendMae": 14,
+      "latestIncidentCount": 21,
+      "latestDeathCount": 1,
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "priorScore": 20,
+      "riskBand": "보통"
+    }
+  ]
+}

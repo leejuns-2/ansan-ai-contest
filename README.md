@@ -82,6 +82,14 @@ Node.js가 설치된 환경:
 npm run preprocess
 ```
 
+실제 데이터 수집 착수 파이프라인:
+
+```powershell
+npm run pipeline:real-start
+```
+
+이 명령은 해양경찰청 공식 연안사고통계 페이지에서 최근 5년 사고유형별 발생·사망 통계를 수집하고, 사고유형별 사고이력 prior 모델을 학습한 뒤, 대시보드용 위험도 데이터를 다시 생성합니다.
+
 직접 실행:
 
 ```powershell
@@ -99,7 +107,19 @@ npm run check
 검증 내용:
 
 - `assets/js/app.js` 문법 검사
+- 실제 수집기와 모델 학습기 문법 검사
 - 원시 샘플 데이터 전처리 가능 여부 확인
+
+## 실제 데이터/모델 산출물
+
+| 파일 | 설명 |
+|---|---|
+| `data/raw/kcg_coastal_accident_stats_2020_2024.json` | 해양경찰청 공식 페이지에서 수집한 최근 5년 연안사고 유형별 통계 |
+| `models/history_prior_model.json` | 사고유형별 사고이력 prior 모델 |
+| `models/history_prior_report.md` | 모델 학습 리포트 |
+| `docs/real_data_pipeline.md` | 실제 데이터 수집·모델 학습 진행 상태와 다음 수집 대상 |
+
+현재 모델은 안산 특정 장소 모델이 아니라 전국 연안사고 유형별 집계 기반 prior 모델입니다. 안산·대부도 단위 사고이력, 조위, 기상, 유동인구 데이터가 확보되면 장소-시간 단위 모델로 확장해야 합니다.
 
 ## 로컬 실행
 
