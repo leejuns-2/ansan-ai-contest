@@ -145,7 +145,7 @@ function writeReport(model, outputPath) {
     "",
     "## 사용 방법",
     "",
-    "현재 대시보드는 장소별 사고이력 점수에 이 모델의 사고유형 prior를 직접 결합하지 않는다. 다음 단계에서 장소 유형(갯벌, 방파제, 해안 접근부)과 사고유형 매핑을 정의해 `history` 피처를 실제 prior 기반으로 교체한다."
+    "현재 대시보드는 장소 유형(갯벌·해안 접근부, 항구·방파제, 시화호·방조제 인근)과 사고유형 prior를 매핑해 `history` 피처에 반영한다. 단, 이 매핑은 전국 집계 통계 기반의 1차 prior이며, 안산·대부도 단위 사고이력 데이터가 확보되면 장소-시간 기반 모델로 교체해야 한다."
   ];
 
   fs.mkdirSync(path.dirname(outputPath), { recursive: true });

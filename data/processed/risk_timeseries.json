@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-10T12:47:53.285Z",
+  "generatedAt": "2026-06-10T12:48:57.222Z",
   "scenarioDate": "2026-07-04",
   "notice": "공개 데이터 구조를 모사한 MVP 샘플이다. 실제 관측·사고 통계로 단정하지 않는다.",
   "preprocessing": {
@@ -174,7 +174,7 @@
   "models": {
     "historyPrior": {
       "modelName": "history_prior_model_v0",
-      "trainedAt": "2026-06-10T12:46:51.387Z",
+      "trainedAt": "2026-06-10T12:48:57.185Z",
       "modelType": "interpretable statistical prior",
       "source": {
         "name": "해양경찰청 연안사고통계",
