@@ -1,0 +1,583 @@
+{
+  "generatedAt": "2026-06-10T14:08:08.161Z",
+  "layers": [
+    {
+      "id": "kcg_coastal_risk_zones",
+      "name": "해양경찰청 연안위험구역현황",
+      "sourceDirectory": "data/raw/kcg_coastal_risk_zones/extracted",
+      "cpg": "UTF-8",
+      "prj": "GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]]",
+      "shp": {
+        "path": "data/raw/kcg_coastal_risk_zones/extracted/2023연안사고위험구역.shp",
+        "fileLengthBytes": 158696,
+        "shapeType": 5,
+        "recordCount": 820,
+        "bbox": {
+          "xmin": 124.6182861328125,
+          "ymin": 33.1153564453125,
+          "xmax": 130.91793823242188,
+          "ymax": 38.50312805175781
+        }
+      },
+      "dbf": {
+        "path": "data/raw/kcg_coastal_risk_zones/extracted/2023연안사고위험구역.dbf",
+        "encoding": "utf-8",
+        "recordCount": 820,
+        "headerLength": 257,
+        "recordLength": 1779,
+        "fields": [
+          {
+            "name": "name",
+            "rawName": "name",
+            "type": "C",
+            "length": 254,
+            "decimalCount": 0
+          },
+          {
+            "name": "policeStation",
+            "rawName": "l\u0006\fl\u0006\rl\u0004\u001c",
+            "type": "C",
+            "length": 254,
+            "decimalCount": 0
+          },
+          {
+            "name": "areaName",
+            "rawName": "j4m\u0015 m\f\fl",
+            "type": "C",
+            "length": 254,
+            "decimalCount": 0
+          },
+          {
+            "name": "zoneType",
+            "rawName": "j5,l\u0017-k6\u0004k",
+            "type": "C",
+            "length": 254,
+            "decimalCount": 0
+          },
+          {
+            "name": "placeName",
+            "rawName": "l\u001e%l\u0006\fk*\u0005",
+            "type": "C",
+            "length": 254,
+            "decimalCount": 0
+          },
+          {
+            "name": "placeType",
+            "rawName": "l\u001e%l\u0006\fm\u0018\u0015m",
+            "type": "C",
+            "length": 254,
+            "decimalCount": 0
+          },
+          {
+            "name": "address",
+            "rawName": "l#<l\u0006",
+            "type": "C",
+            "length": 254,
+            "decimalCount": 0
+          }
+        ],
+        "sampleRecords": [
+          {
+            "featureId": 1,
+            "name": "감천-1",
+            "policeStation": "부산해양경찰서",
+            "areaName": "감천",
+            "zoneType": "연안사고 위험구역",
+            "placeName": "감천항 어선부두",
+            "placeType": "항포구(선착장)",
+            "address": "(인근)대한민국 부산광역시 사하구 감천1동 387-10"
+          },
+          {
+            "featureId": 2,
+            "name": "감천-2",
+            "policeStation": "부산해양경찰서",
+            "areaName": "감천",
+            "zoneType": "연안사고 위험구역",
+            "placeName": "감천항 1~3부두",
+            "placeType": "항포구(선착장)",
+            "address": "부산 서구 암남동 633-8"
+          },
+          {
+            "featureId": 3,
+            "name": "감천-3",
+            "policeStation": "부산해양경찰서",
+            "areaName": "감천",
+            "zoneType": "연안사고 위험구역",
+            "placeName": "감천항 동방파제",
+            "placeType": "방파제(TTP)",
+            "address": "부산 서구 암남동 704"
+          },
+          {
+            "featureId": 4,
+            "name": "감천-4",
+            "policeStation": "부산해양경찰서",
+            "areaName": "감천",
+            "zoneType": "사망사고 발생구역",
+            "placeName": "동일조선소 앞 해상",
+            "placeType": "해안가",
+            "address": "부산광역시 사하구 원양로 391"
+          },
+          {
+            "featureId": 5,
+            "name": "감천-5",
+            "policeStation": "부산해양경찰서",
+            "areaName": "감천",
+            "zoneType": "사망사고 발생구역",
+            "placeName": "감천항 서방파제",
+            "placeType": "방파제(TTP)",
+            "address": "(인근)대한민국 부산광역시 사하구 구평동 496"
+          }
+        ],
+        "ansanMatchedRecords": [
+          {
+            "featureId": 187,
+            "name": "대부-1",
+            "policeStation": "평택해양경찰서",
+            "areaName": "대부",
+            "zoneType": "사망사고 발생구역",
+            "placeName": "제부도 내 해변가 및 해수욕장",
+            "placeType": "해안가(해변)",
+            "address": "경기 화성시 서신면 제부리 190-153"
+          },
+          {
+            "featureId": 188,
+            "name": "대부-10",
+            "policeStation": "평택해양경찰서",
+            "areaName": "대부",
+            "zoneType": "사망사고 발생구역",
+            "placeName": "제부도 매바위(갯바위)",
+            "placeType": "갯바위(간출암 등)",
+            "address": "(인근)대한민국 경기도 화성시 서신면 제부리"
+          },
+          {
+            "featureId": 189,
+            "name": "대부-11",
+            "policeStation": "평택해양경찰서",
+            "areaName": "대부",
+            "zoneType": "연안사고 위험구역",
+            "placeName": "탄도 갯벌(탄도항)",
+            "placeType": "갯벌",
+            "address": "(인근)대한민국 경기도 안산시 단원구 대부동 717-4"
+          },
+          {
+            "featureId": 190,
+            "name": "대부-12",
+            "policeStation": "평택해양경찰서",
+            "areaName": "대부",
+            "zoneType": "연안사고 위험구역",
+            "placeName": "탄도 선착장",
+            "placeType": "항포구(선착장)",
+            "address": "(인근)대한민국 경기도 안산시 단원구 대부황금로 5-20"
+          },
+          {
+            "featureId": 191,
+            "name": "대부-13",
+            "policeStation": "평택해양경찰서",
+            "areaName": "대부",
+            "zoneType": "연안사고 위험구역",
+            "placeName": "전곡항 선착장(전곡마리나)",
+            "placeType": "항포구(선착장)",
+            "address": "(인근)전곡항 화성시 대한민국"
+          },
+          {
+            "featureId": 192,
+            "name": "대부-14",
+            "policeStation": "평택해양경찰서",
+            "areaName": "대부",
+            "zoneType": "사망사고 발생구역",
+            "placeName": "제부도 해안가산책로(제비꼬리길)",
+            "placeType": "해안가(해변)",
+            "address": "(인근)대한민국 경기도 화성시 서신면 제부리 산5"
+          },
+          {
+            "featureId": 193,
+            "name": "대부-2",
+            "policeStation": "평택해양경찰서",
+            "areaName": "대부",
+            "zoneType": "연안사고 위험구역",
+            "placeName": "제부도 갯벌",
+            "placeType": "갯벌",
+            "address": "(인근)대한민국 경기도 화성시 서신면 제부리 41-18"
+          },
+          {
+            "featureId": 194,
+            "name": "대부-3",
+            "policeStation": "평택해양경찰서",
+            "areaName": "대부",
+            "zoneType": "연안사고 위험구역",
+            "placeName": "제부도선착장",
+            "placeType": "항포구(선착장)",
+            "address": "(인근)대한민국 경기도 화성시 서신면 해안길 421-18"
+          },
+          {
+            "featureId": 195,
+            "name": "대부-4",
+            "policeStation": "평택해양경찰서",
+            "areaName": "대부",
+            "zoneType": "연안사고 위험구역",
+            "placeName": "누에섬",
+            "placeType": "무인도서",
+            "address": "경기 안산시 단원구 선감동 산 170"
+          },
+          {
+            "featureId": 196,
+            "name": "대부-5",
+            "policeStation": "평택해양경찰서",
+            "areaName": "대부",
+            "zoneType": "연안사고 위험구역",
+            "placeName": "궁평항 선착장 및 방파제",
+            "placeType": "항포구(선착장)",
+            "address": "(인근)대한민국 경기도 화성시 서신면 궁평리 693 궁평항 낚시다리"
+          },
+          {
+            "featureId": 197,
+            "name": "대부-6",
+            "policeStation": "평택해양경찰서",
+            "areaName": "대부",
+            "zoneType": "연안사고 위험구역",
+            "placeName": "궁평 해수욕장",
+            "placeType": "해안가(해변)",
+            "address": "(인근)대한민국 경기도 화성시 서신면 궁평리 514-4"
+          },
+          {
+            "featureId": 198,
+            "name": "대부-7",
+            "policeStation": "평택해양경찰서",
+            "areaName": "대부",
+            "zoneType": "사망사고 발생구역",
+            "placeName": "입파도 서방 갯벌",
+            "placeType": "갯벌",
+            "address": "(인근)대한민국 경기도 화성시 우정읍 국화리"
+          },
+          {
+            "featureId": 199,
+            "name": "대부-8",
+            "policeStation": "평택해양경찰서",
+            "areaName": "대부",
+            "zoneType": "연안사고 위험구역",
+            "placeName": "도리도(무인도서)",
+            "placeType": "무인도서",
+            "address": "경기 화성시 서신면 백미리 산 144"
+          },
+          {
+            "featureId": 200,
+            "name": "대부-9",
+            "policeStation": "평택해양경찰서",
+            "areaName": "대부",
+            "zoneType": "연안사고 위험구역",
+            "placeName": "행낭곡(고랫부리 선착장)",
+            "placeType": "항포구(선착장)",
+            "address": "경기 안산시 단원구 대부남동 1372"
+          },
+          {
+            "featureId": 411,
+            "name": "송정-5",
+            "policeStation": "부산해양경찰서",
+            "areaName": "송정",
+            "zoneType": "연안사고 위험구역",
+            "placeName": "동백섬 갯바위",
+            "placeType": "갯바위(간출암 등)",
+            "address": "(인근)대한민국 부산광역시 해운대구 우1동 707 동백섬 해안산책로"
+          },
+          {
+            "featureId": 432,
+            "name": "신항만-5",
+            "policeStation": "인천해양경찰서",
+            "areaName": "신항만",
+            "zoneType": "사망사고 발생구역",
+            "placeName": "시화방조제 중간선착장",
+            "placeType": "항포구(선착장)",
+            "address": "경기 시흥시 정왕동 2377"
+          },
+          {
+            "featureId": 435,
+            "name": "신항만-8",
+            "policeStation": "인천해양경찰서",
+            "areaName": "신항만",
+            "zoneType": "연안사고 위험구역",
+            "placeName": "시화조력발전소",
+            "placeType": "기타(연육교 등)",
+            "address": "경기 안산시 단원구 대부동동 2109"
+          },
+          {
+            "featureId": 436,
+            "name": "안산-1",
+            "policeStation": "평택해양경찰서",
+            "areaName": "안산",
+            "zoneType": "사망사고 발생구역",
+            "placeName": "울도 선착장",
+            "placeType": "항포구(선착장)",
+            "address": "(인근)대한민국 인천광역시 옹진군 덕적면 울도리 19-15"
+          },
+          {
+            "featureId": 437,
+            "name": "안산-10",
+            "policeStation": "평택해양경찰서",
+            "areaName": "안산",
+            "zoneType": "연안사고 위험구역",
+            "placeName": "풍도 선착장",
+            "placeType": "항포구(선착장)",
+            "address": "(인근)대한민국 경기도 안산시 단원구 대부동 34-6"
+          },
+          {
+            "featureId": 438,
+            "name": "안산-11",
+            "policeStation": "평택해양경찰서",
+            "areaName": "안산",
+            "zoneType": "연안사고 다발구역",
+            "placeName": "쪽박섬",
+            "placeType": "무인도서",
+            "address": "(인근)대한민국 경기도 안산시 단원구 대부남동 산344"
+          },
+          {
+            "featureId": 439,
+            "name": "안산-12",
+            "policeStation": "평택해양경찰서",
+            "areaName": "안산",
+            "zoneType": "연안사고 다발구역",
+            "placeName": "광도",
+            "placeType": "무인도서",
+            "address": "(인근)대한민국 경기도 안산시 단원구 대선로"
+          },
+          {
+            "featureId": 440,
+            "name": "안산-2",
+            "policeStation": "평택해양경찰서",
+            "areaName": "안산",
+            "zoneType": "연안사고 위험구역",
+            "placeName": "시화호 내측 외지섬",
+            "placeType": "갯바위(간출암 등)",
+            "address": "(인근)대한민국 경기도 화성시 송산면 독지리"
+          },
+          {
+            "featureId": 441,
+            "name": "안산-3",
+            "policeStation": "평택해양경찰서",
+            "areaName": "안산",
+            "zoneType": "연안사고 위험구역",
+            "placeName": "방아머리항 선착장",
+            "placeType": "항포구(선착장)",
+            "address": "(인근)대한민국 경기도 안산시 단원구 대부동 1956 방아머리항"
+          },
+          {
+            "featureId": 442,
+            "name": "안산-4",
+            "policeStation": "평택해양경찰서",
+            "areaName": "안산",
+            "zoneType": "연안사고 위험구역",
+            "placeName": "시화방조제 내측",
+            "placeType": "방파제(TTP)",
+            "address": "(인근)대한민국 경기도 안산시 단원구 대부동동"
+          },
+          {
+            "featureId": 443,
+            "name": "안산-5",
+            "policeStation": "평택해양경찰서",
+            "areaName": "안산",
+            "zoneType": "연안사고 위험구역",
+            "placeName": "구봉도공원",
+            "placeType": "갯벌",
+            "address": "(인근)대한민국 경기도 안산시 단원구 대부북동 1870-87"
+          },
+          {
+            "featureId": 444,
+            "name": "안산-6",
+            "policeStation": "평택해양경찰서",
+            "areaName": "안산",
+            "zoneType": "연안사고 다발구역",
+            "placeName": "구봉도 주변 해상",
+            "placeType": "해안가",
+            "address": "(인근)대한민국 경기도 안산시 단원구 대부북동 산25"
+          },
+          {
+            "featureId": 445,
+            "name": "안산-7",
+            "policeStation": "평택해양경찰서",
+            "areaName": "안산",
+            "zoneType": "연안사고 다발구역",
+            "placeName": "서위해변",
+            "placeType": "갯벌",
+            "address": "(인근)대한민국 경기도 안산시 단원구 대부북동 20-6"
+          },
+          {
+            "featureId": 446,
+            "name": "안산-8",
+            "policeStation": "평택해양경찰서",
+            "areaName": "안산",
+            "zoneType": "연안사고 위험구역",
+            "placeName": "흥성리갯벌",
+            "placeType": "갯벌",
+            "address": "(인근)대한민국 인천광역시 옹진군 영흥면 선재로34번길 64"
+          },
+          {
+            "featureId": 447,
+            "name": "안산-9",
+            "policeStation": "평택해양경찰서",
+            "areaName": "안산",
+            "zoneType": "사망사고 발생구역",
+            "placeName": "방아머리해변",
+            "placeType": "해안가(해변)",
+            "address": "(인근)대한민국 경기도 안산시 단원구 대부북동 1848-113"
+          },
+          {
+            "featureId": 539,
+            "name": "울릉-09",
+            "policeStation": "동해해양경찰서",
+            "areaName": "울릉",
+            "zoneType": "사망사고 발생구역",
+            "placeName": "행남(도동?저동) 해안산책로",
+            "placeType": "갯바위(간출암 등)",
+            "address": "경북 울릉군 울릉읍 도동리 산 4"
+          }
+        ]
+      },
+      "geojsonOutput": "data/processed/kcg_coastal_risk_zones.geojson",
+      "usableForMap": true,
+      "nextStep": "GeoJSON 변환 후 후보지 point-in-polygon 및 최단거리 계산에 사용"
+    },
+    {
+      "id": "kcg_control_zones",
+      "name": "해양경찰청 연안 출입통제구역 현황",
+      "sourceDirectory": "data/raw/kcg_control_zones/extracted",
+      "cpg": "949",
+      "prj": "GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]]",
+      "shp": {
+        "path": "data/raw/kcg_control_zones/extracted/연안_출입통제구역(2023).shp",
+        "fileLengthBytes": 10156,
+        "shapeType": 5,
+        "recordCount": 43,
+        "bbox": {
+          "xmin": 126.165555555556,
+          "ymin": 33.2388458251953,
+          "xmax": 129.44645690918,
+          "ymax": 37.3752021789551
+        }
+      },
+      "dbf": {
+        "path": "data/raw/kcg_control_zones/extracted/연안_출입통제구역(2023).dbf",
+        "encoding": "euc-kr",
+        "recordCount": 43,
+        "headerLength": 257,
+        "recordLength": 1535,
+        "fields": [
+          {
+            "name": "num",
+            "rawName": "num",
+            "type": "N",
+            "length": 10,
+            "decimalCount": 0
+          },
+          {
+            "name": "pname",
+            "rawName": "pname",
+            "type": "C",
+            "length": 254,
+            "decimalCount": 0
+          },
+          {
+            "name": "name",
+            "rawName": "name",
+            "type": "C",
+            "length": 254,
+            "decimalCount": 0
+          },
+          {
+            "name": "place_type",
+            "rawName": "place_type",
+            "type": "C",
+            "length": 254,
+            "decimalCount": 0
+          },
+          {
+            "name": "plave_type",
+            "rawName": "plave_type",
+            "type": "C",
+            "length": 254,
+            "decimalCount": 0
+          },
+          {
+            "name": "address",
+            "rawName": "address",
+            "type": "C",
+            "length": 254,
+            "decimalCount": 0
+          },
+          {
+            "name": "announceme",
+            "rawName": "announceme",
+            "type": "C",
+            "length": 254,
+            "decimalCount": 0
+          }
+        ],
+        "sampleRecords": [
+          {
+            "featureId": 1,
+            "num": "1",
+            "pname": "하늘바다",
+            "name": "하나개해수욕장 갯벌 일부(해상탐방로 끝단 부분)",
+            "place_type": "출입통제구역",
+            "plave_type": "갯벌",
+            "address": "인천시 중구 무의동 하나개해수욕장 갯벌 일부(해상탐방로 끝단 부분)",
+            "announceme": "인천해양경찰서 공고 제2021-22호"
+          },
+          {
+            "featureId": 2,
+            "num": "2",
+            "pname": "안산",
+            "name": "구봉도 주변 해상",
+            "place_type": "출입통제구역",
+            "plave_type": "연안해역",
+            "address": "경기도 안산시 단원구 대부북동 구봉도 주변 해상",
+            "announceme": "평택해양경찰서 제2021-01호"
+          },
+          {
+            "featureId": 3,
+            "num": "3",
+            "pname": "홍원",
+            "name": "마량리 마량포구 갯바위",
+            "place_type": "출입통제구역",
+            "plave_type": "갯바위",
+            "address": "충남 서천군 서면 마량리 마량포구 갯바위",
+            "announceme": "보령해양경찰서 공고 제2018-5호"
+          },
+          {
+            "featureId": 4,
+            "num": "4",
+            "pname": "대천",
+            "name": "남포면 월전리 죽도방파제",
+            "place_type": "출입통제구역",
+            "plave_type": "방파제",
+            "address": "충남 보령시 남포면 월전리 죽도방파제",
+            "announceme": "보령해양경비안전서 공고 제2015 - 026호"
+          },
+          {
+            "featureId": 5,
+            "num": "5",
+            "pname": "홍원",
+            "name": "마량리 동백정 앞 방파제",
+            "place_type": "출입통제구역",
+            "plave_type": "방파제",
+            "address": "충남 서천군 서면 마량리 동백정 앞 방파제",
+            "announceme": "보령해양경비안전서 공고 제2015 - 026호"
+          }
+        ],
+        "ansanMatchedRecords": [
+          {
+            "featureId": 2,
+            "num": "2",
+            "pname": "안산",
+            "name": "구봉도 주변 해상",
+            "place_type": "출입통제구역",
+            "plave_type": "연안해역",
+            "address": "경기도 안산시 단원구 대부북동 구봉도 주변 해상",
+            "announceme": "평택해양경찰서 제2021-01호"
+          }
+        ]
+      },
+      "geojsonOutput": "data/processed/kcg_control_zones.geojson",
+      "usableForMap": true,
+      "nextStep": "GeoJSON 변환 후 후보지 point-in-polygon 및 최단거리 계산에 사용"
+    }
+  ]
+}

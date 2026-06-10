@@ -112,6 +112,12 @@ function setText(id, value) {
   document.getElementById(id).textContent = value;
 }
 
+function formatDistance(meters) {
+  if (meters == null || meters < 0) return "-";
+  if (meters >= 1000) return `${(meters / 1000).toFixed(1)}km`;
+  return `${meters}m`;
+}
+
 function renderControls() {
   const timeSelect = document.getElementById("timeSelect");
   if (!timeSelect.options.length) {
@@ -134,7 +140,7 @@ function renderRibbon() {
   setText("scenarioDate", state.data.scenarioDate);
   setText("highestRisk", `${top.location.name} ${top.score}점`);
   setText("openActions", `${openActions}건`);
-  setText("dataStatus", "샘플 PoC · 실제 연계 전");
+  setText("dataStatus", "해경 사고·공간 반영 · 조위/기상 API 대기");
 }
 
 function renderLocations() {
@@ -240,6 +246,7 @@ function renderRiskDetail() {
     .join("");
 
   const raw = point.rawSignals;
+  const spatial = location.officialSpatialExposure;
   const rawItems = [
     ["조위", `${raw.tideCm}cm`],
     ["만조까지", `${raw.minutesToHighTide}분`],
@@ -250,6 +257,19 @@ function renderRiskDetail() {
     ["시정", raw.visibilityM == null ? "-" : `${raw.visibilityM}m`],
     ["유동지수", `${raw.visitorIndex}%`],
     ["이력 prior", `${raw.historyPriorScore}점`],
+    ["공간 점수", spatial ? `${spatial.spatialExposureScore}점` : "-"],
+    [
+      "위험구역",
+      spatial
+        ? `${spatial.insideCoastalRiskZone ? "내부" : formatDistance(spatial.nearestCoastalRiskZoneDistanceM)} · ${spatial.coastalRiskZoneName || "-"}`
+        : "-"
+    ],
+    [
+      "출입통제",
+      spatial
+        ? `${spatial.insideOfficialControlZone ? "내부" : formatDistance(spatial.nearestControlZoneDistanceM)} · ${spatial.controlZoneName || "-"}`
+        : "-"
+    ],
     ["체류", `${raw.avgStayMinutes}분`],
     ["추정 인원", `${raw.anonymousCrowdCount}명`],
     ["복귀 지연", `${raw.returnDelayGroups}군집`]
@@ -309,6 +329,7 @@ function renderRecommendations() {
 function renderReport() {
   const location = getLocation();
   const point = getPoint(location);
+  const spatial = location.officialSpatialExposure;
   const score = computeRisk(point);
   const level = computeLevel(score);
   const reasons = activeReasons(point)
@@ -326,6 +347,8 @@ function renderReport() {
     `장소 유형: ${location.type}`,
     `위험도: ${score}점 / ${level}`,
     `주요 원인: ${reasons}`,
+    spatial ? `공식 위험구역: ${spatial.insideCoastalRiskZone ? "내부" : `${formatDistance(spatial.nearestCoastalRiskZoneDistanceM)} 인근`} / ${spatial.coastalRiskZoneName || "-"}` : null,
+    spatial ? `공식 출입통제구역: ${spatial.insideOfficialControlZone ? "내부" : `${formatDistance(spatial.nearestControlZoneDistanceM)} 인근`} / ${spatial.controlZoneName || "-"}` : null,
     `권한 구분: ${location.authority}`,
     ``,
     `안산시 예정 조치:`,
@@ -336,7 +359,7 @@ function renderReport() {
     ``,
     `권한 안내:`,
     `본 리포트는 예방 행정 지원 자료이며 구조·통제 권한을 대체하지 않습니다.`
-  ].join("\n");
+  ].filter(Boolean).join("\n");
 }
 
 function renderPlaybook() {
@@ -374,7 +397,13 @@ function renderPlaybook() {
 
 function renderDataLineage() {
   const container = document.getElementById("sourceLineage");
-  container.innerHTML = state.data.sourceLineage
+  const orderedSources = [...state.data.sourceLineage].sort((a, b) => {
+    if (a.status === "local_file_ingested" && b.status !== "local_file_ingested") return -1;
+    if (a.status !== "local_file_ingested" && b.status === "local_file_ingested") return 1;
+    return 0;
+  });
+
+  container.innerHTML = orderedSources
     .slice(0, 6)
     .map((source) => `
       <article class="source-card">
@@ -390,6 +419,8 @@ function renderDataLineage() {
 function renderPreprocessing() {
   const prep = state.data.preprocessing;
   const model = state.data.models?.historyPrior;
+  const localModel = state.data.models?.localAccidentHistory;
+  const spatialModel = state.data.models?.officialSpatialExposure;
   const weights = Object.entries(prep.weights)
     .map(([key, value]) => `
       <div class="weight-row">
@@ -405,7 +436,9 @@ function renderPreprocessing() {
     </div>
     <div class="weight-grid">${weights}</div>
     <p>시간 단위: ${prep.timeUnit} · 공간 단위: ${prep.spatialUnit} · 모델: ${prep.modelType}</p>
-    ${model ? `<p>사고이력 prior: ${model.modelName} · 원천: ${model.source.name} · ${model.limitation}</p>` : ""}
+    ${localModel ? `<p>사고이력 prior: ${localModel.modelName} · 안산 직접 ${localModel.filters.directAnsanRows}건 · 경기 연안 ${localModel.filters.gyeonggiCoastRows}건 · 관할 proxy ${localModel.filters.pyeongtaekJurisdictionProxyRows}건</p>` : ""}
+    ${!localModel && model ? `<p>사고이력 prior: ${model.modelName} · 원천: ${model.source.name} · ${model.limitation}</p>` : ""}
+    ${spatialModel ? `<p>공간노출: ${spatialModel.source} · ${spatialModel.method}</p>` : ""}
   `;
 }
 

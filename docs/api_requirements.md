@@ -9,9 +9,24 @@
 | P0-1 | 물때·고립 위험 예측 | 조위, 고조·저조 시각, 예측 조위 | 국립해양조사원 조석예보 시계열, 조석예보 고·저조, 조위관측소 실측·예측 조위 조회 | 갯벌 고립 위험의 핵심. 몇 시부터 위험해지는지 계산하는 근거 | 공공데이터포털/KHOA 인증키 | `data/raw/khoa_tide_forecast_ansan.json`, `data/raw/khoa_tide_high_low_ansan.json`, `data/raw/khoa_tide_observed_predicted_ansan.json` |
 | P0-2 | 날씨 위험 판단 | 강수, 풍속, 기온, 하늘상태, 초단기예보 | 기상청 단기예보 조회서비스 | 비, 강풍, 시야 악화, 체감 위험 반영 | 공공데이터포털 인증키 | `data/raw/kma_forecast_ansan.json` |
 | P0-3 | 공식 위험기상 반영 | 풍랑, 강풍, 호우, 태풍, 폭풍해일 등 특보 | 기상청 기상특보 조회서비스 / 특보 조회서비스 | 위험점수에 공식 특보를 즉시 반영 | 공공데이터포털 인증키 | `data/raw/kma_weather_warning_ansan.json` |
-| P0-4 | 위험 장소 기반화 | 연안위험구역 polygon/SHP | 해양경찰청 연안위험구역현황 | 어디가 위험한가를 지도에 올리는 핵심 공간 데이터 | 공공데이터포털 파일 다운로드 | `data/raw/kcg_coastal_risk_zones/` |
-| P0-5 | 공식 통제구역 구분 | 연안 출입통제구역 SHP | 해양경찰청 연안 출입통제구역 현황 | 우리가 임의 통제하는 것이 아니라 공식 출입통제구역 여부를 표시 | 공공데이터포털 파일 다운로드 | `data/raw/kcg_control_zones/` |
-| P0-6 | 사고 패턴 학습 | 발생일자, 요일, 사고유형, 장소유형, 원인, 위험구역 지정 여부 | 해양경찰청 연안사고 이력 | AI 모델 학습과 룰 기반 위험가중치 산정의 근거 | 공공데이터포털 파일 다운로드 또는 API | `data/raw/kcg_accident_history_ansan.json` |
+| P0-4 | 위험 장소 기반화 | 연안위험구역 polygon/SHP | 해양경찰청 연안위험구역현황 | 어디가 위험한가를 지도에 올리는 핵심 공간 데이터 | 로컬 파일 반영 완료 | `data/raw/kcg_coastal_risk_zones/`, `data/processed/kcg_coastal_risk_zones.geojson` |
+| P0-5 | 공식 통제구역 구분 | 연안 출입통제구역 SHP | 해양경찰청 연안 출입통제구역 현황 | 우리가 임의 통제하는 것이 아니라 공식 출입통제구역 여부를 표시 | 로컬 파일 반영 완료 | `data/raw/kcg_control_zones/`, `data/processed/kcg_control_zones.geojson` |
+| P0-6 | 사고 패턴 학습 | 발생일자, 요일, 사고유형, 장소유형, 원인, 위험구역 지정 여부 | 해양경찰청 연안사고 이력 | AI 모델 학습과 룰 기반 위험가중치 산정의 근거 | 로컬 CSV 반영 완료 | `data/raw/kcg_accident_history/`, `models/local_accident_history_model.json` |
+
+확인된 공공데이터포털 URL:
+
+| 데이터 | URL |
+|---|---|
+| 국립해양조사원 조석예보 시계열 | https://www.data.go.kr/data/15156022/openapi.do |
+| 국립해양조사원 조석예보 고·저조 | https://www.data.go.kr/data/15156018/openapi.do |
+| 국립해양조사원 조위관측소 실측·예측 조위 조회 | https://www.data.go.kr/data/15142507/openapi.do |
+| 기상청 단기예보 조회서비스 | https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15084084 |
+| 기상청 기상특보 조회서비스 | https://www.data.go.kr/data/15000415/openapi.do |
+| 기상청 특보 조회서비스 | https://www.data.go.kr/data/15139476/openapi.do |
+| 기상청 특보구역정보 조회서비스 | https://www.data.go.kr/data/15126651/openapi.do |
+| 해양경찰청 연안위험구역현황 | https://www.data.go.kr/data/15110661/fileData.do |
+| 해양경찰청 연안 출입통제구역 현황 | https://data.go.kr/data/15110667/fileData.do |
+| 해양경찰청 연안사고 이력 | https://www.data.go.kr/data/15088402/fileData.do |
 
 ## 환경변수
 
@@ -215,4 +230,3 @@ accidentCauseRisk
 | 공간위험 | 후보지 category | 해경 연안위험구역 SHP |
 | 공식 통제구역 | 없음 | 해경 출입통제구역 SHP |
 | 유동인구 | 샘플 구조 | 경기데이터드림/안산시 유동인구 |
-

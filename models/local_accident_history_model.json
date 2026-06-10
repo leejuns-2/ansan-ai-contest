@@ -1,0 +1,270 @@
+{
+  "modelName": "kcg-local-accident-history-prior-v1",
+  "trainedAt": "2026-06-10T14:08:08.132Z",
+  "modelType": "rule-based local/proxy prior from KCG coastal accident history",
+  "source": {
+    "agency": "해양경찰청",
+    "name": "해양경찰청_연안사고 이력_20231231.csv",
+    "path": "data/raw/kcg_accident_history/해양경찰청_연안사고 이력_20231231.csv",
+    "encoding": "euc-kr/cp949",
+    "sourceDate": "2023-12-31"
+  },
+  "filters": {
+    "directAnsanRows": 1,
+    "gyeonggiCoastRows": 117,
+    "pyeongtaekJurisdictionProxyRows": 198,
+    "modelBaseRows": 211
+  },
+  "limitation": "안산 직접 표기 사고가 적어 평택해경 관할/경기도 연안 proxy를 함께 사용한다. 후보지별 정밀 모델은 더 상세한 위치 좌표 또는 내부 사고위치 데이터가 필요하다.",
+  "priors": [
+    {
+      "locationId": "A01",
+      "locationName": "방아머리 후보 구역",
+      "dominantAccidentTypes": [
+        "고립",
+        "익수"
+      ],
+      "localMatchedCount": 44,
+      "proxyMatchedCount": 88,
+      "priorScore": 50,
+      "confidence": "medium",
+      "limitation": "원본 연안사고 이력의 발생지역 해상도가 시군·광역 단위라 후보지별 정밀 학습이 아니라 지역/관할 proxy prior로 사용한다."
+    },
+    {
+      "locationId": "A02",
+      "locationName": "탄도항 후보 구역",
+      "dominantAccidentTypes": [
+        "추락",
+        "익수"
+      ],
+      "localMatchedCount": 8,
+      "proxyMatchedCount": 12,
+      "priorScore": 45,
+      "confidence": "medium",
+      "limitation": "원본 연안사고 이력의 발생지역 해상도가 시군·광역 단위라 후보지별 정밀 학습이 아니라 지역/관할 proxy prior로 사용한다."
+    },
+    {
+      "locationId": "A03",
+      "locationName": "시화방조제 후보 구역",
+      "dominantAccidentTypes": [
+        "추락",
+        "고립"
+      ],
+      "localMatchedCount": 52,
+      "proxyMatchedCount": 100,
+      "priorScore": 56,
+      "confidence": "medium",
+      "limitation": "원본 연안사고 이력의 발생지역 해상도가 시군·광역 단위라 후보지별 정밀 학습이 아니라 지역/관할 proxy prior로 사용한다."
+    },
+    {
+      "locationId": "A04",
+      "locationName": "구봉도 후보 구역",
+      "dominantAccidentTypes": [
+        "추락",
+        "익수"
+      ],
+      "localMatchedCount": 8,
+      "proxyMatchedCount": 12,
+      "priorScore": 45,
+      "confidence": "medium",
+      "limitation": "원본 연안사고 이력의 발생지역 해상도가 시군·광역 단위라 후보지별 정밀 학습이 아니라 지역/관할 proxy prior로 사용한다."
+    },
+    {
+      "locationId": "A05",
+      "locationName": "대부바다향기테마파크 후보 구역",
+      "dominantAccidentTypes": [
+        "고립",
+        "익수"
+      ],
+      "localMatchedCount": 44,
+      "proxyMatchedCount": 88,
+      "priorScore": 50,
+      "confidence": "medium",
+      "limitation": "원본 연안사고 이력의 발생지역 해상도가 시군·광역 단위라 후보지별 정밀 학습이 아니라 지역/관할 proxy prior로 사용한다."
+    },
+    {
+      "locationId": "A06",
+      "locationName": "선감도 후보 구역",
+      "dominantAccidentTypes": [
+        "고립",
+        "익수"
+      ],
+      "localMatchedCount": 44,
+      "proxyMatchedCount": 88,
+      "priorScore": 50,
+      "confidence": "medium",
+      "limitation": "원본 연안사고 이력의 발생지역 해상도가 시군·광역 단위라 후보지별 정밀 학습이 아니라 지역/관할 proxy prior로 사용한다."
+    },
+    {
+      "locationId": "A07",
+      "locationName": "풍도 후보 구역",
+      "dominantAccidentTypes": [
+        "추락",
+        "표류"
+      ],
+      "localMatchedCount": 8,
+      "proxyMatchedCount": 14,
+      "priorScore": 45,
+      "confidence": "medium",
+      "limitation": "원본 연안사고 이력의 발생지역 해상도가 시군·광역 단위라 후보지별 정밀 학습이 아니라 지역/관할 proxy prior로 사용한다."
+    }
+  ],
+  "featureSummary": {
+    "localAccidentTypes": [
+      {
+        "name": "고립",
+        "count": 44
+      },
+      {
+        "name": "기타익수",
+        "count": 19
+      },
+      {
+        "name": "기타",
+        "count": 17
+      },
+      {
+        "name": "고립익수",
+        "count": 11
+      },
+      {
+        "name": "추락익수",
+        "count": 10
+      },
+      {
+        "name": "추락",
+        "count": 8
+      },
+      {
+        "name": "수상레저익수",
+        "count": 5
+      },
+      {
+        "name": "수상형 레저익수",
+        "count": 1
+      },
+      {
+        "name": "수중레저익수",
+        "count": 1
+      }
+    ],
+    "localPlaceTypes": [
+      {
+        "name": "해안가",
+        "count": 35
+      },
+      {
+        "name": "갯벌",
+        "count": 21
+      },
+      {
+        "name": "갯바위",
+        "count": 20
+      },
+      {
+        "name": "무인도서",
+        "count": 14
+      },
+      {
+        "name": "항포구",
+        "count": 12
+      },
+      {
+        "name": "해양",
+        "count": 8
+      },
+      {
+        "name": "해수욕장",
+        "count": 3
+      },
+      {
+        "name": "방파제",
+        "count": 2
+      },
+      {
+        "name": "기타",
+        "count": 1
+      }
+    ],
+    "localCauses": [
+      {
+        "name": "부주의",
+        "count": 48
+      },
+      {
+        "name": "조석 미인지",
+        "count": 39
+      },
+      {
+        "name": "음주",
+        "count": 15
+      },
+      {
+        "name": "기상불량",
+        "count": 5
+      },
+      {
+        "name": "안전미준수",
+        "count": 3
+      },
+      {
+        "name": "수영미숙",
+        "count": 2
+      },
+      {
+        "name": "질병",
+        "count": 2
+      },
+      {
+        "name": "낚시",
+        "count": 1
+      },
+      {
+        "name": "운전 부주의",
+        "count": 1
+      }
+    ],
+    "proxyAccidentTypes": [
+      {
+        "name": "고립",
+        "count": 88
+      },
+      {
+        "name": "기타익수",
+        "count": 24
+      },
+      {
+        "name": "추락익수",
+        "count": 24
+      },
+      {
+        "name": "기타",
+        "count": 21
+      },
+      {
+        "name": "고립익수",
+        "count": 17
+      },
+      {
+        "name": "추락",
+        "count": 12
+      },
+      {
+        "name": "수상레저익수",
+        "count": 7
+      },
+      {
+        "name": "표류",
+        "count": 2
+      },
+      {
+        "name": "수상형 레저익수",
+        "count": 1
+      },
+      {
+        "name": "수중레저익수",
+        "count": 1
+      }
+    ]
+  }
+}

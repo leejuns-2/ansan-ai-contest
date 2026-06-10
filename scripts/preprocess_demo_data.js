@@ -5,6 +5,8 @@ const rootDir = path.resolve(__dirname, "..");
 const rawPath = path.join(rootDir, "data", "raw", "demo_observations.json");
 const registryPath = path.join(rootDir, "data", "raw", "source_registry.json");
 const historyModelPath = path.join(rootDir, "models", "history_prior_model.json");
+const localHistoryModelPath = path.join(rootDir, "models", "local_accident_history_model.json");
+const spatialExposurePath = path.join(rootDir, "data", "processed", "kcg_spatial_exposure_ansan.json");
 const ansanLocationsPath = path.join(rootDir, "data", "raw", "ansan_candidate_locations.json");
 const ansanWeatherPath = path.join(rootDir, "data", "raw", "ansan_open_meteo_weather_latest.json");
 const ansanMasterPath = path.join(rootDir, "data", "master", "ansan_coastal_locations.json");
@@ -108,7 +110,27 @@ function recommendationIds(reasons) {
   return Array.from(new Set(reasons.map((reason) => map[reason.key]))).filter(Boolean);
 }
 
-function historyPriorForLocation(location, historyModel) {
+function historyPriorForLocation(location, historyModel, localHistoryModel) {
+  const localPrior = localHistoryModel?.priors?.find((row) => row.locationId === location.id);
+  if (localPrior) {
+    return {
+      sourceModel: localHistoryModel.modelName,
+      accidentTypes: localPrior.dominantAccidentTypes,
+      priorScore: localPrior.priorScore,
+      confidence: localPrior.confidence,
+      limitation: localPrior.limitation,
+      components: [
+        {
+          accidentType: "안산/경기 연안 proxy 사고이력",
+          priorScore: localPrior.priorScore,
+          localMatchedCount: localPrior.localMatchedCount,
+          proxyMatchedCount: localPrior.proxyMatchedCount,
+          riskBand: localPrior.priorScore >= 75 ? "high" : localPrior.priorScore >= 60 ? "medium" : "low"
+        }
+      ]
+    };
+  }
+
   if (!historyModel || !Array.isArray(location.dominantAccidentTypes)) return null;
   const priorsByType = new Map(historyModel.priors.map((row) => [row.accidentType, row]));
   const matched = location.dominantAccidentTypes
@@ -129,6 +151,10 @@ function historyPriorForLocation(location, historyModel) {
       riskBand: row.riskBand
     }))
   };
+}
+
+function spatialExposureForLocation(location, spatialExposure) {
+  return spatialExposure?.locations?.find((row) => row.locationId === location.id) || null;
 }
 
 function mergeLocation(location, ansanLocations) {
@@ -206,21 +232,25 @@ function applyRegionalWeather(row, weatherPoint) {
   };
 }
 
-function buildOutput(raw, registry, historyModel, ansanLocations, ansanWeather, ansanMaster) {
+function buildOutput(raw, registry, historyModel, localHistoryModel, spatialExposure, ansanLocations, ansanWeather, ansanMaster) {
   const firstWeatherTime = ansanWeather?.records?.flatMap((record) => record.hourly || [])?.[0]?.time;
   const scenarioDate = firstWeatherTime ? firstWeatherTime.slice(0, 10) : raw.scenarioDate;
 
   const baseLocations = buildBaseLocations(raw, ansanMaster);
   const observationsByLocation = baseLocations.map((location) => {
     const mergedLocation = mergeLocation(location, ansanLocations);
-    const historyPrior = historyPriorForLocation(mergedLocation, historyModel);
+    const historyPrior = historyPriorForLocation(mergedLocation, historyModel, localHistoryModel);
+    const officialSpatialExposure = spatialExposureForLocation(mergedLocation, spatialExposure);
     const series = templateRowsForLocation(raw, mergedLocation.id)
       .map((row, index) => {
         const weatherPoint = weatherFor(ansanWeather, mergedLocation.id, index);
         const regionalRow = applyRegionalWeather(row, weatherPoint);
         const rowWithModelHistory = {
           ...regionalRow,
-          accidentHistoryScore: historyPrior ? historyPrior.priorScore : row.accidentHistoryScore
+          accidentHistoryScore: historyPrior ? historyPrior.priorScore : row.accidentHistoryScore,
+          spatialExposureScore: officialSpatialExposure
+            ? officialSpatialExposure.spatialExposureScore
+            : row.spatialExposureScore
         };
         const factorScores = scoreFactors(rowWithModelHistory);
         const riskScore = weightedRisk(factorScores);
@@ -254,7 +284,10 @@ function buildOutput(raw, registry, historyModel, ansanLocations, ansanWeather, 
             tide: "sample_from_public_api_schema",
             weather: weatherPoint ? "live_open_meteo_ansan_forecast" : "sample_from_public_api_schema",
             visitor: "sample_from_public_dataset_schema",
-            history: "sample_from_public_file_schema",
+            history: historyPrior?.sourceModel === localHistoryModel?.modelName
+              ? "kcg_local_accident_history_proxy"
+              : "sample_from_public_file_schema",
+            spatial: officialSpatialExposure ? "kcg_official_spatial_layers" : "sample_from_public_file_schema",
             field: "future_pilot_sample"
           }
         };
@@ -263,6 +296,7 @@ function buildOutput(raw, registry, historyModel, ansanLocations, ansanWeather, 
     return {
       ...mergedLocation,
       historyPrior,
+      officialSpatialExposure,
       series,
       effectBaseline: raw.effectBaseline[mergedLocation.id]
     };
@@ -308,6 +342,27 @@ function buildOutput(raw, registry, historyModel, ansanLocations, ansanWeather, 
             formula: historyModel.formula,
             limitation: historyModel.limitation,
             priors: historyModel.priors
+          }
+        : null,
+      localAccidentHistory: localHistoryModel
+        ? {
+            modelName: localHistoryModel.modelName,
+            trainedAt: localHistoryModel.trainedAt,
+            modelType: localHistoryModel.modelType,
+            source: localHistoryModel.source,
+            filters: localHistoryModel.filters,
+            limitation: localHistoryModel.limitation,
+            featureSummary: localHistoryModel.featureSummary,
+            priors: localHistoryModel.priors
+          }
+        : null,
+      officialSpatialExposure: spatialExposure
+        ? {
+            generatedAt: spatialExposure.generatedAt,
+            method: spatialExposure.method,
+            limitation: spatialExposure.limitation,
+            source: "해양경찰청 연안위험구역현황 + 연안 출입통제구역 현황",
+            locations: spatialExposure.locations
           }
         : null
     },
@@ -394,10 +449,12 @@ function buildOutput(raw, registry, historyModel, ansanLocations, ansanWeather, 
 const raw = readJson(rawPath);
 const registry = readJson(registryPath);
 const historyModel = readOptionalJson(historyModelPath);
+const localHistoryModel = readOptionalJson(localHistoryModelPath);
+const spatialExposure = readOptionalJson(spatialExposurePath);
 const ansanLocations = readOptionalJson(ansanLocationsPath);
 const ansanWeather = readOptionalJson(ansanWeatherPath);
 const ansanMaster = readOptionalJson(ansanMasterPath);
-const output = buildOutput(raw, registry, historyModel, ansanLocations, ansanWeather, ansanMaster);
+const output = buildOutput(raw, registry, historyModel, localHistoryModel, spatialExposure, ansanLocations, ansanWeather, ansanMaster);
 
 if (!checkOnly) {
   fs.mkdirSync(path.dirname(outputPath), { recursive: true });

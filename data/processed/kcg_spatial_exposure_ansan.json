@@ -1,0 +1,154 @@
+{
+  "generatedAt": "2026-06-10T14:08:08.154Z",
+  "method": "candidate point vs KCG WGS84 polygon layers; point-in-polygon plus nearest boundary distance",
+  "limitation": "후보지를 단일 대표 좌표로 계산하므로 실제 운영 전에는 주차장·진입로·갯벌 접근로 등 후보 구역 polygon으로 재계산해야 한다.",
+  "locations": [
+    {
+      "locationId": "A01",
+      "locationName": "방아머리 후보 구역",
+      "point": {
+        "lat": 37.2875281,
+        "lng": 126.574133
+      },
+      "insideCoastalRiskZone": true,
+      "insideOfficialControlZone": false,
+      "nearestCoastalRiskZoneDistanceM": 0,
+      "nearestControlZoneDistanceM": 1490,
+      "coastalRiskZoneName": "방아머리해변",
+      "coastalRiskZoneType": "사망사고 발생구역",
+      "controlZoneName": "구봉도 주변 해상",
+      "authorityOwner": "평택해양경찰서 제2021-01호",
+      "spatialExposureScore": 82,
+      "evidence": {
+        "riskZoneFeatureId": 447,
+        "controlZoneFeatureId": 2
+      }
+    },
+    {
+      "locationId": "A02",
+      "locationName": "탄도항 후보 구역",
+      "point": {
+        "lat": 37.1921428,
+        "lng": 126.6431133
+      },
+      "insideCoastalRiskZone": false,
+      "insideOfficialControlZone": false,
+      "nearestCoastalRiskZoneDistanceM": 17,
+      "nearestControlZoneDistanceM": 12380,
+      "coastalRiskZoneName": "탄도 갯벌(탄도항)",
+      "coastalRiskZoneType": "연안사고 위험구역",
+      "controlZoneName": "구봉도 주변 해상",
+      "authorityOwner": "평택해양경찰서 제2021-01호",
+      "spatialExposureScore": 72,
+      "evidence": {
+        "riskZoneFeatureId": 189,
+        "controlZoneFeatureId": 2
+      }
+    },
+    {
+      "locationId": "A03",
+      "locationName": "시화방조제 후보 구역",
+      "point": {
+        "lat": 37.3142,
+        "lng": 126.6086
+      },
+      "insideCoastalRiskZone": false,
+      "insideOfficialControlZone": false,
+      "nearestCoastalRiskZoneDistanceM": 22,
+      "nearestControlZoneDistanceM": 5648,
+      "coastalRiskZoneName": "시화방조제 내측",
+      "coastalRiskZoneType": "연안사고 위험구역",
+      "controlZoneName": "구봉도 주변 해상",
+      "authorityOwner": "평택해양경찰서 제2021-01호",
+      "spatialExposureScore": 72,
+      "evidence": {
+        "riskZoneFeatureId": 442,
+        "controlZoneFeatureId": 2
+      }
+    },
+    {
+      "locationId": "A04",
+      "locationName": "구봉도 후보 구역",
+      "point": {
+        "lat": 37.2814,
+        "lng": 126.5496
+      },
+      "insideCoastalRiskZone": true,
+      "insideOfficialControlZone": true,
+      "nearestCoastalRiskZoneDistanceM": 0,
+      "nearestControlZoneDistanceM": 0,
+      "coastalRiskZoneName": "구봉도 주변 해상",
+      "coastalRiskZoneType": "연안사고 다발구역",
+      "controlZoneName": "구봉도 주변 해상",
+      "authorityOwner": "평택해양경찰서 제2021-01호",
+      "spatialExposureScore": 97,
+      "evidence": {
+        "riskZoneFeatureId": 444,
+        "controlZoneFeatureId": 2
+      }
+    },
+    {
+      "locationId": "A05",
+      "locationName": "대부바다향기테마파크 후보 구역",
+      "point": {
+        "lat": 37.2925,
+        "lng": 126.5868
+      },
+      "insideCoastalRiskZone": false,
+      "insideOfficialControlZone": false,
+      "nearestCoastalRiskZoneDistanceM": 245,
+      "nearestControlZoneDistanceM": 2737,
+      "coastalRiskZoneName": "시화방조제 내측",
+      "coastalRiskZoneType": "연안사고 위험구역",
+      "controlZoneName": "구봉도 주변 해상",
+      "authorityOwner": "평택해양경찰서 제2021-01호",
+      "spatialExposureScore": 72,
+      "evidence": {
+        "riskZoneFeatureId": 442,
+        "controlZoneFeatureId": 2
+      }
+    },
+    {
+      "locationId": "A06",
+      "locationName": "선감도 후보 구역",
+      "point": {
+        "lat": 37.2216,
+        "lng": 126.6205
+      },
+      "insideCoastalRiskZone": false,
+      "insideOfficialControlZone": false,
+      "nearestCoastalRiskZoneDistanceM": 3342,
+      "nearestControlZoneDistanceM": 8626,
+      "coastalRiskZoneName": "탄도 갯벌(탄도항)",
+      "coastalRiskZoneType": "연안사고 위험구역",
+      "controlZoneName": "구봉도 주변 해상",
+      "authorityOwner": "평택해양경찰서 제2021-01호",
+      "spatialExposureScore": 35,
+      "evidence": {
+        "riskZoneFeatureId": 189,
+        "controlZoneFeatureId": 2
+      }
+    },
+    {
+      "locationId": "A07",
+      "locationName": "풍도 후보 구역",
+      "point": {
+        "lat": 37.1079,
+        "lng": 126.3895
+      },
+      "insideCoastalRiskZone": false,
+      "insideOfficialControlZone": false,
+      "nearestCoastalRiskZoneDistanceM": 331,
+      "nearestControlZoneDistanceM": 23329,
+      "coastalRiskZoneName": "풍도 선착장",
+      "coastalRiskZoneType": "연안사고 위험구역",
+      "controlZoneName": "구봉도 주변 해상",
+      "authorityOwner": "평택해양경찰서 제2021-01호",
+      "spatialExposureScore": 72,
+      "evidence": {
+        "riskZoneFeatureId": 437,
+        "controlZoneFeatureId": 2
+      }
+    }
+  ]
+}

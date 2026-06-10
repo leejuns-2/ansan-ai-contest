@@ -7,10 +7,11 @@
     "collect:ansan": "node scripts/collect_ansan_region_data.js",
     "collect:apis": "node scripts/collect_public_api_placeholders.js",
     "collect:kcg": "node scripts/collect_kcg_accident_stats.js",
+    "ingest:kcg-local": "node scripts/ingest_kcg_local_data.js",
     "train:model": "node scripts/train_history_prior_model.js",
-    "pipeline:real-start": "node scripts/collect_kcg_accident_stats.js && node scripts/collect_ansan_region_data.js && node scripts/train_history_prior_model.js && node scripts/preprocess_demo_data.js",
+    "pipeline:real-start": "node scripts/collect_kcg_accident_stats.js && node scripts/collect_ansan_region_data.js && node scripts/train_history_prior_model.js && node scripts/ingest_kcg_local_data.js && node scripts/preprocess_demo_data.js",
     "preprocess": "node scripts/preprocess_demo_data.js",
-    "check": "node --check assets/js/app.js && node --check scripts/collect_kcg_accident_stats.js && node --check scripts/collect_ansan_region_data.js && node --check scripts/collect_public_api_placeholders.js && node --check scripts/load_env.js && node --check scripts/train_history_prior_model.js && node scripts/preprocess_demo_data.js --check"
+    "check": "node --check assets/js/app.js && node --check scripts/collect_kcg_accident_stats.js && node --check scripts/collect_ansan_region_data.js && node --check scripts/collect_public_api_placeholders.js && node --check scripts/ingest_kcg_local_data.js && node --check scripts/load_env.js && node --check scripts/train_history_prior_model.js && node scripts/ingest_kcg_local_data.js && node scripts/preprocess_demo_data.js --check"
   },
   "keywords": [
     "ansan",

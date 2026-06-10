@@ -16,7 +16,7 @@
 → 개입 효과 피드백
 ```
 
-현재 MVP는 실제 API를 직접 호출하지 않고, 공개 데이터 구조를 모사한 샘플 원시 데이터를 전처리해 사용합니다. 실제 제출 전에는 안산/대부도 단위 사고 근거, 조위관측소 대표성, 유동인구 해상도, 안산시 내부 안내시설 데이터를 검증해야 합니다.
+현재 MVP는 해양경찰청 연안사고 이력 CSV, 연안위험구역 SHP, 연안 출입통제구역 SHP를 로컬 원천 데이터로 반영했습니다. 조위, 기상청 단기예보/특보, 유동인구, 안산시 내부 안내시설 데이터는 API 키 또는 내부 자료 확보 후 교체해야 합니다.
 
 ## 프로젝트 구조
 
@@ -35,7 +35,11 @@
 │  │  ├─ demo_observations.json
 │  │  └─ legacy_sample_risk_data.json
 │  └─ processed/
-│     └─ risk_timeseries.json
+│     ├─ risk_timeseries.json
+│     ├─ kcg_accident_history_local.json
+│     ├─ kcg_spatial_exposure_ansan.json
+│     ├─ kcg_coastal_risk_zones.geojson
+│     └─ kcg_control_zones.geojson
 ├─ docs/
 │  ├─ submission_draft_v1.md
 │  ├─ data_inventory.md
@@ -46,6 +50,7 @@
 │  ├─ judge_qna.md
 │  └─ final_review.md
 ├─ scripts/
+│  ├─ ingest_kcg_local_data.js
 │  └─ preprocess_demo_data.js
 └─ package.json
 ```
@@ -85,13 +90,19 @@ Node.js가 설치된 환경:
 npm run preprocess
 ```
 
+해양경찰청 로컬 원천 데이터 재처리:
+
+```powershell
+npm run ingest:kcg-local
+```
+
 실제 데이터 수집 착수 파이프라인:
 
 ```powershell
 npm run pipeline:real-start
 ```
 
-이 명령은 해양경찰청 공식 연안사고통계 페이지에서 최근 5년 사고유형별 발생·사망 통계를 수집하고, 사고유형별 사고이력 prior 모델을 학습한 뒤, 대시보드용 위험도 데이터를 다시 생성합니다.
+이 명령은 해양경찰청 공식 연안사고통계 페이지에서 최근 5년 사고유형별 발생·사망 통계를 수집하고, 사고유형별 사고이력 prior 모델을 학습한 뒤, 로컬 해경 CSV/SHP를 처리하고, 대시보드용 위험도 데이터를 다시 생성합니다.
 
 API 키 준비 상태 확인:
 
@@ -116,7 +127,7 @@ npm run check
 검증 내용:
 
 - `assets/js/app.js` 문법 검사
-- 실제 수집기와 모델 학습기 문법 검사
+- 실제 수집기, 로컬 해경 데이터 ingest, 모델 학습기 문법 검사
 - 원시 샘플 데이터 전처리 가능 여부 확인
 
 ## 실제 데이터/모델 산출물
@@ -129,10 +140,18 @@ npm run check
 | `data/raw/ansan_open_meteo_weather_latest.json` | 안산 후보지별 최신 기상 예보 수집 결과 |
 | `models/history_prior_model.json` | 사고유형별 사고이력 prior 모델 |
 | `models/history_prior_report.md` | 모델 학습 리포트 |
+| `data/raw/kcg_accident_history/해양경찰청_연안사고 이력_20231231.csv` | CP949 인코딩의 해경 연안사고 이력 원본 |
+| `data/raw/kcg_coastal_risk_zones/` | 연안위험구역 SHP 원본 ZIP 및 추출 파일 |
+| `data/raw/kcg_control_zones/` | 연안 출입통제구역 SHP 원본 ZIP 및 추출 파일 |
+| `data/processed/kcg_accident_history_local.json` | 안산 직접/경기 연안/평택 관할 proxy 사고이력 요약 |
+| `data/processed/kcg_spatial_exposure_ansan.json` | 후보지별 위험구역·출입통제구역 포함 여부와 거리 |
+| `data/processed/kcg_coastal_risk_zones.geojson` | 연안위험구역 지도 레이어 |
+| `data/processed/kcg_control_zones.geojson` | 공식 출입통제구역 지도 레이어 |
+| `models/local_accident_history_model.json` | 로컬/관할 사고이력 prior 모델 |
 | `docs/api_requirements.md` | API 키 발급·수집 필요 목록 |
 | `docs/real_data_pipeline.md` | 실제 데이터 수집·모델 학습 진행 상태와 다음 수집 대상 |
 
-현재 모델은 안산 특정 장소 모델이 아니라 전국 연안사고 유형별 집계 기반 prior 모델입니다. 안산·대부도 단위 사고이력, 조위, 기상, 유동인구 데이터가 확보되면 장소-시간 단위 모델로 확장해야 합니다.
+현재 로컬 사고이력은 안산 직접 표기 1건, 경기 연안 117건, 평택해경 관할 proxy 198건을 사용합니다. 후보지별 정밀 사고 모델이 아니라 지역·관할 기반 prior이며, 실제 운영 전에는 상세 사고 좌표 또는 내부 사고위치 데이터가 필요합니다.
 
 ## 로컬 실행
 

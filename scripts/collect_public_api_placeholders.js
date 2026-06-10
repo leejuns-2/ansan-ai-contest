@@ -21,8 +21,15 @@ function envPresent(name) {
   return Boolean(value && value.trim() && !value.includes("${"));
 }
 
+function localPathExists(...segments) {
+  return fs.existsSync(path.join(rootDir, ...segments));
+}
+
 function buildStatus() {
   const master = readJson(masterPath);
+  const hasLocalRiskZone = localPathExists("data", "raw", "kcg_coastal_risk_zones", "extracted");
+  const hasLocalControlZone = localPathExists("data", "raw", "kcg_control_zones", "extracted");
+  const hasLocalAccidentHistory = localPathExists("data", "raw", "kcg_accident_history", "해양경찰청_연안사고 이력_20231231.csv");
   const requiredApis = [
     {
       id: "khoa_tide_forecast",
@@ -57,8 +64,12 @@ function buildStatus() {
       name: "해양경찰청 연안위험구역현황 SHP",
       env: "KCG_RISK_ZONE_SHP_DOWNLOAD_URL",
       output: "data/raw/kcg_coastal_risk_zones/",
-      status: envPresent("KCG_RISK_ZONE_SHP_DOWNLOAD_URL") ? "ready_to_download" : "waiting_for_download_url",
-      nextAction: "SHP 다운로드 후 GeoJSON 변환 및 후보지 polygon 포함 여부 계산"
+      status: hasLocalRiskZone
+        ? "local_file_available"
+        : envPresent("KCG_RISK_ZONE_SHP_DOWNLOAD_URL") ? "ready_to_download" : "waiting_for_download_url",
+      nextAction: hasLocalRiskZone
+        ? "scripts/ingest_kcg_local_data.js로 GeoJSON과 후보지 공간노출 점수 재생성"
+        : "SHP 다운로드 후 GeoJSON 변환 및 후보지 polygon 포함 여부 계산"
     },
     {
       id: "kcg_control_zone_shp",
@@ -66,8 +77,12 @@ function buildStatus() {
       name: "해양경찰청 연안 출입통제구역 현황 SHP",
       env: "KCG_CONTROL_ZONE_SHP_DOWNLOAD_URL",
       output: "data/raw/kcg_control_zones/",
-      status: envPresent("KCG_CONTROL_ZONE_SHP_DOWNLOAD_URL") ? "ready_to_download" : "waiting_for_download_url",
-      nextAction: "SHP 다운로드 후 공식 출입통제구역 여부를 지도 레이어로 표시"
+      status: hasLocalControlZone
+        ? "local_file_available"
+        : envPresent("KCG_CONTROL_ZONE_SHP_DOWNLOAD_URL") ? "ready_to_download" : "waiting_for_download_url",
+      nextAction: hasLocalControlZone
+        ? "scripts/ingest_kcg_local_data.js로 공식 출입통제구역 GeoJSON과 후보지 포함 여부 재생성"
+        : "SHP 다운로드 후 공식 출입통제구역 여부를 지도 레이어로 표시"
     },
     {
       id: "kcg_accident_history",
@@ -75,10 +90,14 @@ function buildStatus() {
       name: "해양경찰청 연안사고 이력",
       env: "KCG_ACCIDENT_HISTORY_SERVICE_KEY or KCG_ACCIDENT_HISTORY_DOWNLOAD_URL",
       output: "data/raw/kcg_accident_history_ansan.json",
-      status: envPresent("KCG_ACCIDENT_HISTORY_DOWNLOAD_URL") || envPresent("KCG_ACCIDENT_HISTORY_SERVICE_KEY") || envPresent("DATA_GO_KR_SERVICE_KEY")
+      status: hasLocalAccidentHistory
+        ? "local_file_available"
+        : envPresent("KCG_ACCIDENT_HISTORY_DOWNLOAD_URL") || envPresent("KCG_ACCIDENT_HISTORY_SERVICE_KEY") || envPresent("DATA_GO_KR_SERVICE_KEY")
         ? "ready_to_implement_request"
         : "waiting_for_key_or_download_url",
-      nextAction: "안산·대부도·관할 해역 키워드로 사고이력 필터"
+      nextAction: hasLocalAccidentHistory
+        ? "scripts/ingest_kcg_local_data.js로 안산 직접/경기 연안/평택 관할 proxy prior 재생성"
+        : "안산·대부도·관할 해역 키워드로 사고이력 필터"
     },
     {
       id: "gg_population",
