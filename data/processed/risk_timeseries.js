@@ -1,10 +1,10 @@
 window.__RISK_DATA__ = {
-  "generatedAt": "2026-06-10T13:03:28.417Z",
+  "generatedAt": "2026-06-10T13:18:42.985Z",
   "scenarioDate": "2026-06-10",
   "notice": "공개 데이터 구조를 모사한 MVP 샘플이다. 실제 관측·사고 통계로 단정하지 않는다.",
   "regionalCollection": {
-    "ansanLocationsCollectedAt": "2026-06-10T13:03:28.372Z",
-    "ansanWeatherCollectedAt": "2026-06-10T13:03:28.372Z",
+    "ansanLocationsCollectedAt": "2026-06-10T13:17:51.944Z",
+    "ansanWeatherCollectedAt": "2026-06-10T13:17:51.944Z",
     "weatherSource": {
       "name": "Open-Meteo Forecast API",
       "url": "https://open-meteo.com/",
@@ -390,21 +390,35 @@ window.__RISK_DATA__ = {
     {
       "id": "A01",
       "name": "방아머리 후보 구역",
+      "officialName": "방아머리해변",
       "type": "갯벌·해안 접근부",
+      "district": "단원구 대부동",
       "lat": 37.2875281,
       "lng": 126.574133,
-      "manager": "안산시 현장 관리 부서",
+      "manager": "안산시 시범 운영 후보",
       "authority": "안산시 안내 + 관계기관 공유",
       "channels": [
-        "전광판",
         "관광안내 채널",
-        "현장 안내방송"
+        "관계기관 공유"
+      ],
+      "riskContext": [
+        "갯벌체험",
+        "관광객 집중",
+        "조위 영향",
+        "주차장·해안 접근"
       ],
       "dominantAccidentTypes": [
         "고립",
         "익수"
       ],
-      "verificationStatus": "실제 위험 근거 검증 필요",
+      "pilotPriority": "P0",
+      "dataStatus": {
+        "coordinate": "verified_osm",
+        "tide": "pending_api",
+        "weather": "ready_open_meteo_pending_kma",
+        "population": "pending_api",
+        "accidentHistory": "national_prior_ready_local_pending"
+      },
       "geocode": {
         "source": "openstreetmap_nominatim",
         "status": "matched",
@@ -446,10 +460,10 @@ window.__RISK_DATA__ = {
             "minutesToHighTide": 167,
             "tideDeltaCmPerHour": 38,
             "windMps": 5.86,
-            "windGustMps": 9.69,
+            "windGustMps": 9.61,
             "rainMm": 0,
             "temperature2m": 18.7,
-            "visibilityM": 1440,
+            "visibilityM": 1320,
             "visitorIndex": 132,
             "visitorChangePct": 28,
             "anonymousCrowdCount": 31,
@@ -511,10 +525,10 @@ window.__RISK_DATA__ = {
             "minutesToHighTide": 107,
             "tideDeltaCmPerHour": 42,
             "windMps": 5.14,
-            "windGustMps": 8,
+            "windGustMps": 8.19,
             "rainMm": 0,
             "temperature2m": 16.9,
-            "visibilityM": 620,
+            "visibilityM": 760,
             "visitorIndex": 151,
             "visitorChangePct": 36,
             "anonymousCrowdCount": 42,
@@ -576,10 +590,10 @@ window.__RISK_DATA__ = {
             "minutesToHighTide": 47,
             "tideDeltaCmPerHour": 44,
             "windMps": 4.61,
-            "windGustMps": 6.61,
+            "windGustMps": 5.89,
             "rainMm": 0,
             "temperature2m": 16.5,
-            "visibilityM": 880,
+            "visibilityM": 840,
             "visitorIndex": 165,
             "visitorChangePct": 44,
             "anonymousCrowdCount": 58,
@@ -641,10 +655,10 @@ window.__RISK_DATA__ = {
             "minutesToHighTide": 13,
             "tideDeltaCmPerHour": 16,
             "windMps": 3.06,
-            "windGustMps": 6.11,
+            "windGustMps": 4.39,
             "rainMm": 0,
             "temperature2m": 16.5,
-            "visibilityM": 3440,
+            "visibilityM": 1420,
             "visitorIndex": 158,
             "visitorChangePct": 27,
             "anonymousCrowdCount": 53,
@@ -706,10 +720,10 @@ window.__RISK_DATA__ = {
             "minutesToHighTide": -47,
             "tideDeltaCmPerHour": -25,
             "windMps": 3.08,
-            "windGustMps": 6.39,
+            "windGustMps": 4.19,
             "rainMm": 0,
             "temperature2m": 17,
-            "visibilityM": 11700,
+            "visibilityM": 2640,
             "visitorIndex": 143,
             "visitorChangePct": -9,
             "anonymousCrowdCount": 39,
@@ -771,10 +785,10 @@ window.__RISK_DATA__ = {
             "minutesToHighTide": -107,
             "tideDeltaCmPerHour": -38,
             "windMps": 3.83,
-            "windGustMps": 6.5,
+            "windGustMps": 4.69,
             "rainMm": 0,
             "temperature2m": 17,
-            "visibilityM": 5660,
+            "visibilityM": 2820,
             "visitorIndex": 116,
             "visitorChangePct": -19,
             "anonymousCrowdCount": 25,
@@ -839,21 +853,36 @@ window.__RISK_DATA__ = {
     {
       "id": "A02",
       "name": "탄도항 후보 구역",
+      "officialName": "탄도항",
       "type": "항구·방파제",
+      "district": "단원구 대부동",
       "lat": 37.1921428,
       "lng": 126.6431133,
-      "manager": "안산시 관광·안전 협업 부서",
+      "manager": "안산시 시범 운영 후보",
       "authority": "안산시 안내 + 관계기관 공유",
       "channels": [
         "관광안내 채널",
-        "현장 안내방송",
         "관계기관 공유"
+      ],
+      "riskContext": [
+        "항구",
+        "방파제",
+        "낚시객",
+        "갯벌 접근",
+        "관광객 집중"
       ],
       "dominantAccidentTypes": [
         "추락",
         "익수"
       ],
-      "verificationStatus": "관리 주체와 실제 사고 사례 검증 필요",
+      "pilotPriority": "P0",
+      "dataStatus": {
+        "coordinate": "verified_osm",
+        "tide": "pending_api",
+        "weather": "ready_open_meteo_pending_kma",
+        "population": "pending_api",
+        "accidentHistory": "national_prior_ready_local_pending"
+      },
       "geocode": {
         "source": "openstreetmap_nominatim",
         "status": "matched",
@@ -895,10 +924,10 @@ window.__RISK_DATA__ = {
             "minutesToHighTide": 172,
             "tideDeltaCmPerHour": 28,
             "windMps": 5.78,
-            "windGustMps": 9.69,
+            "windGustMps": 9.61,
             "rainMm": 0,
             "temperature2m": 19,
-            "visibilityM": 1440,
+            "visibilityM": 1320,
             "visitorIndex": 118,
             "visitorChangePct": 18,
             "anonymousCrowdCount": 27,
@@ -960,10 +989,10 @@ window.__RISK_DATA__ = {
             "minutesToHighTide": 112,
             "tideDeltaCmPerHour": 31,
             "windMps": 4.75,
-            "windGustMps": 8,
+            "windGustMps": 8.19,
             "rainMm": 0,
             "temperature2m": 17.9,
-            "visibilityM": 620,
+            "visibilityM": 760,
             "visitorIndex": 132,
             "visitorChangePct": 24,
             "anonymousCrowdCount": 32,
@@ -1025,10 +1054,10 @@ window.__RISK_DATA__ = {
             "minutesToHighTide": 52,
             "tideDeltaCmPerHour": 28,
             "windMps": 4.19,
-            "windGustMps": 6.61,
+            "windGustMps": 5.89,
             "rainMm": 0,
             "temperature2m": 16.6,
-            "visibilityM": 880,
+            "visibilityM": 840,
             "visitorIndex": 142,
             "visitorChangePct": 31,
             "anonymousCrowdCount": 38,
@@ -1090,10 +1119,10 @@ window.__RISK_DATA__ = {
             "minutesToHighTide": 17,
             "tideDeltaCmPerHour": 11,
             "windMps": 3.31,
-            "windGustMps": 6.11,
+            "windGustMps": 4.39,
             "rainMm": 0,
             "temperature2m": 16.4,
-            "visibilityM": 3440,
+            "visibilityM": 1420,
             "visitorIndex": 136,
             "visitorChangePct": -4,
             "anonymousCrowdCount": 34,
@@ -1155,10 +1184,10 @@ window.__RISK_DATA__ = {
             "minutesToHighTide": -43,
             "tideDeltaCmPerHour": -23,
             "windMps": 3.11,
-            "windGustMps": 6.39,
+            "windGustMps": 4.19,
             "rainMm": 0,
             "temperature2m": 16.5,
-            "visibilityM": 11700,
+            "visibilityM": 2640,
             "visitorIndex": 124,
             "visitorChangePct": -9,
             "anonymousCrowdCount": 28,
@@ -1220,10 +1249,10 @@ window.__RISK_DATA__ = {
             "minutesToHighTide": -103,
             "tideDeltaCmPerHour": -35,
             "windMps": 3.83,
-            "windGustMps": 6.5,
+            "windGustMps": 4.69,
             "rainMm": 0,
             "temperature2m": 16.6,
-            "visibilityM": 5660,
+            "visibilityM": 2820,
             "visitorIndex": 102,
             "visitorChangePct": -18,
             "anonymousCrowdCount": 19,
@@ -1288,20 +1317,35 @@ window.__RISK_DATA__ = {
     {
       "id": "A03",
       "name": "시화방조제 후보 구역",
+      "officialName": "시화방조제",
       "type": "시화호·방조제 인근",
+      "district": "단원구 대부동 인근",
       "lat": 37.3142,
       "lng": 126.6086,
-      "manager": "관계기관 관리 주체 확인 필요",
-      "authority": "관계기관 관리 주체 확인 필요",
+      "manager": "안산시 시범 운영 후보",
+      "authority": "안산시 안내 + 관계기관 공유",
       "channels": [
-        "관계기관 공유",
-        "관광안내 채널"
+        "관광안내 채널",
+        "관계기관 공유"
+      ],
+      "riskContext": [
+        "방조제",
+        "해안도로",
+        "낚시·관광",
+        "관리주체 확인 필요"
       ],
       "dominantAccidentTypes": [
         "추락",
         "고립"
       ],
-      "verificationStatus": "관할·시설 데이터 검증 필요",
+      "pilotPriority": "P0",
+      "dataStatus": {
+        "coordinate": "fallback_needs_official_verification",
+        "tide": "pending_api",
+        "weather": "ready_open_meteo_pending_kma",
+        "population": "pending_api",
+        "accidentHistory": "national_prior_ready_local_pending"
+      },
       "geocode": {
         "source": "fallback_coordinate",
         "status": "no_result",
@@ -1343,10 +1387,10 @@ window.__RISK_DATA__ = {
             "minutesToHighTide": 184,
             "tideDeltaCmPerHour": 24,
             "windMps": 5.92,
-            "windGustMps": 9.69,
+            "windGustMps": 9.61,
             "rainMm": 0,
             "temperature2m": 19.2,
-            "visibilityM": 1440,
+            "visibilityM": 1320,
             "visitorIndex": 108,
             "visitorChangePct": 14,
             "anonymousCrowdCount": 19,
@@ -1408,10 +1452,10 @@ window.__RISK_DATA__ = {
             "minutesToHighTide": 124,
             "tideDeltaCmPerHour": 27,
             "windMps": 4.78,
-            "windGustMps": 8,
+            "windGustMps": 8.19,
             "rainMm": 0,
             "temperature2m": 17.4,
-            "visibilityM": 620,
+            "visibilityM": 760,
             "visitorIndex": 121,
             "visitorChangePct": 19,
             "anonymousCrowdCount": 23,
@@ -1473,10 +1517,10 @@ window.__RISK_DATA__ = {
             "minutesToHighTide": 64,
             "tideDeltaCmPerHour": 25,
             "windMps": 4.19,
-            "windGustMps": 6.61,
+            "windGustMps": 5.89,
             "rainMm": 0,
             "temperature2m": 16.7,
-            "visibilityM": 880,
+            "visibilityM": 840,
             "visitorIndex": 127,
             "visitorChangePct": 22,
             "anonymousCrowdCount": 26,
@@ -1538,10 +1582,10 @@ window.__RISK_DATA__ = {
             "minutesToHighTide": 24,
             "tideDeltaCmPerHour": 11,
             "windMps": 3,
-            "windGustMps": 6.11,
+            "windGustMps": 4.39,
             "rainMm": 0,
             "temperature2m": 16.5,
-            "visibilityM": 3440,
+            "visibilityM": 1420,
             "visitorIndex": 119,
             "visitorChangePct": -6,
             "anonymousCrowdCount": 24,
@@ -1603,10 +1647,10 @@ window.__RISK_DATA__ = {
             "minutesToHighTide": -36,
             "tideDeltaCmPerHour": -23,
             "windMps": 2.97,
-            "windGustMps": 6.39,
+            "windGustMps": 4.19,
             "rainMm": 0,
             "temperature2m": 17,
-            "visibilityM": 11700,
+            "visibilityM": 2640,
             "visitorIndex": 106,
             "visitorChangePct": -11,
             "anonymousCrowdCount": 20,
@@ -1668,10 +1712,10 @@ window.__RISK_DATA__ = {
             "minutesToHighTide": -96,
             "tideDeltaCmPerHour": -36,
             "windMps": 3.75,
-            "windGustMps": 6.5,
+            "windGustMps": 4.69,
             "rainMm": 0,
             "temperature2m": 17,
-            "visibilityM": 5660,
+            "visibilityM": 2820,
             "visitorIndex": 92,
             "visitorChangePct": -13,
             "anonymousCrowdCount": 13,
@@ -1732,6 +1776,1833 @@ window.__RISK_DATA__ = {
         "agencyShares": 1,
         "nextImprovement": "관할 관리주체와 안내 채널 확인"
       }
+    },
+    {
+      "id": "A04",
+      "name": "구봉도 후보 구역",
+      "officialName": "구봉도 낙조전망대 인근",
+      "type": "해안 산책·전망 지점",
+      "district": "단원구 대부북동",
+      "lat": 37.2842587,
+      "lng": 126.5423229,
+      "manager": "확장 후보",
+      "authority": "안산시 안내 + 관계기관 공유",
+      "channels": [
+        "관광안내 채널",
+        "관계기관 공유"
+      ],
+      "riskContext": [
+        "해안 산책",
+        "일몰 시간대 체류",
+        "갯바위·해안 접근"
+      ],
+      "dominantAccidentTypes": [
+        "추락",
+        "익수"
+      ],
+      "pilotPriority": "P1",
+      "dataStatus": {
+        "coordinate": "manual_candidate_needs_verification",
+        "tide": "pending_api",
+        "weather": "pending_collection",
+        "population": "pending_api",
+        "accidentHistory": "national_prior_ready_local_pending"
+      },
+      "geocode": {
+        "source": "openstreetmap_nominatim",
+        "status": "matched",
+        "matchedQuery": "구봉도 안산",
+        "displayName": "구봉도, 대부동, 단원구, 안산시, 경기도, 대한민국",
+        "osmType": "way",
+        "osmId": 1504176569
+      },
+      "historyPrior": {
+        "sourceModel": "history_prior_model_v0",
+        "accidentTypes": [
+          "추락",
+          "익수"
+        ],
+        "priorScore": 73,
+        "components": [
+          {
+            "accidentType": "추락",
+            "priorScore": 73,
+            "incidentMean": 214.8,
+            "fatalityRatePct": 18.2,
+            "riskBand": "주의"
+          },
+          {
+            "accidentType": "익수",
+            "priorScore": 72,
+            "incidentMean": 150,
+            "fatalityRatePct": 40.9,
+            "riskBand": "주의"
+          }
+        ]
+      },
+      "series": [
+        {
+          "datetime": "2026-06-10T19:00:00+09:00",
+          "time": "19:00",
+          "rawSignals": {
+            "tideCm": 642,
+            "minutesToHighTide": 167,
+            "tideDeltaCmPerHour": 38,
+            "windMps": 5.86,
+            "windGustMps": 9.61,
+            "rainMm": 0,
+            "temperature2m": 18.6,
+            "visibilityM": 1320,
+            "visitorIndex": 108,
+            "visitorChangePct": 20,
+            "anonymousCrowdCount": 20,
+            "avgStayMinutes": 20,
+            "returnDelayGroups": 1,
+            "historyPriorScore": 73
+          },
+          "factorScores": {
+            "tide": 37,
+            "weather": 32,
+            "visitor": 36,
+            "history": 73,
+            "spatial": 78,
+            "field": 24
+          },
+          "riskScore": 44,
+          "riskLevel": "낮음",
+          "reasons": [
+            {
+              "key": "spatial",
+              "label": "갯벌·방파제 등 공간 노출",
+              "score": 78
+            },
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 73
+            },
+            {
+              "key": "tide",
+              "label": "만조 임박·조위 변화",
+              "score": 37
+            },
+            {
+              "key": "visitor",
+              "label": "방문객 집중·증가율",
+              "score": 36
+            }
+          ],
+          "recommendationIds": [
+            "facility-review",
+            "agency-share",
+            "return-guidance",
+            "visitor-prealert"
+          ],
+          "dataQuality": {
+            "tide": "sample_from_public_api_schema",
+            "weather": "live_open_meteo_ansan_forecast",
+            "visitor": "sample_from_public_dataset_schema",
+            "history": "sample_from_public_file_schema",
+            "field": "future_pilot_sample"
+          }
+        },
+        {
+          "datetime": "2026-06-10T20:00:00+09:00",
+          "time": "20:00",
+          "rawSignals": {
+            "tideCm": 681,
+            "minutesToHighTide": 107,
+            "tideDeltaCmPerHour": 42,
+            "windMps": 5.14,
+            "windGustMps": 8.19,
+            "rainMm": 0,
+            "temperature2m": 16.7,
+            "visibilityM": 760,
+            "visitorIndex": 124,
+            "visitorChangePct": 25,
+            "anonymousCrowdCount": 27,
+            "avgStayMinutes": 25,
+            "returnDelayGroups": 1,
+            "historyPriorScore": 73
+          },
+          "factorScores": {
+            "tide": 60,
+            "weather": 26,
+            "visitor": 50,
+            "history": 73,
+            "spatial": 78,
+            "field": 33
+          },
+          "riskScore": 53,
+          "riskLevel": "주의",
+          "reasons": [
+            {
+              "key": "spatial",
+              "label": "갯벌·방파제 등 공간 노출",
+              "score": 78
+            },
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 73
+            },
+            {
+              "key": "tide",
+              "label": "만조 임박·조위 변화",
+              "score": 60
+            },
+            {
+              "key": "visitor",
+              "label": "방문객 집중·증가율",
+              "score": 50
+            }
+          ],
+          "recommendationIds": [
+            "facility-review",
+            "agency-share",
+            "return-guidance",
+            "visitor-prealert"
+          ],
+          "dataQuality": {
+            "tide": "sample_from_public_api_schema",
+            "weather": "live_open_meteo_ansan_forecast",
+            "visitor": "sample_from_public_dataset_schema",
+            "history": "sample_from_public_file_schema",
+            "field": "future_pilot_sample"
+          }
+        },
+        {
+          "datetime": "2026-06-10T21:00:00+09:00",
+          "time": "21:00",
+          "rawSignals": {
+            "tideCm": 719,
+            "minutesToHighTide": 47,
+            "tideDeltaCmPerHour": 44,
+            "windMps": 4.61,
+            "windGustMps": 5.89,
+            "rainMm": 0,
+            "temperature2m": 16.3,
+            "visibilityM": 840,
+            "visitorIndex": 135,
+            "visitorChangePct": 31,
+            "anonymousCrowdCount": 38,
+            "avgStayMinutes": 31,
+            "returnDelayGroups": 2,
+            "historyPriorScore": 73
+          },
+          "factorScores": {
+            "tide": 81,
+            "weather": 21,
+            "visitor": 60,
+            "history": 73,
+            "spatial": 78,
+            "field": 54
+          },
+          "riskScore": 61,
+          "riskLevel": "주의",
+          "reasons": [
+            {
+              "key": "tide",
+              "label": "만조 임박·조위 변화",
+              "score": 81
+            },
+            {
+              "key": "spatial",
+              "label": "갯벌·방파제 등 공간 노출",
+              "score": 78
+            },
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 73
+            },
+            {
+              "key": "visitor",
+              "label": "방문객 집중·증가율",
+              "score": 60
+            }
+          ],
+          "recommendationIds": [
+            "return-guidance",
+            "facility-review",
+            "agency-share",
+            "visitor-prealert"
+          ],
+          "dataQuality": {
+            "tide": "sample_from_public_api_schema",
+            "weather": "live_open_meteo_ansan_forecast",
+            "visitor": "sample_from_public_dataset_schema",
+            "history": "sample_from_public_file_schema",
+            "field": "future_pilot_sample"
+          }
+        },
+        {
+          "datetime": "2026-06-10T22:00:00+09:00",
+          "time": "22:00",
+          "rawSignals": {
+            "tideCm": 735,
+            "minutesToHighTide": 13,
+            "tideDeltaCmPerHour": 16,
+            "windMps": 3.06,
+            "windGustMps": 4.39,
+            "rainMm": 0,
+            "temperature2m": 16.4,
+            "visibilityM": 1420,
+            "visitorIndex": 130,
+            "visitorChangePct": 19,
+            "anonymousCrowdCount": 34,
+            "avgStayMinutes": 29,
+            "returnDelayGroups": 1,
+            "historyPriorScore": 73
+          },
+          "factorScores": {
+            "tide": 81,
+            "weather": 9,
+            "visitor": 52,
+            "history": 73,
+            "spatial": 78,
+            "field": 42
+          },
+          "riskScore": 56,
+          "riskLevel": "주의",
+          "reasons": [
+            {
+              "key": "tide",
+              "label": "만조 임박·조위 변화",
+              "score": 81
+            },
+            {
+              "key": "spatial",
+              "label": "갯벌·방파제 등 공간 노출",
+              "score": 78
+            },
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 73
+            },
+            {
+              "key": "visitor",
+              "label": "방문객 집중·증가율",
+              "score": 52
+            }
+          ],
+          "recommendationIds": [
+            "return-guidance",
+            "facility-review",
+            "agency-share",
+            "visitor-prealert"
+          ],
+          "dataQuality": {
+            "tide": "sample_from_public_api_schema",
+            "weather": "live_open_meteo_ansan_forecast",
+            "visitor": "sample_from_public_dataset_schema",
+            "history": "sample_from_public_file_schema",
+            "field": "future_pilot_sample"
+          }
+        },
+        {
+          "datetime": "2026-06-10T23:00:00+09:00",
+          "time": "23:00",
+          "rawSignals": {
+            "tideCm": 710,
+            "minutesToHighTide": -47,
+            "tideDeltaCmPerHour": -25,
+            "windMps": 3.08,
+            "windGustMps": 4.19,
+            "rainMm": 0,
+            "temperature2m": 16.8,
+            "visibilityM": 2640,
+            "visitorIndex": 117,
+            "visitorChangePct": -6,
+            "anonymousCrowdCount": 25,
+            "avgStayMinutes": 24,
+            "returnDelayGroups": 1,
+            "historyPriorScore": 73
+          },
+          "factorScores": {
+            "tide": 52,
+            "weather": 9,
+            "visitor": 32,
+            "history": 73,
+            "spatial": 78,
+            "field": 31
+          },
+          "riskScore": 44,
+          "riskLevel": "낮음",
+          "reasons": [
+            {
+              "key": "spatial",
+              "label": "갯벌·방파제 등 공간 노출",
+              "score": 78
+            },
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 73
+            },
+            {
+              "key": "tide",
+              "label": "만조 임박·조위 변화",
+              "score": 52
+            },
+            {
+              "key": "visitor",
+              "label": "방문객 집중·증가율",
+              "score": 32
+            }
+          ],
+          "recommendationIds": [
+            "facility-review",
+            "agency-share",
+            "return-guidance",
+            "visitor-prealert"
+          ],
+          "dataQuality": {
+            "tide": "sample_from_public_api_schema",
+            "weather": "live_open_meteo_ansan_forecast",
+            "visitor": "sample_from_public_dataset_schema",
+            "history": "sample_from_public_file_schema",
+            "field": "future_pilot_sample"
+          }
+        },
+        {
+          "datetime": "2026-06-11T00:00:00+09:00",
+          "time": "00:00",
+          "rawSignals": {
+            "tideCm": 672,
+            "minutesToHighTide": -107,
+            "tideDeltaCmPerHour": -38,
+            "windMps": 3.83,
+            "windGustMps": 4.69,
+            "rainMm": 0,
+            "temperature2m": 16.8,
+            "visibilityM": 2820,
+            "visitorIndex": 95,
+            "visitorChangePct": -13,
+            "anonymousCrowdCount": 16,
+            "avgStayMinutes": 18,
+            "returnDelayGroups": 0,
+            "historyPriorScore": 73
+          },
+          "factorScores": {
+            "tide": 26,
+            "weather": 15,
+            "visitor": 14,
+            "history": 73,
+            "spatial": 78,
+            "field": 12
+          },
+          "riskScore": 33,
+          "riskLevel": "낮음",
+          "reasons": [
+            {
+              "key": "spatial",
+              "label": "갯벌·방파제 등 공간 노출",
+              "score": 78
+            },
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 73
+            },
+            {
+              "key": "tide",
+              "label": "만조 임박·조위 변화",
+              "score": 26
+            },
+            {
+              "key": "weather",
+              "label": "풍속·강수 등 기상 위험",
+              "score": 15
+            }
+          ],
+          "recommendationIds": [
+            "facility-review",
+            "agency-share",
+            "return-guidance",
+            "wind-warning"
+          ],
+          "dataQuality": {
+            "tide": "sample_from_public_api_schema",
+            "weather": "live_open_meteo_ansan_forecast",
+            "visitor": "sample_from_public_dataset_schema",
+            "history": "sample_from_public_file_schema",
+            "field": "future_pilot_sample"
+          }
+        }
+      ]
+    },
+    {
+      "id": "A05",
+      "name": "대부바다향기테마파크 후보 구역",
+      "officialName": "대부바다향기테마파크 인근",
+      "type": "관광지·해안 접근부",
+      "district": "단원구 대부북동",
+      "lat": 37.2817424,
+      "lng": 126.5783908,
+      "manager": "확장 후보",
+      "authority": "안산시 안내 + 관계기관 공유",
+      "channels": [
+        "관광안내 채널",
+        "관계기관 공유"
+      ],
+      "riskContext": [
+        "관광객 집중",
+        "주차장",
+        "해안 접근",
+        "가족 단위 방문"
+      ],
+      "dominantAccidentTypes": [
+        "고립",
+        "익수"
+      ],
+      "pilotPriority": "P1",
+      "dataStatus": {
+        "coordinate": "manual_candidate_needs_verification",
+        "tide": "pending_api",
+        "weather": "pending_collection",
+        "population": "pending_api",
+        "accidentHistory": "national_prior_ready_local_pending"
+      },
+      "geocode": {
+        "source": "openstreetmap_nominatim",
+        "status": "matched",
+        "matchedQuery": "대부바다향기테마파크 안산",
+        "displayName": "대부바다향기테마파크, 단원구, 안산시, 경기도, 대한민국",
+        "osmType": "way",
+        "osmId": 1509669851
+      },
+      "historyPrior": {
+        "sourceModel": "history_prior_model_v0",
+        "accidentTypes": [
+          "고립",
+          "익수"
+        ],
+        "priorScore": 65,
+        "components": [
+          {
+            "accidentType": "고립",
+            "priorScore": 57,
+            "incidentMean": 200.8,
+            "fatalityRatePct": 3.7,
+            "riskBand": "주의"
+          },
+          {
+            "accidentType": "익수",
+            "priorScore": 72,
+            "incidentMean": 150,
+            "fatalityRatePct": 40.9,
+            "riskBand": "주의"
+          }
+        ]
+      },
+      "series": [
+        {
+          "datetime": "2026-06-10T19:00:00+09:00",
+          "time": "19:00",
+          "rawSignals": {
+            "tideCm": 642,
+            "minutesToHighTide": 167,
+            "tideDeltaCmPerHour": 38,
+            "windMps": 5.86,
+            "windGustMps": 9.61,
+            "rainMm": 0,
+            "temperature2m": 18.7,
+            "visibilityM": 1320,
+            "visitorIndex": 108,
+            "visitorChangePct": 20,
+            "anonymousCrowdCount": 20,
+            "avgStayMinutes": 20,
+            "returnDelayGroups": 1,
+            "historyPriorScore": 65
+          },
+          "factorScores": {
+            "tide": 37,
+            "weather": 32,
+            "visitor": 36,
+            "history": 65,
+            "spatial": 78,
+            "field": 24
+          },
+          "riskScore": 43,
+          "riskLevel": "낮음",
+          "reasons": [
+            {
+              "key": "spatial",
+              "label": "갯벌·방파제 등 공간 노출",
+              "score": 78
+            },
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 65
+            },
+            {
+              "key": "tide",
+              "label": "만조 임박·조위 변화",
+              "score": 37
+            },
+            {
+              "key": "visitor",
+              "label": "방문객 집중·증가율",
+              "score": 36
+            }
+          ],
+          "recommendationIds": [
+            "facility-review",
+            "agency-share",
+            "return-guidance",
+            "visitor-prealert"
+          ],
+          "dataQuality": {
+            "tide": "sample_from_public_api_schema",
+            "weather": "live_open_meteo_ansan_forecast",
+            "visitor": "sample_from_public_dataset_schema",
+            "history": "sample_from_public_file_schema",
+            "field": "future_pilot_sample"
+          }
+        },
+        {
+          "datetime": "2026-06-10T20:00:00+09:00",
+          "time": "20:00",
+          "rawSignals": {
+            "tideCm": 681,
+            "minutesToHighTide": 107,
+            "tideDeltaCmPerHour": 42,
+            "windMps": 5.14,
+            "windGustMps": 8.19,
+            "rainMm": 0,
+            "temperature2m": 16.9,
+            "visibilityM": 760,
+            "visitorIndex": 124,
+            "visitorChangePct": 25,
+            "anonymousCrowdCount": 27,
+            "avgStayMinutes": 25,
+            "returnDelayGroups": 1,
+            "historyPriorScore": 65
+          },
+          "factorScores": {
+            "tide": 60,
+            "weather": 26,
+            "visitor": 50,
+            "history": 65,
+            "spatial": 78,
+            "field": 33
+          },
+          "riskScore": 51,
+          "riskLevel": "주의",
+          "reasons": [
+            {
+              "key": "spatial",
+              "label": "갯벌·방파제 등 공간 노출",
+              "score": 78
+            },
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 65
+            },
+            {
+              "key": "tide",
+              "label": "만조 임박·조위 변화",
+              "score": 60
+            },
+            {
+              "key": "visitor",
+              "label": "방문객 집중·증가율",
+              "score": 50
+            }
+          ],
+          "recommendationIds": [
+            "facility-review",
+            "agency-share",
+            "return-guidance",
+            "visitor-prealert"
+          ],
+          "dataQuality": {
+            "tide": "sample_from_public_api_schema",
+            "weather": "live_open_meteo_ansan_forecast",
+            "visitor": "sample_from_public_dataset_schema",
+            "history": "sample_from_public_file_schema",
+            "field": "future_pilot_sample"
+          }
+        },
+        {
+          "datetime": "2026-06-10T21:00:00+09:00",
+          "time": "21:00",
+          "rawSignals": {
+            "tideCm": 719,
+            "minutesToHighTide": 47,
+            "tideDeltaCmPerHour": 44,
+            "windMps": 4.61,
+            "windGustMps": 5.89,
+            "rainMm": 0,
+            "temperature2m": 16.5,
+            "visibilityM": 840,
+            "visitorIndex": 135,
+            "visitorChangePct": 31,
+            "anonymousCrowdCount": 38,
+            "avgStayMinutes": 31,
+            "returnDelayGroups": 2,
+            "historyPriorScore": 65
+          },
+          "factorScores": {
+            "tide": 81,
+            "weather": 21,
+            "visitor": 60,
+            "history": 65,
+            "spatial": 78,
+            "field": 54
+          },
+          "riskScore": 60,
+          "riskLevel": "주의",
+          "reasons": [
+            {
+              "key": "tide",
+              "label": "만조 임박·조위 변화",
+              "score": 81
+            },
+            {
+              "key": "spatial",
+              "label": "갯벌·방파제 등 공간 노출",
+              "score": 78
+            },
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 65
+            },
+            {
+              "key": "visitor",
+              "label": "방문객 집중·증가율",
+              "score": 60
+            }
+          ],
+          "recommendationIds": [
+            "return-guidance",
+            "facility-review",
+            "agency-share",
+            "visitor-prealert"
+          ],
+          "dataQuality": {
+            "tide": "sample_from_public_api_schema",
+            "weather": "live_open_meteo_ansan_forecast",
+            "visitor": "sample_from_public_dataset_schema",
+            "history": "sample_from_public_file_schema",
+            "field": "future_pilot_sample"
+          }
+        },
+        {
+          "datetime": "2026-06-10T22:00:00+09:00",
+          "time": "22:00",
+          "rawSignals": {
+            "tideCm": 735,
+            "minutesToHighTide": 13,
+            "tideDeltaCmPerHour": 16,
+            "windMps": 3.06,
+            "windGustMps": 4.39,
+            "rainMm": 0,
+            "temperature2m": 16.5,
+            "visibilityM": 1420,
+            "visitorIndex": 130,
+            "visitorChangePct": 19,
+            "anonymousCrowdCount": 34,
+            "avgStayMinutes": 29,
+            "returnDelayGroups": 1,
+            "historyPriorScore": 65
+          },
+          "factorScores": {
+            "tide": 81,
+            "weather": 9,
+            "visitor": 52,
+            "history": 65,
+            "spatial": 78,
+            "field": 42
+          },
+          "riskScore": 55,
+          "riskLevel": "주의",
+          "reasons": [
+            {
+              "key": "tide",
+              "label": "만조 임박·조위 변화",
+              "score": 81
+            },
+            {
+              "key": "spatial",
+              "label": "갯벌·방파제 등 공간 노출",
+              "score": 78
+            },
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 65
+            },
+            {
+              "key": "visitor",
+              "label": "방문객 집중·증가율",
+              "score": 52
+            }
+          ],
+          "recommendationIds": [
+            "return-guidance",
+            "facility-review",
+            "agency-share",
+            "visitor-prealert"
+          ],
+          "dataQuality": {
+            "tide": "sample_from_public_api_schema",
+            "weather": "live_open_meteo_ansan_forecast",
+            "visitor": "sample_from_public_dataset_schema",
+            "history": "sample_from_public_file_schema",
+            "field": "future_pilot_sample"
+          }
+        },
+        {
+          "datetime": "2026-06-10T23:00:00+09:00",
+          "time": "23:00",
+          "rawSignals": {
+            "tideCm": 710,
+            "minutesToHighTide": -47,
+            "tideDeltaCmPerHour": -25,
+            "windMps": 3.08,
+            "windGustMps": 4.19,
+            "rainMm": 0,
+            "temperature2m": 17,
+            "visibilityM": 2640,
+            "visitorIndex": 117,
+            "visitorChangePct": -6,
+            "anonymousCrowdCount": 25,
+            "avgStayMinutes": 24,
+            "returnDelayGroups": 1,
+            "historyPriorScore": 65
+          },
+          "factorScores": {
+            "tide": 52,
+            "weather": 9,
+            "visitor": 32,
+            "history": 65,
+            "spatial": 78,
+            "field": 31
+          },
+          "riskScore": 43,
+          "riskLevel": "낮음",
+          "reasons": [
+            {
+              "key": "spatial",
+              "label": "갯벌·방파제 등 공간 노출",
+              "score": 78
+            },
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 65
+            },
+            {
+              "key": "tide",
+              "label": "만조 임박·조위 변화",
+              "score": 52
+            },
+            {
+              "key": "visitor",
+              "label": "방문객 집중·증가율",
+              "score": 32
+            }
+          ],
+          "recommendationIds": [
+            "facility-review",
+            "agency-share",
+            "return-guidance",
+            "visitor-prealert"
+          ],
+          "dataQuality": {
+            "tide": "sample_from_public_api_schema",
+            "weather": "live_open_meteo_ansan_forecast",
+            "visitor": "sample_from_public_dataset_schema",
+            "history": "sample_from_public_file_schema",
+            "field": "future_pilot_sample"
+          }
+        },
+        {
+          "datetime": "2026-06-11T00:00:00+09:00",
+          "time": "00:00",
+          "rawSignals": {
+            "tideCm": 672,
+            "minutesToHighTide": -107,
+            "tideDeltaCmPerHour": -38,
+            "windMps": 3.83,
+            "windGustMps": 4.69,
+            "rainMm": 0,
+            "temperature2m": 17,
+            "visibilityM": 2820,
+            "visitorIndex": 95,
+            "visitorChangePct": -13,
+            "anonymousCrowdCount": 16,
+            "avgStayMinutes": 18,
+            "returnDelayGroups": 0,
+            "historyPriorScore": 65
+          },
+          "factorScores": {
+            "tide": 26,
+            "weather": 15,
+            "visitor": 14,
+            "history": 65,
+            "spatial": 78,
+            "field": 12
+          },
+          "riskScore": 32,
+          "riskLevel": "낮음",
+          "reasons": [
+            {
+              "key": "spatial",
+              "label": "갯벌·방파제 등 공간 노출",
+              "score": 78
+            },
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 65
+            },
+            {
+              "key": "tide",
+              "label": "만조 임박·조위 변화",
+              "score": 26
+            },
+            {
+              "key": "weather",
+              "label": "풍속·강수 등 기상 위험",
+              "score": 15
+            }
+          ],
+          "recommendationIds": [
+            "facility-review",
+            "agency-share",
+            "return-guidance",
+            "wind-warning"
+          ],
+          "dataQuality": {
+            "tide": "sample_from_public_api_schema",
+            "weather": "live_open_meteo_ansan_forecast",
+            "visitor": "sample_from_public_dataset_schema",
+            "history": "sample_from_public_file_schema",
+            "field": "future_pilot_sample"
+          }
+        }
+      ]
+    },
+    {
+      "id": "A06",
+      "name": "선감도 후보 구역",
+      "officialName": "선감도·선감어촌체험마을 인근",
+      "type": "갯벌체험·어촌체험",
+      "district": "단원구 선감동",
+      "lat": 37.2238987,
+      "lng": 126.6378667,
+      "manager": "확장 후보",
+      "authority": "안산시 안내 + 관계기관 공유",
+      "channels": [
+        "관광안내 채널",
+        "관계기관 공유"
+      ],
+      "riskContext": [
+        "갯벌체험",
+        "체험객",
+        "조위 영향",
+        "복귀 지연 위험"
+      ],
+      "dominantAccidentTypes": [
+        "고립",
+        "익수"
+      ],
+      "pilotPriority": "P1",
+      "dataStatus": {
+        "coordinate": "manual_candidate_needs_verification",
+        "tide": "pending_api",
+        "weather": "pending_collection",
+        "population": "pending_api",
+        "accidentHistory": "national_prior_ready_local_pending"
+      },
+      "geocode": {
+        "source": "openstreetmap_nominatim",
+        "status": "matched",
+        "matchedQuery": "선감도 안산",
+        "displayName": "선감도, 선감동, 대부동, 단원구, 안산시, 경기도, 대한민국",
+        "osmType": "way",
+        "osmId": 1435253061
+      },
+      "historyPrior": {
+        "sourceModel": "history_prior_model_v0",
+        "accidentTypes": [
+          "고립",
+          "익수"
+        ],
+        "priorScore": 65,
+        "components": [
+          {
+            "accidentType": "고립",
+            "priorScore": 57,
+            "incidentMean": 200.8,
+            "fatalityRatePct": 3.7,
+            "riskBand": "주의"
+          },
+          {
+            "accidentType": "익수",
+            "priorScore": 72,
+            "incidentMean": 150,
+            "fatalityRatePct": 40.9,
+            "riskBand": "주의"
+          }
+        ]
+      },
+      "series": [
+        {
+          "datetime": "2026-06-10T19:00:00+09:00",
+          "time": "19:00",
+          "rawSignals": {
+            "tideCm": 642,
+            "minutesToHighTide": 167,
+            "tideDeltaCmPerHour": 38,
+            "windMps": 5.78,
+            "windGustMps": 9.61,
+            "rainMm": 0,
+            "temperature2m": 18.7,
+            "visibilityM": 1320,
+            "visitorIndex": 108,
+            "visitorChangePct": 20,
+            "anonymousCrowdCount": 20,
+            "avgStayMinutes": 20,
+            "returnDelayGroups": 1,
+            "historyPriorScore": 65
+          },
+          "factorScores": {
+            "tide": 37,
+            "weather": 31,
+            "visitor": 36,
+            "history": 65,
+            "spatial": 78,
+            "field": 24
+          },
+          "riskScore": 43,
+          "riskLevel": "낮음",
+          "reasons": [
+            {
+              "key": "spatial",
+              "label": "갯벌·방파제 등 공간 노출",
+              "score": 78
+            },
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 65
+            },
+            {
+              "key": "tide",
+              "label": "만조 임박·조위 변화",
+              "score": 37
+            },
+            {
+              "key": "visitor",
+              "label": "방문객 집중·증가율",
+              "score": 36
+            }
+          ],
+          "recommendationIds": [
+            "facility-review",
+            "agency-share",
+            "return-guidance",
+            "visitor-prealert"
+          ],
+          "dataQuality": {
+            "tide": "sample_from_public_api_schema",
+            "weather": "live_open_meteo_ansan_forecast",
+            "visitor": "sample_from_public_dataset_schema",
+            "history": "sample_from_public_file_schema",
+            "field": "future_pilot_sample"
+          }
+        },
+        {
+          "datetime": "2026-06-10T20:00:00+09:00",
+          "time": "20:00",
+          "rawSignals": {
+            "tideCm": 681,
+            "minutesToHighTide": 107,
+            "tideDeltaCmPerHour": 42,
+            "windMps": 4.75,
+            "windGustMps": 8.19,
+            "rainMm": 0,
+            "temperature2m": 17.6,
+            "visibilityM": 760,
+            "visitorIndex": 124,
+            "visitorChangePct": 25,
+            "anonymousCrowdCount": 27,
+            "avgStayMinutes": 25,
+            "returnDelayGroups": 1,
+            "historyPriorScore": 65
+          },
+          "factorScores": {
+            "tide": 60,
+            "weather": 23,
+            "visitor": 50,
+            "history": 65,
+            "spatial": 78,
+            "field": 33
+          },
+          "riskScore": 51,
+          "riskLevel": "주의",
+          "reasons": [
+            {
+              "key": "spatial",
+              "label": "갯벌·방파제 등 공간 노출",
+              "score": 78
+            },
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 65
+            },
+            {
+              "key": "tide",
+              "label": "만조 임박·조위 변화",
+              "score": 60
+            },
+            {
+              "key": "visitor",
+              "label": "방문객 집중·증가율",
+              "score": 50
+            }
+          ],
+          "recommendationIds": [
+            "facility-review",
+            "agency-share",
+            "return-guidance",
+            "visitor-prealert"
+          ],
+          "dataQuality": {
+            "tide": "sample_from_public_api_schema",
+            "weather": "live_open_meteo_ansan_forecast",
+            "visitor": "sample_from_public_dataset_schema",
+            "history": "sample_from_public_file_schema",
+            "field": "future_pilot_sample"
+          }
+        },
+        {
+          "datetime": "2026-06-10T21:00:00+09:00",
+          "time": "21:00",
+          "rawSignals": {
+            "tideCm": 719,
+            "minutesToHighTide": 47,
+            "tideDeltaCmPerHour": 44,
+            "windMps": 4.19,
+            "windGustMps": 5.89,
+            "rainMm": 0,
+            "temperature2m": 16.3,
+            "visibilityM": 840,
+            "visitorIndex": 135,
+            "visitorChangePct": 31,
+            "anonymousCrowdCount": 38,
+            "avgStayMinutes": 31,
+            "returnDelayGroups": 2,
+            "historyPriorScore": 65
+          },
+          "factorScores": {
+            "tide": 81,
+            "weather": 18,
+            "visitor": 60,
+            "history": 65,
+            "spatial": 78,
+            "field": 54
+          },
+          "riskScore": 60,
+          "riskLevel": "주의",
+          "reasons": [
+            {
+              "key": "tide",
+              "label": "만조 임박·조위 변화",
+              "score": 81
+            },
+            {
+              "key": "spatial",
+              "label": "갯벌·방파제 등 공간 노출",
+              "score": 78
+            },
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 65
+            },
+            {
+              "key": "visitor",
+              "label": "방문객 집중·증가율",
+              "score": 60
+            }
+          ],
+          "recommendationIds": [
+            "return-guidance",
+            "facility-review",
+            "agency-share",
+            "visitor-prealert"
+          ],
+          "dataQuality": {
+            "tide": "sample_from_public_api_schema",
+            "weather": "live_open_meteo_ansan_forecast",
+            "visitor": "sample_from_public_dataset_schema",
+            "history": "sample_from_public_file_schema",
+            "field": "future_pilot_sample"
+          }
+        },
+        {
+          "datetime": "2026-06-10T22:00:00+09:00",
+          "time": "22:00",
+          "rawSignals": {
+            "tideCm": 735,
+            "minutesToHighTide": 13,
+            "tideDeltaCmPerHour": 16,
+            "windMps": 3.31,
+            "windGustMps": 4.39,
+            "rainMm": 0,
+            "temperature2m": 16.1,
+            "visibilityM": 1420,
+            "visitorIndex": 130,
+            "visitorChangePct": 19,
+            "anonymousCrowdCount": 34,
+            "avgStayMinutes": 29,
+            "returnDelayGroups": 1,
+            "historyPriorScore": 65
+          },
+          "factorScores": {
+            "tide": 81,
+            "weather": 11,
+            "visitor": 52,
+            "history": 65,
+            "spatial": 78,
+            "field": 42
+          },
+          "riskScore": 56,
+          "riskLevel": "주의",
+          "reasons": [
+            {
+              "key": "tide",
+              "label": "만조 임박·조위 변화",
+              "score": 81
+            },
+            {
+              "key": "spatial",
+              "label": "갯벌·방파제 등 공간 노출",
+              "score": 78
+            },
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 65
+            },
+            {
+              "key": "visitor",
+              "label": "방문객 집중·증가율",
+              "score": 52
+            }
+          ],
+          "recommendationIds": [
+            "return-guidance",
+            "facility-review",
+            "agency-share",
+            "visitor-prealert"
+          ],
+          "dataQuality": {
+            "tide": "sample_from_public_api_schema",
+            "weather": "live_open_meteo_ansan_forecast",
+            "visitor": "sample_from_public_dataset_schema",
+            "history": "sample_from_public_file_schema",
+            "field": "future_pilot_sample"
+          }
+        },
+        {
+          "datetime": "2026-06-10T23:00:00+09:00",
+          "time": "23:00",
+          "rawSignals": {
+            "tideCm": 710,
+            "minutesToHighTide": -47,
+            "tideDeltaCmPerHour": -25,
+            "windMps": 3.11,
+            "windGustMps": 4.19,
+            "rainMm": 0,
+            "temperature2m": 16.2,
+            "visibilityM": 2640,
+            "visitorIndex": 117,
+            "visitorChangePct": -6,
+            "anonymousCrowdCount": 25,
+            "avgStayMinutes": 24,
+            "returnDelayGroups": 1,
+            "historyPriorScore": 65
+          },
+          "factorScores": {
+            "tide": 52,
+            "weather": 9,
+            "visitor": 32,
+            "history": 65,
+            "spatial": 78,
+            "field": 31
+          },
+          "riskScore": 43,
+          "riskLevel": "낮음",
+          "reasons": [
+            {
+              "key": "spatial",
+              "label": "갯벌·방파제 등 공간 노출",
+              "score": 78
+            },
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 65
+            },
+            {
+              "key": "tide",
+              "label": "만조 임박·조위 변화",
+              "score": 52
+            },
+            {
+              "key": "visitor",
+              "label": "방문객 집중·증가율",
+              "score": 32
+            }
+          ],
+          "recommendationIds": [
+            "facility-review",
+            "agency-share",
+            "return-guidance",
+            "visitor-prealert"
+          ],
+          "dataQuality": {
+            "tide": "sample_from_public_api_schema",
+            "weather": "live_open_meteo_ansan_forecast",
+            "visitor": "sample_from_public_dataset_schema",
+            "history": "sample_from_public_file_schema",
+            "field": "future_pilot_sample"
+          }
+        },
+        {
+          "datetime": "2026-06-11T00:00:00+09:00",
+          "time": "00:00",
+          "rawSignals": {
+            "tideCm": 672,
+            "minutesToHighTide": -107,
+            "tideDeltaCmPerHour": -38,
+            "windMps": 3.83,
+            "windGustMps": 4.69,
+            "rainMm": 0,
+            "temperature2m": 16.3,
+            "visibilityM": 2820,
+            "visitorIndex": 95,
+            "visitorChangePct": -13,
+            "anonymousCrowdCount": 16,
+            "avgStayMinutes": 18,
+            "returnDelayGroups": 0,
+            "historyPriorScore": 65
+          },
+          "factorScores": {
+            "tide": 26,
+            "weather": 15,
+            "visitor": 14,
+            "history": 65,
+            "spatial": 78,
+            "field": 12
+          },
+          "riskScore": 32,
+          "riskLevel": "낮음",
+          "reasons": [
+            {
+              "key": "spatial",
+              "label": "갯벌·방파제 등 공간 노출",
+              "score": 78
+            },
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 65
+            },
+            {
+              "key": "tide",
+              "label": "만조 임박·조위 변화",
+              "score": 26
+            },
+            {
+              "key": "weather",
+              "label": "풍속·강수 등 기상 위험",
+              "score": 15
+            }
+          ],
+          "recommendationIds": [
+            "facility-review",
+            "agency-share",
+            "return-guidance",
+            "wind-warning"
+          ],
+          "dataQuality": {
+            "tide": "sample_from_public_api_schema",
+            "weather": "live_open_meteo_ansan_forecast",
+            "visitor": "sample_from_public_dataset_schema",
+            "history": "sample_from_public_file_schema",
+            "field": "future_pilot_sample"
+          }
+        }
+      ]
+    },
+    {
+      "id": "A07",
+      "name": "풍도 후보 구역",
+      "officialName": "풍도 선착장 인근",
+      "type": "도서·선착장",
+      "district": "단원구 풍도동",
+      "lat": 37.1078592,
+      "lng": 126.3870468,
+      "manager": "확장 후보",
+      "authority": "안산시 안내 + 관계기관 공유",
+      "channels": [
+        "관광안내 채널",
+        "관계기관 공유"
+      ],
+      "riskContext": [
+        "도서",
+        "선착장",
+        "기상 영향",
+        "관계기관 협업"
+      ],
+      "dominantAccidentTypes": [
+        "추락",
+        "표류"
+      ],
+      "pilotPriority": "P2",
+      "dataStatus": {
+        "coordinate": "manual_candidate_needs_verification",
+        "tide": "pending_api",
+        "weather": "pending_collection",
+        "population": "pending_api",
+        "accidentHistory": "national_prior_ready_local_pending"
+      },
+      "geocode": {
+        "source": "openstreetmap_nominatim",
+        "status": "matched",
+        "matchedQuery": "풍도 안산",
+        "displayName": "풍도, 단원구, 안산시, 경기도, 15654, 대한민국",
+        "osmType": "way",
+        "osmId": 22785935
+      },
+      "historyPrior": {
+        "sourceModel": "history_prior_model_v0",
+        "accidentTypes": [
+          "추락",
+          "표류"
+        ],
+        "priorScore": 51,
+        "components": [
+          {
+            "accidentType": "추락",
+            "priorScore": 73,
+            "incidentMean": 214.8,
+            "fatalityRatePct": 18.2,
+            "riskBand": "주의"
+          },
+          {
+            "accidentType": "표류",
+            "priorScore": 28,
+            "incidentMean": 34,
+            "fatalityRatePct": 0,
+            "riskBand": "보통"
+          }
+        ]
+      },
+      "series": [
+        {
+          "datetime": "2026-06-10T19:00:00+09:00",
+          "time": "19:00",
+          "rawSignals": {
+            "tideCm": 642,
+            "minutesToHighTide": 167,
+            "tideDeltaCmPerHour": 38,
+            "windMps": 5.53,
+            "windGustMps": 8.11,
+            "rainMm": 0,
+            "temperature2m": 16.7,
+            "visibilityM": 3640,
+            "visitorIndex": 108,
+            "visitorChangePct": 20,
+            "anonymousCrowdCount": 20,
+            "avgStayMinutes": 20,
+            "returnDelayGroups": 1,
+            "historyPriorScore": 51
+          },
+          "factorScores": {
+            "tide": 37,
+            "weather": 29,
+            "visitor": 36,
+            "history": 51,
+            "spatial": 78,
+            "field": 24
+          },
+          "riskScore": 41,
+          "riskLevel": "낮음",
+          "reasons": [
+            {
+              "key": "spatial",
+              "label": "갯벌·방파제 등 공간 노출",
+              "score": 78
+            },
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 51
+            },
+            {
+              "key": "tide",
+              "label": "만조 임박·조위 변화",
+              "score": 37
+            },
+            {
+              "key": "visitor",
+              "label": "방문객 집중·증가율",
+              "score": 36
+            }
+          ],
+          "recommendationIds": [
+            "facility-review",
+            "agency-share",
+            "return-guidance",
+            "visitor-prealert"
+          ],
+          "dataQuality": {
+            "tide": "sample_from_public_api_schema",
+            "weather": "live_open_meteo_ansan_forecast",
+            "visitor": "sample_from_public_dataset_schema",
+            "history": "sample_from_public_file_schema",
+            "field": "future_pilot_sample"
+          }
+        },
+        {
+          "datetime": "2026-06-10T20:00:00+09:00",
+          "time": "20:00",
+          "rawSignals": {
+            "tideCm": 681,
+            "minutesToHighTide": 107,
+            "tideDeltaCmPerHour": 42,
+            "windMps": 5.56,
+            "windGustMps": 6.69,
+            "rainMm": 0,
+            "temperature2m": 15.1,
+            "visibilityM": 1000,
+            "visitorIndex": 124,
+            "visitorChangePct": 25,
+            "anonymousCrowdCount": 27,
+            "avgStayMinutes": 25,
+            "returnDelayGroups": 1,
+            "historyPriorScore": 51
+          },
+          "factorScores": {
+            "tide": 60,
+            "weather": 29,
+            "visitor": 50,
+            "history": 51,
+            "spatial": 78,
+            "field": 33
+          },
+          "riskScore": 50,
+          "riskLevel": "주의",
+          "reasons": [
+            {
+              "key": "spatial",
+              "label": "갯벌·방파제 등 공간 노출",
+              "score": 78
+            },
+            {
+              "key": "tide",
+              "label": "만조 임박·조위 변화",
+              "score": 60
+            },
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 51
+            },
+            {
+              "key": "visitor",
+              "label": "방문객 집중·증가율",
+              "score": 50
+            }
+          ],
+          "recommendationIds": [
+            "facility-review",
+            "return-guidance",
+            "agency-share",
+            "visitor-prealert"
+          ],
+          "dataQuality": {
+            "tide": "sample_from_public_api_schema",
+            "weather": "live_open_meteo_ansan_forecast",
+            "visitor": "sample_from_public_dataset_schema",
+            "history": "sample_from_public_file_schema",
+            "field": "future_pilot_sample"
+          }
+        },
+        {
+          "datetime": "2026-06-10T21:00:00+09:00",
+          "time": "21:00",
+          "rawSignals": {
+            "tideCm": 719,
+            "minutesToHighTide": 47,
+            "tideDeltaCmPerHour": 44,
+            "windMps": 5.14,
+            "windGustMps": 4.81,
+            "rainMm": 0,
+            "temperature2m": 14.9,
+            "visibilityM": 740,
+            "visitorIndex": 135,
+            "visitorChangePct": 31,
+            "anonymousCrowdCount": 38,
+            "avgStayMinutes": 31,
+            "returnDelayGroups": 2,
+            "historyPriorScore": 51
+          },
+          "factorScores": {
+            "tide": 81,
+            "weather": 26,
+            "visitor": 60,
+            "history": 51,
+            "spatial": 78,
+            "field": 54
+          },
+          "riskScore": 59,
+          "riskLevel": "주의",
+          "reasons": [
+            {
+              "key": "tide",
+              "label": "만조 임박·조위 변화",
+              "score": 81
+            },
+            {
+              "key": "spatial",
+              "label": "갯벌·방파제 등 공간 노출",
+              "score": 78
+            },
+            {
+              "key": "visitor",
+              "label": "방문객 집중·증가율",
+              "score": 60
+            },
+            {
+              "key": "field",
+              "label": "익명 현장 체류·복귀 지연 신호",
+              "score": 54
+            }
+          ],
+          "recommendationIds": [
+            "return-guidance",
+            "facility-review",
+            "visitor-prealert",
+            "field-broadcast"
+          ],
+          "dataQuality": {
+            "tide": "sample_from_public_api_schema",
+            "weather": "live_open_meteo_ansan_forecast",
+            "visitor": "sample_from_public_dataset_schema",
+            "history": "sample_from_public_file_schema",
+            "field": "future_pilot_sample"
+          }
+        },
+        {
+          "datetime": "2026-06-10T22:00:00+09:00",
+          "time": "22:00",
+          "rawSignals": {
+            "tideCm": 735,
+            "minutesToHighTide": 13,
+            "tideDeltaCmPerHour": 16,
+            "windMps": 4.14,
+            "windGustMps": 3.81,
+            "rainMm": 0,
+            "temperature2m": 14.4,
+            "visibilityM": 760,
+            "visitorIndex": 130,
+            "visitorChangePct": 19,
+            "anonymousCrowdCount": 34,
+            "avgStayMinutes": 29,
+            "returnDelayGroups": 1,
+            "historyPriorScore": 51
+          },
+          "factorScores": {
+            "tide": 81,
+            "weather": 18,
+            "visitor": 52,
+            "history": 51,
+            "spatial": 78,
+            "field": 42
+          },
+          "riskScore": 55,
+          "riskLevel": "주의",
+          "reasons": [
+            {
+              "key": "tide",
+              "label": "만조 임박·조위 변화",
+              "score": 81
+            },
+            {
+              "key": "spatial",
+              "label": "갯벌·방파제 등 공간 노출",
+              "score": 78
+            },
+            {
+              "key": "visitor",
+              "label": "방문객 집중·증가율",
+              "score": 52
+            },
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 51
+            }
+          ],
+          "recommendationIds": [
+            "return-guidance",
+            "facility-review",
+            "visitor-prealert",
+            "agency-share"
+          ],
+          "dataQuality": {
+            "tide": "sample_from_public_api_schema",
+            "weather": "live_open_meteo_ansan_forecast",
+            "visitor": "sample_from_public_dataset_schema",
+            "history": "sample_from_public_file_schema",
+            "field": "future_pilot_sample"
+          }
+        },
+        {
+          "datetime": "2026-06-10T23:00:00+09:00",
+          "time": "23:00",
+          "rawSignals": {
+            "tideCm": 710,
+            "minutesToHighTide": -47,
+            "tideDeltaCmPerHour": -25,
+            "windMps": 3.81,
+            "windGustMps": 3.31,
+            "rainMm": 0,
+            "temperature2m": 15.1,
+            "visibilityM": 900,
+            "visitorIndex": 117,
+            "visitorChangePct": -6,
+            "anonymousCrowdCount": 25,
+            "avgStayMinutes": 24,
+            "returnDelayGroups": 1,
+            "historyPriorScore": 51
+          },
+          "factorScores": {
+            "tide": 52,
+            "weather": 15,
+            "visitor": 32,
+            "history": 51,
+            "spatial": 78,
+            "field": 31
+          },
+          "riskScore": 42,
+          "riskLevel": "낮음",
+          "reasons": [
+            {
+              "key": "spatial",
+              "label": "갯벌·방파제 등 공간 노출",
+              "score": 78
+            },
+            {
+              "key": "tide",
+              "label": "만조 임박·조위 변화",
+              "score": 52
+            },
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 51
+            },
+            {
+              "key": "visitor",
+              "label": "방문객 집중·증가율",
+              "score": 32
+            }
+          ],
+          "recommendationIds": [
+            "facility-review",
+            "return-guidance",
+            "agency-share",
+            "visitor-prealert"
+          ],
+          "dataQuality": {
+            "tide": "sample_from_public_api_schema",
+            "weather": "live_open_meteo_ansan_forecast",
+            "visitor": "sample_from_public_dataset_schema",
+            "history": "sample_from_public_file_schema",
+            "field": "future_pilot_sample"
+          }
+        },
+        {
+          "datetime": "2026-06-11T00:00:00+09:00",
+          "time": "00:00",
+          "rawSignals": {
+            "tideCm": 672,
+            "minutesToHighTide": -107,
+            "tideDeltaCmPerHour": -38,
+            "windMps": 4.28,
+            "windGustMps": 4.19,
+            "rainMm": 0,
+            "temperature2m": 15.4,
+            "visibilityM": 1420,
+            "visitorIndex": 95,
+            "visitorChangePct": -13,
+            "anonymousCrowdCount": 16,
+            "avgStayMinutes": 18,
+            "returnDelayGroups": 0,
+            "historyPriorScore": 51
+          },
+          "factorScores": {
+            "tide": 26,
+            "weather": 19,
+            "visitor": 14,
+            "history": 51,
+            "spatial": 78,
+            "field": 12
+          },
+          "riskScore": 30,
+          "riskLevel": "낮음",
+          "reasons": [
+            {
+              "key": "spatial",
+              "label": "갯벌·방파제 등 공간 노출",
+              "score": 78
+            },
+            {
+              "key": "history",
+              "label": "과거 유사 사고 이력",
+              "score": 51
+            },
+            {
+              "key": "tide",
+              "label": "만조 임박·조위 변화",
+              "score": 26
+            },
+            {
+              "key": "weather",
+              "label": "풍속·강수 등 기상 위험",
+              "score": 19
+            }
+          ],
+          "recommendationIds": [
+            "facility-review",
+            "agency-share",
+            "return-guidance",
+            "wind-warning"
+          ],
+          "dataQuality": {
+            "tide": "sample_from_public_api_schema",
+            "weather": "live_open_meteo_ansan_forecast",
+            "visitor": "sample_from_public_dataset_schema",
+            "history": "sample_from_public_file_schema",
+            "field": "future_pilot_sample"
+          }
+        }
+      ]
     }
   ],
   "auditTrail": [

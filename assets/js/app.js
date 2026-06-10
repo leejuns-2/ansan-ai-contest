@@ -157,14 +157,32 @@ function renderLocations() {
 }
 
 function renderMap() {
+  const markerLayer = document.getElementById("mapMarkers");
+  markerLayer.innerHTML = "";
+
+  const coords = state.data.locations.map((location) => ({ lat: location.lat, lng: location.lng }));
+  const minLat = Math.min(...coords.map((coord) => coord.lat));
+  const maxLat = Math.max(...coords.map((coord) => coord.lat));
+  const minLng = Math.min(...coords.map((coord) => coord.lng));
+  const maxLng = Math.max(...coords.map((coord) => coord.lng));
+  const latSpan = Math.max(0.01, maxLat - minLat);
+  const lngSpan = Math.max(0.01, maxLng - minLng);
+
   state.data.locations.forEach((location) => {
     const point = getPoint(location);
     const score = computeRisk(point);
     const level = computeLevel(score);
-    const marker = document.querySelector(`.marker[data-location="${location.id}"]`);
-    if (!marker) return;
+    const x = 12 + ((location.lng - minLng) / lngSpan) * 76;
+    const y = 88 - ((location.lat - minLat) / latSpan) * 76;
+    const marker = document.createElement("button");
+    marker.type = "button";
+    marker.dataset.location = location.id;
     marker.className = `marker ${levelClass(level)} ${location.id === state.locationId ? "active" : ""}`;
+    marker.style.setProperty("--x", `${x}%`);
+    marker.style.setProperty("--y", `${y}%`);
+    marker.textContent = location.id;
     marker.setAttribute("aria-label", `${location.name} ${score}점 ${level}`);
+    markerLayer.appendChild(marker);
   });
 
   const table = document.getElementById("riskTable");

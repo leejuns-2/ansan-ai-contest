@@ -19,6 +19,7 @@
 
 | 경로 | 설명 |
 |---|---|
+| `master/ansan_coastal_locations.json` | 모든 API 수집기가 순회할 안산 연안 후보지 마스터 |
 | `raw/source_registry.json` | 데이터 출처, 제공기관, 확인 상태, 활용 필드 |
 | `raw/demo_observations.json` | 공개 데이터 구조를 모사한 원시 관측 샘플 |
 | `raw/ansan_candidate_locations.json` | 안산 연안 후보지 좌표 수집 결과 |

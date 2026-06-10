@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-06-10T13:03:28.372Z",
+  "collectedAt": "2026-06-10T13:17:51.944Z",
   "source": {
     "name": "OpenStreetMap Nominatim",
     "url": "https://nominatim.openstreetmap.org/",
@@ -9,19 +9,35 @@
     {
       "id": "A01",
       "name": "방아머리 후보 구역",
-      "query": "방아머리해수욕장 안산",
+      "officialName": "방아머리해변",
+      "query": "방아머리해변 안산",
       "aliases": [
-        "방아머리해변 안산",
+        "방아머리해수욕장 안산",
         "방아머리항 안산",
         "대부도 방아머리"
       ],
       "lat": 37.2875281,
       "lng": 126.574133,
       "type": "갯벌·해안 접근부",
+      "district": "단원구 대부동",
+      "riskContext": [
+        "갯벌체험",
+        "관광객 집중",
+        "조위 영향",
+        "주차장·해안 접근"
+      ],
       "dominantAccidentTypes": [
         "고립",
         "익수"
       ],
+      "pilotPriority": "P0",
+      "dataStatus": {
+        "coordinate": "verified_osm",
+        "tide": "pending_api",
+        "weather": "ready_open_meteo_pending_kma",
+        "population": "pending_api",
+        "accidentHistory": "national_prior_ready_local_pending"
+      },
       "source": "openstreetmap_nominatim",
       "geocodeStatus": "matched",
       "matchedQuery": "방아머리해변 안산",
@@ -33,6 +49,7 @@
     {
       "id": "A02",
       "name": "탄도항 후보 구역",
+      "officialName": "탄도항",
       "query": "탄도항 안산",
       "aliases": [
         "탄도항 대부도",
@@ -41,10 +58,26 @@
       "lat": 37.1921428,
       "lng": 126.6431133,
       "type": "항구·방파제",
+      "district": "단원구 대부동",
+      "riskContext": [
+        "항구",
+        "방파제",
+        "낚시객",
+        "갯벌 접근",
+        "관광객 집중"
+      ],
       "dominantAccidentTypes": [
         "추락",
         "익수"
       ],
+      "pilotPriority": "P0",
+      "dataStatus": {
+        "coordinate": "verified_osm",
+        "tide": "pending_api",
+        "weather": "ready_open_meteo_pending_kma",
+        "population": "pending_api",
+        "accidentHistory": "national_prior_ready_local_pending"
+      },
       "source": "openstreetmap_nominatim",
       "geocodeStatus": "matched",
       "matchedQuery": "탄도항 안산",
@@ -56,6 +89,7 @@
     {
       "id": "A03",
       "name": "시화방조제 후보 구역",
+      "officialName": "시화방조제",
       "query": "시화방조제 안산",
       "aliases": [
         "시화방조제 대부도",
@@ -65,12 +99,182 @@
       "lat": 37.3142,
       "lng": 126.6086,
       "type": "시화호·방조제 인근",
+      "district": "단원구 대부동 인근",
+      "riskContext": [
+        "방조제",
+        "해안도로",
+        "낚시·관광",
+        "관리주체 확인 필요"
+      ],
       "dominantAccidentTypes": [
         "추락",
         "고립"
       ],
+      "pilotPriority": "P0",
+      "dataStatus": {
+        "coordinate": "fallback_needs_official_verification",
+        "tide": "pending_api",
+        "weather": "ready_open_meteo_pending_kma",
+        "population": "pending_api",
+        "accidentHistory": "national_prior_ready_local_pending"
+      },
       "source": "fallback_coordinate",
       "geocodeStatus": "no_result"
+    },
+    {
+      "id": "A04",
+      "name": "구봉도 후보 구역",
+      "officialName": "구봉도 낙조전망대 인근",
+      "query": "구봉도 낙조전망대 안산",
+      "aliases": [
+        "구봉도 안산",
+        "대부도 구봉도"
+      ],
+      "lat": 37.2842587,
+      "lng": 126.5423229,
+      "type": "해안 산책·전망 지점",
+      "district": "단원구 대부북동",
+      "riskContext": [
+        "해안 산책",
+        "일몰 시간대 체류",
+        "갯바위·해안 접근"
+      ],
+      "dominantAccidentTypes": [
+        "추락",
+        "익수"
+      ],
+      "pilotPriority": "P1",
+      "dataStatus": {
+        "coordinate": "manual_candidate_needs_verification",
+        "tide": "pending_api",
+        "weather": "pending_collection",
+        "population": "pending_api",
+        "accidentHistory": "national_prior_ready_local_pending"
+      },
+      "source": "openstreetmap_nominatim",
+      "geocodeStatus": "matched",
+      "matchedQuery": "구봉도 안산",
+      "displayName": "구봉도, 대부동, 단원구, 안산시, 경기도, 대한민국",
+      "osmType": "way",
+      "osmId": 1504176569,
+      "importance": 0.0667216685740444
+    },
+    {
+      "id": "A05",
+      "name": "대부바다향기테마파크 후보 구역",
+      "officialName": "대부바다향기테마파크 인근",
+      "query": "대부바다향기테마파크 안산",
+      "aliases": [
+        "대부도 바다향기테마파크",
+        "대부바다향기테마파크"
+      ],
+      "lat": 37.2817424,
+      "lng": 126.5783908,
+      "type": "관광지·해안 접근부",
+      "district": "단원구 대부북동",
+      "riskContext": [
+        "관광객 집중",
+        "주차장",
+        "해안 접근",
+        "가족 단위 방문"
+      ],
+      "dominantAccidentTypes": [
+        "고립",
+        "익수"
+      ],
+      "pilotPriority": "P1",
+      "dataStatus": {
+        "coordinate": "manual_candidate_needs_verification",
+        "tide": "pending_api",
+        "weather": "pending_collection",
+        "population": "pending_api",
+        "accidentHistory": "national_prior_ready_local_pending"
+      },
+      "source": "openstreetmap_nominatim",
+      "geocodeStatus": "matched",
+      "matchedQuery": "대부바다향기테마파크 안산",
+      "displayName": "대부바다향기테마파크, 단원구, 안산시, 경기도, 대한민국",
+      "osmType": "way",
+      "osmId": 1509669851,
+      "importance": 0.0800550019073777
+    },
+    {
+      "id": "A06",
+      "name": "선감도 후보 구역",
+      "officialName": "선감도·선감어촌체험마을 인근",
+      "query": "선감어촌체험마을 안산",
+      "aliases": [
+        "선감도 안산",
+        "선감동 갯벌체험"
+      ],
+      "lat": 37.2238987,
+      "lng": 126.6378667,
+      "type": "갯벌체험·어촌체험",
+      "district": "단원구 선감동",
+      "riskContext": [
+        "갯벌체험",
+        "체험객",
+        "조위 영향",
+        "복귀 지연 위험"
+      ],
+      "dominantAccidentTypes": [
+        "고립",
+        "익수"
+      ],
+      "pilotPriority": "P1",
+      "dataStatus": {
+        "coordinate": "manual_candidate_needs_verification",
+        "tide": "pending_api",
+        "weather": "pending_collection",
+        "population": "pending_api",
+        "accidentHistory": "national_prior_ready_local_pending"
+      },
+      "source": "openstreetmap_nominatim",
+      "geocodeStatus": "matched",
+      "matchedQuery": "선감도 안산",
+      "displayName": "선감도, 선감동, 대부동, 단원구, 안산시, 경기도, 대한민국",
+      "osmType": "way",
+      "osmId": 1435253061,
+      "importance": 0.0667216685740444
+    },
+    {
+      "id": "A07",
+      "name": "풍도 후보 구역",
+      "officialName": "풍도 선착장 인근",
+      "query": "풍도 선착장 안산",
+      "aliases": [
+        "풍도 안산",
+        "풍도항"
+      ],
+      "lat": 37.1078592,
+      "lng": 126.3870468,
+      "type": "도서·선착장",
+      "district": "단원구 풍도동",
+      "riskContext": [
+        "도서",
+        "선착장",
+        "기상 영향",
+        "관계기관 협업"
+      ],
+      "dominantAccidentTypes": [
+        "추락",
+        "표류"
+      ],
+      "pilotPriority": "P2",
+      "dataStatus": {
+        "coordinate": "manual_candidate_needs_verification",
+        "tide": "pending_api",
+        "weather": "pending_collection",
+        "population": "pending_api",
+        "accidentHistory": "national_prior_ready_local_pending"
+      },
+      "source": "openstreetmap_nominatim",
+      "geocodeStatus": "matched",
+      "matchedQuery": "풍도 안산",
+      "displayName": "풍도, 단원구, 안산시, 경기도, 15654, 대한민국",
+      "osmType": "way",
+      "osmId": 22785935,
+      "importance": 0.29892160108322774
     }
   ]
 }

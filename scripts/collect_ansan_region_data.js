@@ -2,41 +2,32 @@ const fs = require("fs");
 const path = require("path");
 
 const rootDir = path.resolve(__dirname, "..");
+const masterPath = path.join(rootDir, "data", "master", "ansan_coastal_locations.json");
 const locationsPath = path.join(rootDir, "data", "raw", "ansan_candidate_locations.json");
 const weatherPath = path.join(rootDir, "data", "raw", "ansan_open_meteo_weather_latest.json");
 
-const fallbackLocations = [
-  {
-    id: "A01",
-    name: "방아머리 후보 구역",
-    query: "방아머리해수욕장 안산",
-    aliases: ["방아머리해변 안산", "방아머리항 안산", "대부도 방아머리"],
-    lat: 37.2879,
-    lng: 126.5742,
-    type: "갯벌·해안 접근부",
-    dominantAccidentTypes: ["고립", "익수"]
-  },
-  {
-    id: "A02",
-    name: "탄도항 후보 구역",
-    query: "탄도항 안산",
-    aliases: ["탄도항 대부도", "탄도항 단원구 안산"],
-    lat: 37.1924,
-    lng: 126.6468,
-    type: "항구·방파제",
-    dominantAccidentTypes: ["추락", "익수"]
-  },
-  {
-    id: "A03",
-    name: "시화방조제 후보 구역",
-    query: "시화방조제 안산",
-    aliases: ["시화방조제 대부도", "시화나래휴게소", "시화호 방조제"],
-    lat: 37.3142,
-    lng: 126.6086,
-    type: "시화호·방조제 인근",
-    dominantAccidentTypes: ["추락", "고립"]
-  }
-];
+function readJson(filePath) {
+  return JSON.parse(fs.readFileSync(filePath, "utf8"));
+}
+
+function readMasterLocations() {
+  const master = readJson(masterPath);
+  return master.locations.map((location) => ({
+    id: location.id,
+    name: location.displayName || location.name,
+    officialName: location.name,
+    query: location.query,
+    aliases: location.aliases || [],
+    lat: location.lat,
+    lng: location.lng,
+    type: location.category,
+    district: location.district,
+    riskContext: location.riskContext,
+    dominantAccidentTypes: location.dominantAccidentTypes,
+    pilotPriority: location.pilotPriority,
+    dataStatus: location.dataStatus
+  }));
+}
 
 function ensureDir(filePath) {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
@@ -147,8 +138,9 @@ async function collectWeather(location) {
 }
 
 async function main() {
+  const candidateLocations = readMasterLocations();
   const geocoded = [];
-  for (const location of fallbackLocations) {
+  for (const location of candidateLocations) {
     geocoded.push(await geocodeLocation(location));
     await new Promise((resolve) => setTimeout(resolve, 1100));
   }

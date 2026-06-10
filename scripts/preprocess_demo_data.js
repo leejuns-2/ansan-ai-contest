@@ -7,6 +7,7 @@ const registryPath = path.join(rootDir, "data", "raw", "source_registry.json");
 const historyModelPath = path.join(rootDir, "models", "history_prior_model.json");
 const ansanLocationsPath = path.join(rootDir, "data", "raw", "ansan_candidate_locations.json");
 const ansanWeatherPath = path.join(rootDir, "data", "raw", "ansan_open_meteo_weather_latest.json");
+const ansanMasterPath = path.join(rootDir, "data", "master", "ansan_coastal_locations.json");
 const outputPath = path.join(rootDir, "data", "processed", "risk_timeseries.json");
 const browserBundlePath = path.join(rootDir, "data", "processed", "risk_timeseries.js");
 
@@ -151,6 +152,41 @@ function mergeLocation(location, ansanLocations) {
   };
 }
 
+function buildBaseLocations(raw, ansanMaster) {
+  if (!ansanMaster?.locations?.length) return raw.locations;
+  return ansanMaster.locations.map((location) => ({
+    id: location.id,
+    name: location.displayName || location.name,
+    officialName: location.name,
+    type: location.category,
+    district: location.district,
+    lat: location.lat,
+    lng: location.lng,
+    manager: location.pilotPriority === "P0" ? "안산시 시범 운영 후보" : "확장 후보",
+    authority: "안산시 안내 + 관계기관 공유",
+    channels: ["관광안내 채널", "관계기관 공유"],
+    riskContext: location.riskContext,
+    dominantAccidentTypes: location.dominantAccidentTypes,
+    pilotPriority: location.pilotPriority,
+    dataStatus: location.dataStatus
+  }));
+}
+
+function templateRowsForLocation(raw, locationId) {
+  const rows = raw.observations.filter((row) => row.locationId === locationId);
+  if (rows.length) return rows;
+  const fallbackRows = raw.observations.filter((row) => row.locationId === "A01");
+  return fallbackRows.map((row) => ({
+    ...row,
+    locationId,
+    visitorIndex: Math.max(85, Math.round(row.visitorIndex * 0.82)),
+    visitorChangePct: Math.round(row.visitorChangePct * 0.7),
+    anonymousCrowdCount: Math.max(8, Math.round(row.anonymousCrowdCount * 0.65)),
+    avgStayMinutes: Math.max(12, Math.round(row.avgStayMinutes * 0.82)),
+    returnDelayGroups: Math.max(0, Math.round(row.returnDelayGroups * 0.5))
+  }));
+}
+
 function weatherFor(ansanWeather, locationId, index) {
   const record = ansanWeather?.records?.find((item) => item.locationId === locationId);
   if (!record || !Array.isArray(record.hourly) || !record.hourly.length) return null;
@@ -170,15 +206,15 @@ function applyRegionalWeather(row, weatherPoint) {
   };
 }
 
-function buildOutput(raw, registry, historyModel, ansanLocations, ansanWeather) {
+function buildOutput(raw, registry, historyModel, ansanLocations, ansanWeather, ansanMaster) {
   const firstWeatherTime = ansanWeather?.records?.flatMap((record) => record.hourly || [])?.[0]?.time;
   const scenarioDate = firstWeatherTime ? firstWeatherTime.slice(0, 10) : raw.scenarioDate;
 
-  const observationsByLocation = raw.locations.map((location) => {
+  const baseLocations = buildBaseLocations(raw, ansanMaster);
+  const observationsByLocation = baseLocations.map((location) => {
     const mergedLocation = mergeLocation(location, ansanLocations);
     const historyPrior = historyPriorForLocation(mergedLocation, historyModel);
-    const series = raw.observations
-      .filter((row) => row.locationId === mergedLocation.id)
+    const series = templateRowsForLocation(raw, mergedLocation.id)
       .map((row, index) => {
         const weatherPoint = weatherFor(ansanWeather, mergedLocation.id, index);
         const regionalRow = applyRegionalWeather(row, weatherPoint);
@@ -360,7 +396,8 @@ const registry = readJson(registryPath);
 const historyModel = readOptionalJson(historyModelPath);
 const ansanLocations = readOptionalJson(ansanLocationsPath);
 const ansanWeather = readOptionalJson(ansanWeatherPath);
-const output = buildOutput(raw, registry, historyModel, ansanLocations, ansanWeather);
+const ansanMaster = readOptionalJson(ansanMasterPath);
+const output = buildOutput(raw, registry, historyModel, ansanLocations, ansanWeather, ansanMaster);
 
 if (!checkOnly) {
   fs.mkdirSync(path.dirname(outputPath), { recursive: true });

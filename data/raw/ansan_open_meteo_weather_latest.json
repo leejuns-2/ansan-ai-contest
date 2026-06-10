@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-06-10T13:03:28.372Z",
+  "collectedAt": "2026-06-10T13:17:51.944Z",
   "source": {
     "name": "Open-Meteo Forecast API",
     "url": "https://open-meteo.com/",
@@ -14,12 +14,12 @@
       "longitude": 126.5625,
       "timezone": "Asia/Seoul",
       "current": {
-        "time": "2026-06-10T22:00",
+        "time": "2026-06-10T22:15",
         "interval": 900,
-        "temperature_2m": 16.5,
+        "temperature_2m": 16.6,
         "precipitation": 0,
-        "wind_speed_10m": 11,
-        "wind_gusts_10m": 22
+        "wind_speed_10m": 10.6,
+        "wind_gusts_10m": 15.1
       },
       "hourly": [
         {
@@ -27,64 +27,64 @@
           "temperature2m": 18.7,
           "precipitationMm": 0,
           "windSpeed10mKmh": 21.1,
-          "windGusts10mKmh": 34.9,
-          "visibilityM": 1440
+          "windGusts10mKmh": 34.6,
+          "visibilityM": 1320
         },
         {
           "time": "2026-06-10T20:00",
           "temperature2m": 16.9,
           "precipitationMm": 0,
           "windSpeed10mKmh": 18.5,
-          "windGusts10mKmh": 28.8,
-          "visibilityM": 620
+          "windGusts10mKmh": 29.5,
+          "visibilityM": 760
         },
         {
           "time": "2026-06-10T21:00",
           "temperature2m": 16.5,
           "precipitationMm": 0,
           "windSpeed10mKmh": 16.6,
-          "windGusts10mKmh": 23.8,
-          "visibilityM": 880
+          "windGusts10mKmh": 21.2,
+          "visibilityM": 840
         },
         {
           "time": "2026-06-10T22:00",
           "temperature2m": 16.5,
           "precipitationMm": 0,
           "windSpeed10mKmh": 11,
-          "windGusts10mKmh": 22,
-          "visibilityM": 3440
+          "windGusts10mKmh": 15.8,
+          "visibilityM": 1420
         },
         {
           "time": "2026-06-10T23:00",
           "temperature2m": 17,
           "precipitationMm": 0,
           "windSpeed10mKmh": 11.1,
-          "windGusts10mKmh": 23,
-          "visibilityM": 11700
+          "windGusts10mKmh": 15.1,
+          "visibilityM": 2640
         },
         {
           "time": "2026-06-11T00:00",
           "temperature2m": 17,
           "precipitationMm": 0,
           "windSpeed10mKmh": 13.8,
-          "windGusts10mKmh": 23.4,
-          "visibilityM": 5660
+          "windGusts10mKmh": 16.9,
+          "visibilityM": 2820
         },
         {
           "time": "2026-06-11T01:00",
           "temperature2m": 17.3,
           "precipitationMm": 0,
           "windSpeed10mKmh": 14.8,
-          "windGusts10mKmh": 22.3,
-          "visibilityM": 3360
+          "windGusts10mKmh": 16.6,
+          "visibilityM": 2900
         },
         {
           "time": "2026-06-11T02:00",
           "temperature2m": 17.5,
           "precipitationMm": 0,
           "windSpeed10mKmh": 12.1,
-          "windGusts10mKmh": 21.6,
-          "visibilityM": 3120
+          "windGusts10mKmh": 7.9,
+          "visibilityM": 3920
         }
       ]
     },
@@ -96,12 +96,12 @@
       "longitude": 126.625,
       "timezone": "Asia/Seoul",
       "current": {
-        "time": "2026-06-10T22:00",
+        "time": "2026-06-10T22:15",
         "interval": 900,
         "temperature_2m": 16.4,
         "precipitation": 0,
-        "wind_speed_10m": 11.9,
-        "wind_gusts_10m": 22
+        "wind_speed_10m": 11.1,
+        "wind_gusts_10m": 15.1
       },
       "hourly": [
         {
@@ -109,64 +109,64 @@
           "temperature2m": 19,
           "precipitationMm": 0,
           "windSpeed10mKmh": 20.8,
-          "windGusts10mKmh": 34.9,
-          "visibilityM": 1440
+          "windGusts10mKmh": 34.6,
+          "visibilityM": 1320
         },
         {
           "time": "2026-06-10T20:00",
           "temperature2m": 17.9,
           "precipitationMm": 0,
           "windSpeed10mKmh": 17.1,
-          "windGusts10mKmh": 28.8,
-          "visibilityM": 620
+          "windGusts10mKmh": 29.5,
+          "visibilityM": 760
         },
         {
           "time": "2026-06-10T21:00",
           "temperature2m": 16.6,
           "precipitationMm": 0,
           "windSpeed10mKmh": 15.1,
-          "windGusts10mKmh": 23.8,
-          "visibilityM": 880
+          "windGusts10mKmh": 21.2,
+          "visibilityM": 840
         },
         {
           "time": "2026-06-10T22:00",
           "temperature2m": 16.4,
           "precipitationMm": 0,
           "windSpeed10mKmh": 11.9,
-          "windGusts10mKmh": 22,
-          "visibilityM": 3440
+          "windGusts10mKmh": 15.8,
+          "visibilityM": 1420
         },
         {
           "time": "2026-06-10T23:00",
           "temperature2m": 16.5,
           "precipitationMm": 0,
           "windSpeed10mKmh": 11.2,
-          "windGusts10mKmh": 23,
-          "visibilityM": 11700
+          "windGusts10mKmh": 15.1,
+          "visibilityM": 2640
         },
         {
           "time": "2026-06-11T00:00",
           "temperature2m": 16.6,
           "precipitationMm": 0,
           "windSpeed10mKmh": 13.8,
-          "windGusts10mKmh": 23.4,
-          "visibilityM": 5660
+          "windGusts10mKmh": 16.9,
+          "visibilityM": 2820
         },
         {
           "time": "2026-06-11T01:00",
           "temperature2m": 16.9,
           "precipitationMm": 0,
           "windSpeed10mKmh": 14.6,
-          "windGusts10mKmh": 22.3,
-          "visibilityM": 3360
+          "windGusts10mKmh": 16.6,
+          "visibilityM": 2900
         },
         {
           "time": "2026-06-11T02:00",
           "temperature2m": 17.3,
           "precipitationMm": 0,
           "windSpeed10mKmh": 14.3,
-          "windGusts10mKmh": 21.6,
-          "visibilityM": 3120
+          "windGusts10mKmh": 7.9,
+          "visibilityM": 3920
         }
       ]
     },
@@ -178,12 +178,12 @@
       "longitude": 126.625,
       "timezone": "Asia/Seoul",
       "current": {
-        "time": "2026-06-10T22:00",
+        "time": "2026-06-10T22:15",
         "interval": 900,
-        "temperature_2m": 16.5,
+        "temperature_2m": 16.6,
         "precipitation": 0,
-        "wind_speed_10m": 10.8,
-        "wind_gusts_10m": 22
+        "wind_speed_10m": 10.5,
+        "wind_gusts_10m": 15.1
       },
       "hourly": [
         {
@@ -191,64 +191,392 @@
           "temperature2m": 19.2,
           "precipitationMm": 0,
           "windSpeed10mKmh": 21.3,
-          "windGusts10mKmh": 34.9,
-          "visibilityM": 1440
+          "windGusts10mKmh": 34.6,
+          "visibilityM": 1320
         },
         {
           "time": "2026-06-10T20:00",
           "temperature2m": 17.4,
           "precipitationMm": 0,
           "windSpeed10mKmh": 17.2,
-          "windGusts10mKmh": 28.8,
-          "visibilityM": 620
+          "windGusts10mKmh": 29.5,
+          "visibilityM": 760
         },
         {
           "time": "2026-06-10T21:00",
           "temperature2m": 16.7,
           "precipitationMm": 0,
           "windSpeed10mKmh": 15.1,
-          "windGusts10mKmh": 23.8,
-          "visibilityM": 880
+          "windGusts10mKmh": 21.2,
+          "visibilityM": 840
         },
         {
           "time": "2026-06-10T22:00",
           "temperature2m": 16.5,
           "precipitationMm": 0,
           "windSpeed10mKmh": 10.8,
-          "windGusts10mKmh": 22,
-          "visibilityM": 3440
+          "windGusts10mKmh": 15.8,
+          "visibilityM": 1420
         },
         {
           "time": "2026-06-10T23:00",
           "temperature2m": 17,
           "precipitationMm": 0,
           "windSpeed10mKmh": 10.7,
-          "windGusts10mKmh": 23,
-          "visibilityM": 11700
+          "windGusts10mKmh": 15.1,
+          "visibilityM": 2640
         },
         {
           "time": "2026-06-11T00:00",
           "temperature2m": 17,
           "precipitationMm": 0,
           "windSpeed10mKmh": 13.5,
-          "windGusts10mKmh": 23.4,
-          "visibilityM": 5660
+          "windGusts10mKmh": 16.9,
+          "visibilityM": 2820
         },
         {
           "time": "2026-06-11T01:00",
           "temperature2m": 17.2,
           "precipitationMm": 0,
           "windSpeed10mKmh": 14.8,
-          "windGusts10mKmh": 22.3,
-          "visibilityM": 3360
+          "windGusts10mKmh": 16.6,
+          "visibilityM": 2900
         },
         {
           "time": "2026-06-11T02:00",
           "temperature2m": 17.5,
           "precipitationMm": 0,
           "windSpeed10mKmh": 12,
-          "windGusts10mKmh": 21.6,
-          "visibilityM": 3120
+          "windGusts10mKmh": 7.9,
+          "visibilityM": 3920
+        }
+      ]
+    },
+    {
+      "locationId": "A04",
+      "source": "open-meteo",
+      "url": "https://api.open-meteo.com/v1/forecast?latitude=37.2842587&longitude=126.5423229&timezone=Asia%2FSeoul&forecast_days=2&hourly=temperature_2m%2Cprecipitation%2Cwind_speed_10m%2Cwind_gusts_10m%2Cvisibility&current=temperature_2m%2Cprecipitation%2Cwind_speed_10m%2Cwind_gusts_10m",
+      "latitude": 37.3,
+      "longitude": 126.5625,
+      "timezone": "Asia/Seoul",
+      "current": {
+        "time": "2026-06-10T22:15",
+        "interval": 900,
+        "temperature_2m": 16.5,
+        "precipitation": 0,
+        "wind_speed_10m": 10.6,
+        "wind_gusts_10m": 15.1
+      },
+      "hourly": [
+        {
+          "time": "2026-06-10T19:00",
+          "temperature2m": 18.6,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 21.1,
+          "windGusts10mKmh": 34.6,
+          "visibilityM": 1320
+        },
+        {
+          "time": "2026-06-10T20:00",
+          "temperature2m": 16.7,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 18.5,
+          "windGusts10mKmh": 29.5,
+          "visibilityM": 760
+        },
+        {
+          "time": "2026-06-10T21:00",
+          "temperature2m": 16.3,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 16.6,
+          "windGusts10mKmh": 21.2,
+          "visibilityM": 840
+        },
+        {
+          "time": "2026-06-10T22:00",
+          "temperature2m": 16.4,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 11,
+          "windGusts10mKmh": 15.8,
+          "visibilityM": 1420
+        },
+        {
+          "time": "2026-06-10T23:00",
+          "temperature2m": 16.8,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 11.1,
+          "windGusts10mKmh": 15.1,
+          "visibilityM": 2640
+        },
+        {
+          "time": "2026-06-11T00:00",
+          "temperature2m": 16.8,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 13.8,
+          "windGusts10mKmh": 16.9,
+          "visibilityM": 2820
+        },
+        {
+          "time": "2026-06-11T01:00",
+          "temperature2m": 17.1,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 14.8,
+          "windGusts10mKmh": 16.6,
+          "visibilityM": 2900
+        },
+        {
+          "time": "2026-06-11T02:00",
+          "temperature2m": 17.4,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 12.1,
+          "windGusts10mKmh": 7.9,
+          "visibilityM": 3920
+        }
+      ]
+    },
+    {
+      "locationId": "A05",
+      "source": "open-meteo",
+      "url": "https://api.open-meteo.com/v1/forecast?latitude=37.2817424&longitude=126.5783908&timezone=Asia%2FSeoul&forecast_days=2&hourly=temperature_2m%2Cprecipitation%2Cwind_speed_10m%2Cwind_gusts_10m%2Cvisibility&current=temperature_2m%2Cprecipitation%2Cwind_speed_10m%2Cwind_gusts_10m",
+      "latitude": 37.3,
+      "longitude": 126.5625,
+      "timezone": "Asia/Seoul",
+      "current": {
+        "time": "2026-06-10T22:15",
+        "interval": 900,
+        "temperature_2m": 16.6,
+        "precipitation": 0,
+        "wind_speed_10m": 10.6,
+        "wind_gusts_10m": 15.1
+      },
+      "hourly": [
+        {
+          "time": "2026-06-10T19:00",
+          "temperature2m": 18.7,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 21.1,
+          "windGusts10mKmh": 34.6,
+          "visibilityM": 1320
+        },
+        {
+          "time": "2026-06-10T20:00",
+          "temperature2m": 16.9,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 18.5,
+          "windGusts10mKmh": 29.5,
+          "visibilityM": 760
+        },
+        {
+          "time": "2026-06-10T21:00",
+          "temperature2m": 16.5,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 16.6,
+          "windGusts10mKmh": 21.2,
+          "visibilityM": 840
+        },
+        {
+          "time": "2026-06-10T22:00",
+          "temperature2m": 16.5,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 11,
+          "windGusts10mKmh": 15.8,
+          "visibilityM": 1420
+        },
+        {
+          "time": "2026-06-10T23:00",
+          "temperature2m": 17,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 11.1,
+          "windGusts10mKmh": 15.1,
+          "visibilityM": 2640
+        },
+        {
+          "time": "2026-06-11T00:00",
+          "temperature2m": 17,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 13.8,
+          "windGusts10mKmh": 16.9,
+          "visibilityM": 2820
+        },
+        {
+          "time": "2026-06-11T01:00",
+          "temperature2m": 17.3,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 14.8,
+          "windGusts10mKmh": 16.6,
+          "visibilityM": 2900
+        },
+        {
+          "time": "2026-06-11T02:00",
+          "temperature2m": 17.5,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 12.1,
+          "windGusts10mKmh": 7.9,
+          "visibilityM": 3920
+        }
+      ]
+    },
+    {
+      "locationId": "A06",
+      "source": "open-meteo",
+      "url": "https://api.open-meteo.com/v1/forecast?latitude=37.2238987&longitude=126.6378667&timezone=Asia%2FSeoul&forecast_days=2&hourly=temperature_2m%2Cprecipitation%2Cwind_speed_10m%2Cwind_gusts_10m%2Cvisibility&current=temperature_2m%2Cprecipitation%2Cwind_speed_10m%2Cwind_gusts_10m",
+      "latitude": 37.2,
+      "longitude": 126.625,
+      "timezone": "Asia/Seoul",
+      "current": {
+        "time": "2026-06-10T22:15",
+        "interval": 900,
+        "temperature_2m": 16.1,
+        "precipitation": 0,
+        "wind_speed_10m": 11.1,
+        "wind_gusts_10m": 15.1
+      },
+      "hourly": [
+        {
+          "time": "2026-06-10T19:00",
+          "temperature2m": 18.7,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 20.8,
+          "windGusts10mKmh": 34.6,
+          "visibilityM": 1320
+        },
+        {
+          "time": "2026-06-10T20:00",
+          "temperature2m": 17.6,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 17.1,
+          "windGusts10mKmh": 29.5,
+          "visibilityM": 760
+        },
+        {
+          "time": "2026-06-10T21:00",
+          "temperature2m": 16.3,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 15.1,
+          "windGusts10mKmh": 21.2,
+          "visibilityM": 840
+        },
+        {
+          "time": "2026-06-10T22:00",
+          "temperature2m": 16.1,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 11.9,
+          "windGusts10mKmh": 15.8,
+          "visibilityM": 1420
+        },
+        {
+          "time": "2026-06-10T23:00",
+          "temperature2m": 16.2,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 11.2,
+          "windGusts10mKmh": 15.1,
+          "visibilityM": 2640
+        },
+        {
+          "time": "2026-06-11T00:00",
+          "temperature2m": 16.3,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 13.8,
+          "windGusts10mKmh": 16.9,
+          "visibilityM": 2820
+        },
+        {
+          "time": "2026-06-11T01:00",
+          "temperature2m": 16.6,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 14.6,
+          "windGusts10mKmh": 16.6,
+          "visibilityM": 2900
+        },
+        {
+          "time": "2026-06-11T02:00",
+          "temperature2m": 17,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 14.3,
+          "windGusts10mKmh": 7.9,
+          "visibilityM": 3920
+        }
+      ]
+    },
+    {
+      "locationId": "A07",
+      "source": "open-meteo",
+      "url": "https://api.open-meteo.com/v1/forecast?latitude=37.1078592&longitude=126.3870468&timezone=Asia%2FSeoul&forecast_days=2&hourly=temperature_2m%2Cprecipitation%2Cwind_speed_10m%2Cwind_gusts_10m%2Cvisibility&current=temperature_2m%2Cprecipitation%2Cwind_speed_10m%2Cwind_gusts_10m",
+      "latitude": 37.1,
+      "longitude": 126.375,
+      "timezone": "Asia/Seoul",
+      "current": {
+        "time": "2026-06-10T22:15",
+        "interval": 900,
+        "temperature_2m": 14.5,
+        "precipitation": 0,
+        "wind_speed_10m": 14.1,
+        "wind_gusts_10m": 13
+      },
+      "hourly": [
+        {
+          "time": "2026-06-10T19:00",
+          "temperature2m": 16.7,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 19.9,
+          "windGusts10mKmh": 29.2,
+          "visibilityM": 3640
+        },
+        {
+          "time": "2026-06-10T20:00",
+          "temperature2m": 15.1,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 20,
+          "windGusts10mKmh": 24.1,
+          "visibilityM": 1000
+        },
+        {
+          "time": "2026-06-10T21:00",
+          "temperature2m": 14.9,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 18.5,
+          "windGusts10mKmh": 17.3,
+          "visibilityM": 740
+        },
+        {
+          "time": "2026-06-10T22:00",
+          "temperature2m": 14.4,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 14.9,
+          "windGusts10mKmh": 13.7,
+          "visibilityM": 760
+        },
+        {
+          "time": "2026-06-10T23:00",
+          "temperature2m": 15.1,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 13.7,
+          "windGusts10mKmh": 11.9,
+          "visibilityM": 900
+        },
+        {
+          "time": "2026-06-11T00:00",
+          "temperature2m": 15.4,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 15.4,
+          "windGusts10mKmh": 15.1,
+          "visibilityM": 1420
+        },
+        {
+          "time": "2026-06-11T01:00",
+          "temperature2m": 15.9,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 17,
+          "windGusts10mKmh": 15.1,
+          "visibilityM": 6240
+        },
+        {
+          "time": "2026-06-11T02:00",
+          "temperature2m": 16.2,
+          "precipitationMm": 0,
+          "windSpeed10mKmh": 15.9,
+          "windGusts10mKmh": 10.4,
+          "visibilityM": 9380
         }
       ]
     }
